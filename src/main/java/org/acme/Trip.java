@@ -1,6 +1,9 @@
 package org.acme;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "trips")
@@ -35,7 +39,6 @@ public class Trip {
   @JoinColumn(name = "arrival_destination_id", nullable = false)
   private Destination arrivalDestination;
 
-
   // Getters and setters
   public long getId() {
     return id;
@@ -55,14 +58,6 @@ public class Trip {
 
   public void setArrivalDate(LocalDate arrivalDate) {
     this.arrivalDate = arrivalDate;
-  }
-
-  public long getDuration() {
-    return duration;
-  }
-
-  public void setDuration(long duration) {
-    this.duration = duration;
   }
 
   public int getConnectionsCount() {
@@ -87,5 +82,22 @@ public class Trip {
 
   public void setArrivalDestination(Destination arrivalDestination) {
     this.arrivalDestination = arrivalDestination;
+  }
+
+  // Methods
+  @Transient
+  @JsonIgnore // à retirer si tu veux l'afficher dans les API
+  public long getDuration() {
+    return ChronoUnit.MINUTES.between(departureDate, arrivalDate);
+  }
+
+  @Override
+  public String toString() {
+    return "Trip from " + getDepartureDestination().getName() +
+          " to " + getArrivalDestination().getName() +
+          " from " + getDepartureDate() +
+          " to " + getArrivalDate() +
+          ", duration: " + getDuration() + "minutes" +
+          ", connections: " + getConnectionsCount();
   }
 }
