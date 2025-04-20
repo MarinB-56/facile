@@ -1,17 +1,19 @@
 package org.acme;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -23,45 +25,41 @@ public class Trip {
   private long id;
 
   @Column(name = "departure_date", nullable = false)
-  private LocalDate departureDate;
+  private LocalDateTime departureDate;
 
   @Column(name = "arrival_date", nullable = false)
-  private LocalDate arrivalDate;
+  private LocalDateTime arrivalDate;
 
   @Column(name = "connections_count", nullable = false)
   private int connectionsCount;
 
   @Column(name = "departure_location")
   private String departureLocation;
+
   @Column(name = "arrival_location")
   private String arrivalLocation;
 
-  // @ManyToOne
-  // @JoinColumn(name = "departure_destination_id", nullable = false)
-  // private Destination departureDestination;
-
-  // @ManyToOne
-  // @JoinColumn(name = "arrival_destination_id", nullable = false)
-  // private Destination arrivalDestination;
+  @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true )
+  private List<Subtrip> subtrips = new ArrayList<>();
 
   // Getters and setters
   public long getId() {
     return id;
   }
 
-  public LocalDate getDepartureDate() {
+  public LocalDateTime getDepartureDate() {
     return departureDate;
   }
 
-  public void setDepartureDate(LocalDate departureDate) {
+  public void setDepartureDate(LocalDateTime departureDate) {
     this.departureDate = departureDate;
   }
 
-  public LocalDate getArrivalDate() {
+  public LocalDateTime getArrivalDate() {
     return arrivalDate;
   }
 
-  public void setArrivalDate(LocalDate arrivalDate) {
+  public void setArrivalDate(LocalDateTime arrivalDate) {
     this.arrivalDate = arrivalDate;
   }
 
@@ -72,22 +70,6 @@ public class Trip {
   public void setConnectionsCount(int connectionsCount) {
     this.connectionsCount = connectionsCount;
   }
-
-  // public Destination getDepartureDestination() {
-  //   return departureDestination;
-  // }
-
-  // public void setDepartureDestination(Destination departureDestination) {
-  //   this.departureDestination = departureDestination;
-  // }
-
-  // public Destination getArrivalDestination() {
-  //   return arrivalDestination;
-  // }
-
-  // public void setArrivalDestination(Destination arrivalDestination) {
-  //   this.arrivalDestination = arrivalDestination;
-  // }
 
   public String getDepartureLocation() {
     return departureLocation;
@@ -105,6 +87,14 @@ public class Trip {
     this.arrivalLocation = arrivalLocation;
   }
 
+  public List<Subtrip> getSubtrips() {
+    return subtrips;
+  }
+
+  public void setSubtrips(List<Subtrip> subtrips) {
+    this.subtrips = subtrips;
+  }
+
   // Methods
   @Transient
   @JsonIgnore // à retirer si tu veux l'afficher dans les API
@@ -120,5 +110,10 @@ public class Trip {
           " to " + getArrivalDate() +
           ", duration: " + getDuration() + "minutes" +
           ", connections: " + getConnectionsCount();
+  }
+
+  public void addSubtrip(Subtrip subtrip) {
+    subtrip.setTrip(this);
+    subtrips.add(subtrip);
   }
 }
