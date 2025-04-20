@@ -31,13 +31,18 @@ public class Trip {
   @Column(name = "connections_count", nullable = false)
   private int connectionsCount;
 
-  @ManyToOne
-  @JoinColumn(name = "departure_destination_id", nullable = false)
-  private Destination departureDestination;
+  @Column(name = "departure_location")
+  private String departureLocation;
+  @Column(name = "arrival_location")
+  private String arrivalLocation;
 
-  @ManyToOne
-  @JoinColumn(name = "arrival_destination_id", nullable = false)
-  private Destination arrivalDestination;
+  // @ManyToOne
+  // @JoinColumn(name = "departure_destination_id", nullable = false)
+  // private Destination departureDestination;
+
+  // @ManyToOne
+  // @JoinColumn(name = "arrival_destination_id", nullable = false)
+  // private Destination arrivalDestination;
 
   // Getters and setters
   public long getId() {
@@ -68,20 +73,36 @@ public class Trip {
     this.connectionsCount = connectionsCount;
   }
 
-  public Destination getDepartureDestination() {
-    return departureDestination;
+  // public Destination getDepartureDestination() {
+  //   return departureDestination;
+  // }
+
+  // public void setDepartureDestination(Destination departureDestination) {
+  //   this.departureDestination = departureDestination;
+  // }
+
+  // public Destination getArrivalDestination() {
+  //   return arrivalDestination;
+  // }
+
+  // public void setArrivalDestination(Destination arrivalDestination) {
+  //   this.arrivalDestination = arrivalDestination;
+  // }
+
+  public String getDepartureLocation() {
+    return departureLocation;
   }
 
-  public void setDepartureDestination(Destination departureDestination) {
-    this.departureDestination = departureDestination;
+  public void setDepartureLocation(String departureLocation) {
+    this.departureLocation = departureLocation;
   }
 
-  public Destination getArrivalDestination() {
-    return arrivalDestination;
+  public String getArrivalLocation() {
+    return arrivalLocation;
   }
 
-  public void setArrivalDestination(Destination arrivalDestination) {
-    this.arrivalDestination = arrivalDestination;
+  public void setArrivalLocation(String arrivalLocation) {
+    this.arrivalLocation = arrivalLocation;
   }
 
   // Methods
@@ -93,8 +114,8 @@ public class Trip {
 
   @Override
   public String toString() {
-    return "Trip from " + getDepartureDestination().getName() +
-          " to " + getArrivalDestination().getName() +
+    return "Trip from " + getDepartureLocation() +
+          " to " + getArrivalLocation() +
           " from " + getDepartureDate() +
           " to " + getArrivalDate() +
           ", duration: " + getDuration() + "minutes" +
