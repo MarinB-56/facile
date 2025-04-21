@@ -1,6 +1,8 @@
-package org.acme;
+package org.acme.repository;
 
 import java.util.List;
+
+import org.acme.model.Trip;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
