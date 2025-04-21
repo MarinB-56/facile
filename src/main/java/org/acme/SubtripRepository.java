@@ -11,8 +11,9 @@ public class SubtripRepository {
   @PersistenceContext
   EntityManager em;
 
-  public void save(Subtrip subtrip){
+  public Subtrip save(Subtrip subtrip){
     em.persist(subtrip);
+    return subtrip;
   }
 
   public Subtrip findById(Long id){
