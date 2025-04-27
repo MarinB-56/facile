@@ -13,10 +13,9 @@ public class TripRepository {
   @PersistenceContext
   EntityManager em;
 
-  // New - Insert
-  public Trip save(Trip trip){
-    em.persist(trip);
-    return trip;
+  // findAll
+  public List<Trip> findAll(){
+    return em.createQuery("FROM Trip", Trip.class).getResultList();
   }
 
   // findById
@@ -24,10 +23,14 @@ public class TripRepository {
     return em.find(Trip.class, id);
   }
 
-  // findAll
-  public List<Trip> findAll(){
-    return em.createQuery("FROM Trip", Trip.class).getResultList();
+  // New - Insert
+  public Trip save(Trip trip){
+    em.persist(trip);
+    return trip;
+  }
 
+  public Trip update(Trip trip){
+    return em.merge(trip);
   }
 
   // delete
