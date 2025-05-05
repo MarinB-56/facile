@@ -2,6 +2,7 @@ package org.acme.resource;
 
 import java.util.List;
 
+import org.acme.model.Subtrip;
 import org.acme.model.Trip;
 import org.acme.repository.TripRepository;
 
@@ -43,6 +44,13 @@ public class TripResource {
   @POST
   @Transactional
   public Response createTrip(Trip trip){
+
+    if(trip.getSubtrips() != null){
+      for(Subtrip subtrip : trip.getSubtrips()){
+        subtrip.setTrip(trip);
+      }
+    }
+
     tripRepository.save(trip);
     return Response.status(Response.Status.CREATED).entity(trip).build();
   }
