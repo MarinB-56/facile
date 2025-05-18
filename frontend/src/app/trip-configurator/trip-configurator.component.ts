@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './trip-configurator.component.css'
 })
 export class TripConfiguratorComponent {
-
+  
 }
