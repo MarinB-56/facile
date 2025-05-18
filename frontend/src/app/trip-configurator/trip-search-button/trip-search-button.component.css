@@ -1,0 +1,14 @@
+:host {
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+}
+
+.trip-configurator__search-button {
+  background-color: #013A63;
+  margin: 5px;
+  padding: 1em 5em;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
