@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { fakeAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-destination-picker',
@@ -7,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './destination-picker.component.css'
 })
 export class DestinationPickerComponent {
-
+  @Input() placeholderText = "";
+  @Input() valueText = "";
+  @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
+  @Input() isDisabled :boolean = false;
 }

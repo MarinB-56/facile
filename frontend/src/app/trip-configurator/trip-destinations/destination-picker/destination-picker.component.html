@@ -1,1 +1,5 @@
-<input type="text" placeholder="Entrez votre destination">
+<input type="text"
+  [readonly]="isReadOnly"
+  [value]="valueText"
+  [placeholder]="placeholderText"
+  [disabled]="isDisabled">
