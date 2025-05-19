@@ -12,4 +12,10 @@ export class DestinationPickerComponent {
   @Input() valueText = "";
   @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
   @Input() isDisabled :boolean = false;
+
+  autoComplete(event :Event){
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    console.log(value);
+  }
 }

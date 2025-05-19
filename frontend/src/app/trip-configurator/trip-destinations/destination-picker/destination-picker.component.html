@@ -2,4 +2,5 @@
   [readonly]="isReadOnly"
   [value]="valueText"
   [placeholder]="placeholderText"
-  [disabled]="isDisabled">
+  [disabled]="isDisabled"
+  (input)="autoComplete($event)">
