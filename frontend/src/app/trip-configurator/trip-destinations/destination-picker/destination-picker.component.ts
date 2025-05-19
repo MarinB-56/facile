@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, Input } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -8,6 +9,9 @@ import { fakeAsync } from '@angular/core/testing';
   styleUrl: './destination-picker.component.css'
 })
 export class DestinationPickerComponent {
+  private http = inject(HttpClient);
+  private urlAutoComplete = "https://dictionary.lewagon.com/autocomplete/";
+
   @Input() placeholderText = "";
   @Input() valueText = "";
   @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
@@ -17,5 +21,11 @@ export class DestinationPickerComponent {
     const input = event.target as HTMLInputElement;
     const value = input.value;
     console.log(value);
+
+    this.http
+      .get<any>(`${this.urlAutoComplete}${value}`)
+      .subscribe(response => {
+        console.log(response.words);
+      })
   }
 }
