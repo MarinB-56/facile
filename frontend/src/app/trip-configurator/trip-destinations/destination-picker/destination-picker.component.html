@@ -4,3 +4,9 @@
   [placeholder]="placeholderText"
   [disabled]="isDisabled"
   (input)="autoComplete($event)">
+
+  <ul>
+    @for (proposal of autoCompleteResults ; track $index) {
+      <li>{{proposal}}</li>
+    }
+  </ul>
