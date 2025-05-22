@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -12,7 +12,7 @@ export class DestinationPickerComponent {
   private http = inject(HttpClient);
   private urlAutoComplete = "https://dictionary.lewagon.com/autocomplete/";
 
-  autoCompleteResults : String[] = [];
+  autoCompleteResults = signal<String[]>([]);
 
   @Input() placeholderText = "";
   @Input() valueText = "";
@@ -28,9 +28,9 @@ export class DestinationPickerComponent {
       .get<any>(`${this.urlAutoComplete}${value}`)
       .subscribe(response => {
         if(response.words != undefined) {
-          this.autoCompleteResults = response.words.slice(0, 5);
+          this.autoCompleteResults.set(response.words.slice(0, 5));
         } else {
-          this.autoCompleteResults = [];
+          this.autoCompleteResults.set([]);
         }
       });
   }
