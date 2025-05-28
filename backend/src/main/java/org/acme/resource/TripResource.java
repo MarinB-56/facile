@@ -6,7 +6,6 @@ import org.acme.model.Subtrip;
 import org.acme.model.Trip;
 import org.acme.repository.TripRepository;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.DELETE;
@@ -42,7 +41,8 @@ public class TripResource {
   }
 
   @POST
-  @Transactional
+  @Transactional // Mot clé qui sécurise la méthode.
+  //Transactionnal dit au programme que toute la méthode doit être réussie. Sinon, on annule les opérations précédentes de la méthode.
   public Response createTrip(Trip trip){
 
     if(trip.getSubtrips() != null){
@@ -61,7 +61,7 @@ public class TripResource {
   public Response updateTrip(@PathParam("id") Long id, Trip trip){
     Trip existingTrip = tripRepository.findById(id);
     if(existingTrip == null){
-      return Response.status(Response.Status.NOT_FOUND).build();
+      return Response.status(Response.Status.NOT_FOUND).build(); // Response.Status.NOT_FOUND = constante qui représente l'erreur 404
     }
 
     existingTrip.setArrivalDate(trip.getArrivalDate());
@@ -72,7 +72,8 @@ public class TripResource {
     existingTrip.setSubtrips(trip.getSubtrips());
 
     tripRepository.update(existingTrip);
-    return Response.ok(existingTrip).build();
+    return Response.ok(existingTrip).build(); // Cette méthode définit le code de status HTTP à 200 (ok)
+    // Il indique que la requête a réussie. Il indique aussi qu'il y a un contenu à renvoyr dans le corps de la réponse (ici existingTrip)
   }
 
   @DELETE
@@ -86,6 +87,7 @@ public class TripResource {
     }
 
     tripRepository.deleteById(id);
-    return Response.noContent().build();
+    return Response.noContent().build(); //  Cette méthode définit le code de statut HTTP de la réponse à 204
+    // Ce code de statut indique que la requête a réussi, mais qu'il n'y a pas de contenu à renvoyer dans le corps de la réponse.
   }
 }
