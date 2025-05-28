@@ -10,9 +10,10 @@ import { fakeAsync } from '@angular/core/testing';
 })
 export class DestinationPickerComponent {
   private http = inject(HttpClient);
-  private urlAutoComplete = "https://dictionary.lewagon.com/autocomplete/";
+  private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
-  autoCompleteResults : String[] = [];
+  autoCompleteResults : Array<{name: string}> = []; // Signifie que les objets dans le tableau auront, entre autres, un champ name
+  // autoCompleteResults : String[] = [];
 
   @Input() placeholderText = "";
   @Input() valueText = "";
@@ -22,17 +23,24 @@ export class DestinationPickerComponent {
   autoComplete(event :Event) :void {
     const input = event.target as HTMLInputElement;
     const value = input.value;
-    console.log(value);
+    console.log(`Value ${value}`);
 
-    this.http
+    if(value !== ''){
+      this.http
       .get<any>(`${this.urlAutoComplete}${value}`)
       .subscribe(response => {
-        if(response.words != undefined) {
-          this.autoCompleteResults = response.words.slice(0, 5);
-        } else {
+        // console.log(response.places)
+        if(response.places != null){
+          this.autoCompleteResults = response.places;
+        }else {
           this.autoCompleteResults = [];
         }
+
+        console.log(this.autoCompleteResults);
       });
+    }else {
+      this.autoCompleteResults = [];
+    }
   }
 
   displayProposals(){
