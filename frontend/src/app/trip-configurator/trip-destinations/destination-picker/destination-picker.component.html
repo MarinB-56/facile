@@ -6,7 +6,7 @@
   (input)="autoComplete($event)">
 
   <ul>
-    @for (proposal of autoCompleteResults ; track $index) {
+    @for (proposal of autoCompleteResults() ; track $index) {
       <li>{{proposal.name}}</li>
     }
   </ul>

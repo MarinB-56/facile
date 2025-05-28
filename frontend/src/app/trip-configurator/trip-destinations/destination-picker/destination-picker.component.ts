@@ -12,7 +12,7 @@ export class DestinationPickerComponent {
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
-  autoCompleteResults : Array<{name: string}> = []; // Signifie que les objets dans le tableau auront, entre autres, un champ name
+  autoCompleteResults = signal<Array<{ name: string }>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
   // autoCompleteResults : String[] = [];
 
   @Input() placeholderText = "";
@@ -31,15 +31,15 @@ export class DestinationPickerComponent {
       .subscribe(response => {
         // console.log(response.places)
         if(response.places != null){
-          this.autoCompleteResults = response.places;
+          this.autoCompleteResults.set(response.places);
         }else {
-          this.autoCompleteResults = [];
+          this.autoCompleteResults.set([]);
         }
 
         console.log(this.autoCompleteResults);
       });
     }else {
-      this.autoCompleteResults = [];
+      this.autoCompleteResults.set([]);
     }
   }
 
