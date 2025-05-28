@@ -23,21 +23,20 @@ export class DestinationPickerComponent {
   autoComplete(event :Event) :void {
     const input = event.target as HTMLInputElement;
     const value = input.value;
-    console.log(`Value ${value}`);
 
     if(value !== ''){
       this.http
-      .get<any>(`${this.urlAutoComplete}${value}`)
-      .subscribe(response => {
-        // console.log(response.places)
-        if(response.places != null){
-          this.autoCompleteResults.set(response.places);
-        }else {
-          this.autoCompleteResults.set([]);
-        }
+        .get<any>(`${this.urlAutoComplete}${value}`)
+        .subscribe(response => {
+          // console.log(response.places)
+          if(response.places != null){
+            this.autoCompleteResults.set(response.places);
+          }else {
+            this.autoCompleteResults.set([]);
+          }
 
-        console.log(this.autoCompleteResults);
-      });
+          console.log(this.autoCompleteResults);
+        });
     }else {
       this.autoCompleteResults.set([]);
     }
