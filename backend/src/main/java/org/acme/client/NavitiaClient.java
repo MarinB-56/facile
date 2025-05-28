@@ -13,8 +13,12 @@ public interface NavitiaClient {
 
   @GET
   @Path("/sncf/places")
-  // @Path("/autocomplete/{query}")
-@ClientHeaderParam(name = "Authorization", value = "287e5a3b-64ec-412c-b910-7ae2efe4cb2b")
-  // @Path("/autocomplete/{query}")
+  @ClientHeaderParam(name = "Authorization", value = "287e5a3b-64ec-412c-b910-7ae2efe4cb2b")
   String getAllLocations(@QueryParam("q") String query);
+
+  // Méthode surchargée pour accepter le type (stop_area) si besoin
+  @GET
+  @Path("/sncf/places")
+  @ClientHeaderParam(name = "Authorization", value = "287e5a3b-64ec-412c-b910-7ae2efe4cb2b")
+  String getAllLocations(@QueryParam("q") String query, @QueryParam("type[]") String type);
 }

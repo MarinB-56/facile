@@ -7,6 +7,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 // Removed: import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -18,13 +19,15 @@ public class NavitiaResource {
   NavitiaClient navitiaClient;
 
   @GET
-  @Path("/{query}") //Permet une query vide
-  // public String getLocations(@PathParam("query") @DefaultValue("") String query){
-  //   return navitiaClient.getAllLocations(query);
-  // }
+  @Path("/{query}")
   public String getLocations(@PathParam("query") String query){
-    System.out.println(query);
     return navitiaClient.getAllLocations(query);
+  }
+
+  @GET
+  @Path("/{query}/{type:.*}")
+  public String getLocations(@PathParam("query") String query, @PathParam("type") @DefaultValue("") String type){
+    return navitiaClient.getAllLocations(query, type);
   }
 
   @GET
