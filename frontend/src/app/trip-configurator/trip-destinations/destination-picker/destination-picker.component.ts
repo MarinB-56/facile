@@ -52,10 +52,10 @@ export class DestinationPickerComponent {
     // this.isDropdownOpen.set(true);
   }
 
-  essai(event: Event){
-    console.log(`Value: ${this.valueText}`);
+  blur(event: Event){
     this.isDropdownOpen.set(false);
     this.valueText = "";
+    this.selectedDestination.emit(undefined); // On met la valeur à undefined car l'utilisateur n'a pas validé de choix
   }
 
   chooseDestination(proposal: { name: string, embedded_type: string }){

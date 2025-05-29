@@ -16,7 +16,14 @@ export class TripConfiguratorComponent {
 
   // Récupération de la valeur choisie par l'utilisateur (composant petit enfant)
   onDestinationSelected(destination: {name: String, embedded_type: string}){
-    this.selectedDestination.set(destination.name);
-    this.isButtonDisabled.set(!this.selectedDestination);
+    // Si une destination a été choisie, on active le bouton
+    if(destination !== undefined){
+      this.selectedDestination.set(destination.name);
+      this.isButtonDisabled.set(false);
+      console.log(destination.name);
+    } else {
+      this.selectedDestination.set({});
+      this.isButtonDisabled.set(true);
+    }
   }
 }
