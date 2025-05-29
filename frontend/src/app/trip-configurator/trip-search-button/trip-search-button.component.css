@@ -10,3 +10,7 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+.trip-configurator__search-button:disabled{
+  background-color: grey;
+}
