@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DatePickerComponent } from "../trip-dates/date-picker/date-picker.component";
 import { DestinationPickerComponent } from "./destination-picker/destination-picker.component";
+import { Destination } from '../../models/destination.model';
 
 @Component({
   selector: 'app-trip-destinations',
@@ -9,10 +10,10 @@ import { DestinationPickerComponent } from "./destination-picker/destination-pic
   styleUrl: './trip-destinations.component.css'
 })
 export class TripDestinationsComponent {
-  @Output() selectedDestination = new EventEmitter<{ name: string, embedded_type: string }>();
+  @Output() selectedDestination = new EventEmitter<Destination>();
 
   // Récupération de la destination choisie par l'utilisateur
-  onDestinationSelected(destination: { name: string, embedded_type: string }) {
+  onDestinationSelected(destination: Destination) {
     this.selectedDestination.emit(destination); // Envoi de la destination choisie au composant parent
   }
 }

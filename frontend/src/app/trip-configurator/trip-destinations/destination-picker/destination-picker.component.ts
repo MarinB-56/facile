@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
+import { Destination } from '../../../models/destination.model';
 
 @Component({
   selector: 'app-destination-picker',
@@ -12,7 +13,7 @@ export class DestinationPickerComponent {
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
-  autoCompleteResults = signal<Array<{ name: string, embedded_type: string }>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
+  autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
   isDropdownOpen = signal(false);
 
   @Input() placeholderText = "";
@@ -20,7 +21,7 @@ export class DestinationPickerComponent {
   @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
   @Input() isDisabled :boolean = false;
 
-  @Output() selectedDestination = new EventEmitter<{ name: string, embedded_type: string }>();
+  @Output() selectedDestination = new EventEmitter<Destination>();
 
   autoComplete(event :Event) :void {
     const input = event.target as HTMLInputElement;
@@ -29,9 +30,9 @@ export class DestinationPickerComponent {
     if(this.valueText !== ''){
       this.http
         .get<any>(`${this.urlAutoComplete}${this.valueText}`)
-        .subscribe(response => {
-          this.displayProposals(response);
-        });
+          .subscribe(response => {
+            this.displayProposals(response);
+          });
     }else {
       this.autoCompleteResults.set([]);
       this.isDropdownOpen.set(false);
@@ -59,7 +60,7 @@ export class DestinationPickerComponent {
     this.selectedDestination.emit(undefined); // On met la valeur à undefined car l'utilisateur n'a pas validé de choix
   }
 
-  chooseDestination(proposal: { name: string, embedded_type: string }){
+  chooseDestination(proposal: Destination){
     // Définir la valeur de l'input avec l'élément cliqué
     console.log(proposal);
     this.valueText = proposal.name; // Affuchage du choix à l'utilisateur (update de l'input)
