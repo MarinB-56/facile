@@ -9,12 +9,10 @@ import { DestinationPickerComponent } from "./destination-picker/destination-pic
   styleUrl: './trip-destinations.component.css'
 })
 export class TripDestinationsComponent {
-
   @Output() selectedDestination = new EventEmitter<{ name: string, embedded_type: string }>();
 
+  // Récupération de la destination choisie par l'utilisateur
   onDestinationSelected(destination: { name: string, embedded_type: string }) {
-    console.log(destination);
-    this.selectedDestination.emit(destination);
-    console.log(`Destination envoyée au parent :${destination}`);
+    this.selectedDestination.emit(destination); // Envoi de la destination choisie au composant parent
   }
 }
