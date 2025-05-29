@@ -40,6 +40,7 @@ export class DestinationPickerComponent {
 
   displayProposals(response: any){
     if(response.places != null){
+      // console.log(response.places);
       this.isDropdownOpen.set(true);
       this.autoCompleteResults.set(response.places);
     }else {

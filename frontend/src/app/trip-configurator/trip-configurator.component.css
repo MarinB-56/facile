@@ -8,3 +8,14 @@
 .trip-configurator__wrapper {
   background-color: red;
 }
+
+.material-symbols-outlined {
+  color:rgb(80, 129, 241);
+  font-size: x-large;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 100,
+    'GRAD' 200,
+    'opsz' 24;
+  /* background-color: aqua; */
+}

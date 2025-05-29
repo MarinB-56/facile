@@ -13,8 +13,12 @@
   <div class="places-autocomplete__results">
     @if (isDropdownOpen()) {
       @for (proposal of autoCompleteResults() ; track $index) {
-        <button class="places-autocomplete__result-item" (click)="chooseDestination(proposal)" >
-          {{proposal.name}}
+        <button class="places-autocomplete__result-item" (click)="chooseDestination(proposal)">
+            @if(proposal.embedded_type === "administrative_region"){
+              <span class="material-symbols-outlined">location_city</span>{{proposal.name}}
+            }@else {
+              <span class="material-symbols-outlined">train</span>{{proposal.name}} - Gare
+            }
         </button>
       }
     }
