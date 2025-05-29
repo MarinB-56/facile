@@ -1,7 +1,10 @@
 <div class="trip-configurator">
+
   <div class="trip-configurator__wrapper">
     <app-trip-destinations (selectedDestination) = "onDestinationSelected($event)"></app-trip-destinations>
   </div>
+
   {{selectedDestination()}}
-  <app-trip-search-button></app-trip-search-button>
+
+  <app-trip-search-button [isDisabled]="isButtonDisabled()"></app-trip-search-button>
 </div>

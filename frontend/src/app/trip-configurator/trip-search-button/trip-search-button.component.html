@@ -1,1 +1,3 @@
-<a class="trip-configurator__search-button" href="">Lancer la recherche</a>
+<button (click)="onSearch()" [disabled]="isDisabled" class="trip-configurator__search-button" href="">Lancer la recherche
+  {{isDisabled}}
+</button>
