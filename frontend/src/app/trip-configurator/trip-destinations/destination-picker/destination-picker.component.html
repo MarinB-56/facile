@@ -1,12 +1,19 @@
-<input type="text"
-  [readonly]="isReadOnly"
-  [value]="valueText"
-  [placeholder]="placeholderText"
-  [disabled]="isDisabled"
-  (input)="autoComplete($event)">
+<div class="places-autocomplete">
+  <input
+    class="places-autocomplete__input"
+    type="text"
+    [readonly]="isReadOnly"
+    [value]="valueText"
+    [placeholder]="placeholderText"
+    [disabled]="isDisabled"
+    (input)="autoComplete($event)">
 
-  <ul>
+  <div class="places-autocomplete__results">
     @for (proposal of autoCompleteResults() ; track $index) {
-      <li>{{proposal.name}}</li>
+      <button class="places-autocomplete__result-item" (click)="selectLocation($event)">
+        {{proposal.name}}
+      </button>
     }
-  </ul>
+  </div>
+
+</div>

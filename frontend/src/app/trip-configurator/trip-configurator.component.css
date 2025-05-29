@@ -1,15 +1,9 @@
-:host {
-  background-color: #F0F8FA;
-  padding: 5px;
-  height: 100%;
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-around;
-}
-
 .trip-configurator {
+  background-color: chartreuse;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
+}
+
+.trip-configurator__wrapper {
+  background-color: red;
 }

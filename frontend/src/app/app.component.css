@@ -1,0 +1,20 @@
+:host {
+  background-color: #6cceeb; /* Remplacez par la couleur de votre choix */
+  padding: 20px; /* Optionnel : ajoutez un padding pour un meilleur espacement */
+  height: 100vh; /* Utilisez height au lieu de min-height */
+  box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
+  overflow: auto; /* Ajoute une barre de défilement uniquement si nécessaire */
+}
+
+.header {
+  background-color: antiquewhite;
+}
+
+.header__title {
+  margin: 0;
+  text-align: center;
+}
+
+.header__greeting {
+  margin: 0;
+}

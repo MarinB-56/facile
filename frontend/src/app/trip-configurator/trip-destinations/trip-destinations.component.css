@@ -1,11 +1,3 @@
-:host {
-  background-color: red;
-  display: block;
-  padding: 5px;
-}
-
-.trip-destination__pickers {
-  background-color: bisque;
-  display: flex;
-  flex-direction: column;
+p {
+  margin: 0;
 }

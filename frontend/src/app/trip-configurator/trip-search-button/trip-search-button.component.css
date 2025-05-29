@@ -1,14 +1,12 @@
-:host {
-  background-color: bisque;
-  display: flex;
-  justify-content: center;
-}
-
 .trip-configurator__search-button {
-  background-color: #013A63;
-  margin: 5px;
-  padding: 1em 5em;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
+  padding: 10px; /* Exemple de padding */
+  display: block; /* Assure que le padding fonctionne correctement */
+  background-color: #007bff; /* Exemple de couleur de fond */
+  color: white; /* Exemple de couleur de texte */
+  text-decoration: none; /* Enlève le soulignement du lien */
+  border-radius: 5px; /* Optionnel : arrondit les coins */
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
