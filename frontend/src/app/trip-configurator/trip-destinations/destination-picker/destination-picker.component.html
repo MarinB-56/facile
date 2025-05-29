@@ -6,13 +6,17 @@
     [value]="valueText"
     [placeholder]="placeholderText"
     [disabled]="isDisabled"
-    (input)="autoComplete($event)">
+    (input)="autoComplete($event)"
+    (blur)="essai($event)"
+    (focus)="focus($event)">
 
   <div class="places-autocomplete__results">
-    @for (proposal of autoCompleteResults() ; track $index) {
-      <button class="places-autocomplete__result-item" (click)="selectLocation($event)">
-        {{proposal.name}}
-      </button>
+    @if (isDropdownOpen()) {
+      @for (proposal of autoCompleteResults() ; track $index) {
+        <button class="places-autocomplete__result-item" (click)="chooseDestination(proposal)" >
+          {{proposal.name}}
+        </button>
+      }
     }
   </div>
 

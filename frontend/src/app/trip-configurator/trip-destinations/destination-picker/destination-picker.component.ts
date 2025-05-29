@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -13,40 +13,55 @@ export class DestinationPickerComponent {
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
   autoCompleteResults = signal<Array<{ name: string, embedded_type: string }>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
-  // autoCompleteResults : String[] = [];
+  isDropdownOpen = signal(false);
 
   @Input() placeholderText = "";
-  @Input() valueText = "";
+  @Input() valueText: string = "";
   @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
   @Input() isDisabled :boolean = false;
 
+  @Output() selectedDestination = new EventEmitter<{ name: string, embedded_type: string }>();
+
   autoComplete(event :Event) :void {
     const input = event.target as HTMLInputElement;
-    const value = input.value;
+    this.valueText = input.value;
 
-    if(value !== ''){
+    if(this.valueText !== ''){
       this.http
-        .get<any>(`${this.urlAutoComplete}${value}`)
+        .get<any>(`${this.urlAutoComplete}${this.valueText}`)
         .subscribe(response => {
-          console.log(response.places)
-          if(response.places != null){
-            this.autoCompleteResults.set(response.places);
-          }else {
-            this.autoCompleteResults.set([]);
-          }
-
-          console.log(this.autoCompleteResults);
+          this.displayProposals(response);
         });
     }else {
       this.autoCompleteResults.set([]);
+      this.isDropdownOpen.set(false);
     }
   }
 
-  displayProposals(){
-    //Insérer les propositions dans le dom
+  displayProposals(response: any){
+    if(response.places != null){
+      this.isDropdownOpen.set(true);
+      this.autoCompleteResults.set(response.places);
+    }else {
+      this.autoCompleteResults.set([]);
+      this.isDropdownOpen.set(false);
+    }
   }
 
-  selectLocation(event :Event) :void{
-    console.log(event.target);
+  focus(event: Event){
+    // this.isDropdownOpen.set(true);
+  }
+
+  essai(event: Event){
+    console.log(`Value: ${this.valueText}`);
+    this.isDropdownOpen.set(false);
+    this.valueText = "";
+  }
+
+  chooseDestination(proposal: { name: string, embedded_type: string }){
+    // Définir la valeur de l'input avec l'élément cliqué
+    console.log(proposal);
+    this.valueText = proposal.name; // Affuchage du choix à l'utilisateur (update de l'input)
+    this.selectedDestination.emit(proposal); // Transmettre la valeur sélectionnée au composant parent
   }
 }

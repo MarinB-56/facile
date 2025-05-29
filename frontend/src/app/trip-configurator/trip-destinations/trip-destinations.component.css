@@ -1,3 +1,9 @@
 p {
   margin: 0;
 }
+
+.trip-destination__pickers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

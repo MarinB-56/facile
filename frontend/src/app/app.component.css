@@ -4,10 +4,13 @@
   height: 100vh; /* Utilisez height au lieu de min-height */
   box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
   overflow: auto; /* Ajoute une barre de défilement uniquement si nécessaire */
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
   background-color: antiquewhite;
+  flex-grow: 0;
 }
 
 .header__title {
@@ -17,4 +20,12 @@
 
 .header__greeting {
   margin: 0;
+}
+
+.trip-configurator {
+  flex: 1; /* Fait prendre toute la place au conteneur */
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre les éléments au verticalement */
 }

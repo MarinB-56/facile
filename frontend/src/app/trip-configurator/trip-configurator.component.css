@@ -2,6 +2,7 @@
   background-color: chartreuse;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .trip-configurator__wrapper {

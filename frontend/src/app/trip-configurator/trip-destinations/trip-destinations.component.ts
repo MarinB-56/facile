@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DatePickerComponent } from "../trip-dates/date-picker/date-picker.component";
 import { DestinationPickerComponent } from "./destination-picker/destination-picker.component";
 
@@ -10,4 +10,11 @@ import { DestinationPickerComponent } from "./destination-picker/destination-pic
 })
 export class TripDestinationsComponent {
 
+  @Output() selectedDestination = new EventEmitter<{ name: string, embedded_type: string }>();
+
+  onDestinationSelected(destination: { name: string, embedded_type: string }) {
+    console.log(destination);
+    this.selectedDestination.emit(destination);
+    console.log(`Destination envoyée au parent :${destination}`);
+  }
 }
