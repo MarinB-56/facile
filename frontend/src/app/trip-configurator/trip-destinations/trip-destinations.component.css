@@ -7,3 +7,11 @@ p {
   flex-direction: column;
   gap: 20px;
 }
+
+.trip-destination__swap-button {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  border: none;
+}

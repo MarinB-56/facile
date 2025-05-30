@@ -4,6 +4,10 @@
     <app-destination-picker placeholderText='Entrez une destination' (selectedDestination)="onDestinationSelected($event)"></app-destination-picker>
   </div>
 
+  <button class="trip-destination__swap-button">
+    <span class="material-symbols-outlined">swap_vert</span>
+  </button>
+
   <div>
     <p>Entrez votre destination</p>
     <app-destination-picker valueText="Belle-Île" [isDisabled]="true"></app-destination-picker>
