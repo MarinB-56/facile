@@ -2,15 +2,13 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { TripDestinationsComponent } from "./trip-destinations/trip-destinations.component";
 import { TripDatesComponent } from "./trip-dates/trip-dates.component";
 import { TripSearchButtonComponent } from "./trip-search-button/trip-search-button.component";
-import { signalSetFn } from '@angular/core/primitives/signals';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
-import { Trip } from '../models/trip.model';
 import { BELLE_ILE } from '../constants/destination.constants';
 
 @Component({
   selector: 'app-trip-configurator',
-  imports: [TripDestinationsComponent, TripDatesComponent, TripSearchButtonComponent],
+  imports: [TripDestinationsComponent, TripSearchButtonComponent],
   templateUrl: './trip-configurator.component.html',
   styleUrl: './trip-configurator.component.scss'
 })
