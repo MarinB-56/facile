@@ -1,15 +1,34 @@
 <div class="trip-destination__pickers">
   <div>
-    <p>Entrez votre destination</p>
-    <app-destination-picker placeholderText='Entrez une destination' (selectedDestination)="onDestinationSelected($event)"></app-destination-picker>
+    <p>Point de départ</p>
+
+    @if(isTripOrigin()) {
+      <app-destination-picker
+        placeholderText="Départ: d'où partons nous ?"
+        (selectedDestination)="onDestinationSelected($event)">
+      </app-destination-picker>
+    } @else {
+      <app-destination-picker
+        valueText="Belle-Île" [isDisabled]="true">
+      </app-destination-picker>
+    }
   </div>
 
-  <button class="trip-destination__swap-button">
+  <button class="trip-destination__swap-button" (click)="swapDestinations()" >
     <span class="material-symbols-outlined">swap_vert</span>
   </button>
 
   <div>
-    <p>Entrez votre destination</p>
-    <app-destination-picker valueText="Belle-Île" [isDisabled]="true"></app-destination-picker>
+    <p>Arrivée</p>
+    @if(isTripOrigin()) {
+      <app-destination-picker
+        valueText="Belle-Île" [isDisabled]="true">
+      </app-destination-picker>
+    } @else {
+      <app-destination-picker
+        placeholderText="Où allons nous ?"
+        (selectedDestination)="onDestinationSelected($event)">
+      </app-destination-picker>
+    }
   </div>
 </div>
