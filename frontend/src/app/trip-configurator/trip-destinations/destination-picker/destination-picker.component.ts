@@ -66,10 +66,23 @@ export class DestinationPickerComponent {
     // this.isDropdownOpen.set(true);
   }
 
+  // Gère le click de l'utilisateur en dehors (opposé à focus)
   blur(event: Event){
-    this.isDropdownOpen.set(false);
-    this.valueText = "";
-    this.selectedDestination.emit(undefined); // On met la valeur à undefined car l'utilisateur n'a pas validé de choix
+    // Attend 200 ms pour laisser le temps au click dans l'autocomplete d'être pris en comtpe
+    setTimeout(() => {
+
+      // Vérifie si l'input de l'utilisateur correspond à un choix de l'autocomplete (donc à une destination proposée par l'API Navitia)
+      const destinationInput = this.autoCompleteResults().find(destination => destination.name === this.valueText);
+
+      // Si la destination existe, on l'utilise comme input de l'utilisateur
+      if (destinationInput) {
+        this.selectedDestination.emit(destinationInput);
+      } else {
+        this.valueText = "";
+        this.selectedDestination.emit(undefined);
+      }
+      this.isDropdownOpen.set(false);
+    }, 200);
   }
 
   chooseDestination(proposal: Destination){
