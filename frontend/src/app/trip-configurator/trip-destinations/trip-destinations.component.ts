@@ -7,7 +7,7 @@ import { Destination } from '../../models/destination.model';
   selector: 'app-trip-destinations',
   imports: [DatePickerComponent, DestinationPickerComponent],
   templateUrl: './trip-destinations.component.html',
-  styleUrl: './trip-destinations.component.css'
+  styleUrl: './trip-destinations.component.scss'
 })
 export class TripDestinationsComponent {
   @Output() selectedDestination = new EventEmitter<Destination>();

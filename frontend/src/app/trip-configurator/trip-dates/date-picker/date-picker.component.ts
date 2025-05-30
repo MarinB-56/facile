@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-date-picker',
   imports: [],
   templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.css'
+  styleUrl: './date-picker.component.scss'
 })
 export class DatePickerComponent {
 

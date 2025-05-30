@@ -6,7 +6,7 @@ import { TripConfiguratorComponent } from "./trip-configurator/trip-configurator
   selector: 'app-root',
   imports: [RouterOutlet, TripConfiguratorComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'facile';

@@ -5,7 +5,7 @@ import { DatePickerComponent } from "./date-picker/date-picker.component";
   selector: 'app-trip-dates',
   imports: [DatePickerComponent],
   templateUrl: './trip-dates.component.html',
-  styleUrl: './trip-dates.component.css'
+  styleUrl: './trip-dates.component.scss'
 })
 export class TripDatesComponent {
 

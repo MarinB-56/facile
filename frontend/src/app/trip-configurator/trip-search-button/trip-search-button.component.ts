@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-trip-search-button',
   imports: [],
   templateUrl: './trip-search-button.component.html',
-  styleUrl: './trip-search-button.component.css'
+  styleUrl: './trip-search-button.component.scss'
 })
 export class TripSearchButtonComponent {
   @Input() isDisabled: boolean = true;
