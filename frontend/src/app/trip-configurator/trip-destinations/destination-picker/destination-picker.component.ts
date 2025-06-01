@@ -3,16 +3,28 @@ import { Component, inject, Input, signal, HostListener, ElementRef, Output, Eve
 import { fakeAsync } from '@angular/core/testing';
 import { Destination } from '../../../models/destination.model';
 import { debounce, debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-destination-picker',
-  imports: [],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule],
   templateUrl: './destination-picker.component.html',
   styleUrl: './destination-picker.component.scss'
 })
 export class DestinationPickerComponent {
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
+
+  // Création du formControl
+  myControl = new FormControl('');
 
   autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
   isDropdownOpen = signal(false);

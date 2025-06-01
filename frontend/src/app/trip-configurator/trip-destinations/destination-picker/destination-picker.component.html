@@ -1,5 +1,5 @@
 <div class="places-autocomplete">
-  <input
+  <!-- <input
     class="places-autocomplete__input"
     type="text"
     [readonly]="isReadOnly"
@@ -8,9 +8,22 @@
     [disabled]="isDisabled"
     (input)="autoComplete($event)"
     (blur)="blur($event)"
-    (focus)="focus($event)">
+    (focus)="focus($event)"> -->
 
-  <div class="places-autocomplete__results">
+  <!-- <mat-form-field class="places-autocomplete__input">
+    <mat-label>D'où partons nous?</mat-label>
+    <input matInput
+      type="text"
+      [readonly]="isReadOnly"
+      [value]="valueText"
+      [placeholder]="placeholderText"
+      [disabled]="isDisabled"
+      (input)="autoComplete($event)"
+      (blur)="blur($event)"
+      (focus)="focus($event)">
+  </mat-form-field> -->
+
+  <!-- <div class="places-autocomplete__results">
     @if (isDropdownOpen()) {
       @for (proposal of autoCompleteResults() ; track $index) {
         <button class="places-autocomplete__result-item" (click)="chooseDestination(proposal)">
@@ -22,6 +35,39 @@
         </button>
       }
     }
-  </div>
+  </div> -->
+
+
+  <form class="example-form">
+    <mat-form-field class="places-autocomplete__input">
+      <mat-label>{{placeholderText}}</mat-label>
+      <input matInput
+            type="text"
+            [readonly]="isReadOnly"
+            aria-label="Number"
+            [value]="valueText"
+            [disabled]="isDisabled"
+            (input)="autoComplete($event)"
+            (blur)="blur($event)"
+            (focus)="focus($event)"
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        @for (proposal of autoCompleteResults(); track $index) {
+          @if(proposal.embedded_type === "administrative_region"){
+            <mat-option [value]="proposal.name">
+              <div>
+                <span class="material-symbols-outlined">location_city</span>
+                {{proposal.name}}
+              </div>
+            </mat-option>
+          }@else {
+            <mat-option [value]="proposal.name"><span class="material-symbols-outlined">train</span>{{proposal.name}} - Gare</mat-option>
+          }
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
 
 </div>
