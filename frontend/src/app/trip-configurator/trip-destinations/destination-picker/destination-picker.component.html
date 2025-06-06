@@ -40,19 +40,15 @@
 
   <form class="example-form">
     <mat-form-field class="places-autocomplete__input">
-      <mat-label>{{placeholderText}}</mat-label>
-      <input matInput
-            type="text"
-            [readonly]="isReadOnly"
-            aria-label="Number"
-            [value]="valueText"
-            [disabled]="isDisabled"
-            (input)="autoComplete($event)"
-            (blur)="blur($event)"
-            (focus)="focus($event)"
-            [formControl]="myControl"
-            [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
+      <!-- <mat-label>{{placeholderText}}</mat-label> -->
+      <input type="text"
+          [placeholder]="placeholderText"
+          aria-label="Navitia places"
+          matInput
+          (input)="onInput($event)"
+          [formControl]="myControl"
+          [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="checkOptionSelected($event)">
         @for (proposal of autoCompleteResults(); track $index) {
           @if(proposal.embedded_type === "administrative_region"){
             <mat-option [value]="proposal.name">

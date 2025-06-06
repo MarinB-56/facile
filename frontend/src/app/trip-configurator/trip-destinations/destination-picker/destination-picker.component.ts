@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 import { Destination } from '../../../models/destination.model';
-import { debounce, debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
+import { debounce, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-destination-picker',
@@ -15,26 +16,22 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    AsyncPipe],
   templateUrl: './destination-picker.component.html',
   styleUrl: './destination-picker.component.scss'
 })
 export class DestinationPickerComponent {
+  // Paramètres pour l'appel API backend
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
-  // Création du formControl
+  // Form autocomplete
   myControl = new FormControl('');
-
   autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
-  isDropdownOpen = signal(false);
-
-  @Input() placeholderText = "";
-  @Input() valueText: string = "";
-  @Input() isReadOnly :boolean = false; // Par défaut, input modifiable
-  @Input() isDisabled :boolean = false;
 
   @Output() selectedDestination = new EventEmitter<Destination>();
+  @Input() placeholderText = "";
 
   private searchTerms = new Subject<string>();
   private searchSub: Subscription;
@@ -47,64 +44,37 @@ export class DestinationPickerComponent {
       distinctUntilChanged(), // On ne fait rien si rien n'a changé dans l'input
       switchMap((input: string) => this.http.get<any>(`${this.urlAutoComplete}${encodeURIComponent(input)}`)) // Appel de l'url avec l'input
     ).subscribe(response => {
-      this.displayProposals(response);
+      this.fillAutocomplete(response);
     })
   }
 
-  autoComplete(event :Event) :void {
+  onInput(event :Event) :void {
     const input = event.target as HTMLInputElement;
-    this.valueText = input.value;
 
-    if(this.valueText !== ''){
-      this.searchTerms.next(this.valueText);
+    // Déclenchement de l'appel API
+    if(input.value !== ''){
+      this.searchTerms.next(input.value);
     }else {
       this.autoCompleteResults.set([]);
-      this.isDropdownOpen.set(false);
+      // this.isDropdownOpen.set(false);
     }
   }
 
-  displayProposals(response: any){
+  fillAutocomplete(response: any){
     if(response.places != null){
-      // console.log(response.places);
-      this.isDropdownOpen.set(true);
       this.autoCompleteResults.set(response.places);
     }else {
       this.autoCompleteResults.set([]);
-      this.isDropdownOpen.set(false);
     }
   }
 
-  focus(event: Event){
-    // this.isDropdownOpen.set(true);
-  }
+  checkOptionSelected(event : MatAutocompleteSelectedEvent) {
+    const selectedValue = event.option.value;
+    const selectedDestination = this.autoCompleteResults().find(destination => destination.name === selectedValue);
 
-  // Gère le click de l'utilisateur en dehors (opposé à focus)
-  blur(event: Event){
-    // Attend 200 ms pour laisser le temps au click dans l'autocomplete d'être pris en comtpe
-    setTimeout(() => {
-
-      // Vérifie si l'input de l'utilisateur correspond à un choix de l'autocomplete (donc à une destination proposée par l'API Navitia)
-      const destinationInput = this.autoCompleteResults().find(destination => destination.name === this.valueText);
-
-      // Si la destination existe, on l'utilise comme input de l'utilisateur
-      if (destinationInput) {
-        this.selectedDestination.emit(destinationInput);
-      } else {
-        this.valueText = "";
-        this.selectedDestination.emit(undefined);
-      }
-      this.isDropdownOpen.set(false);
-    }, 200);
-  }
-
-  chooseDestination(proposal: Destination){
-    // Définir la valeur de l'input avec l'élément cliqué
-    console.log(proposal);
-    this.valueText = proposal.name; // Affuchage du choix à l'utilisateur (update de l'input)
-    this.selectedDestination.emit(proposal); // Transmettre la valeur sélectionnée au composant parent
-  }
-
-  ngOnDestroy(): void {
-    this.searchSub.unsubscribe();
+    if(selectedDestination){
+      // On envoie l'objet sélectionné par l'utilisateur au composant parent
+      this.selectedDestination.emit(selectedDestination);
+    }
   }
 }
