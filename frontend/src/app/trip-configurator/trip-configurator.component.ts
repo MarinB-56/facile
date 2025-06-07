@@ -6,16 +6,18 @@ import { Destination } from '../models/destination.model';
 import { BELLE_ILE } from '../constants/destination.constants';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DatePickerComponent } from "./trip-dates/date-picker/date-picker.component";
 
 @Component({
   selector: 'app-trip-configurator',
-  imports: [TripDestinationsComponent, TripSearchButtonComponent],
+  imports: [TripDestinationsComponent, TripSearchButtonComponent, DatePickerComponent],
   templateUrl: './trip-configurator.component.html',
   styleUrl: './trip-configurator.component.scss'
 })
 export class TripConfiguratorComponent {
   private http = inject(HttpClient);
   readonly urlAutoComplete = "http://localhost:8080/api/navitia/search";
+
   isButtonDisabled = signal(true);
 
   destination1 = signal<Destination>({name: "", embedded_type: "", id: ""});
@@ -38,6 +40,8 @@ export class TripConfiguratorComponent {
       this.destination1.set({name: "", embedded_type: "", id: ""}); // On met une valeur par défaut dans l'input
       this.isButtonDisabled.set(true); // on désactive le bouton recherche
     }
+
+    console.log(this.trip());
   }
 
   // Lancement de la recherche. Envoi des données au backend
