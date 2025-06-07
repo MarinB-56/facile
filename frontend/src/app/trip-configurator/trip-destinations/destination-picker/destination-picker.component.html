@@ -52,13 +52,18 @@
         @for (proposal of autoCompleteResults(); track $index) {
           @if(proposal.embedded_type === "administrative_region"){
             <mat-option [value]="proposal.name">
-              <div>
+              <div class="places-autocomplete_proposal">
                 <span class="material-symbols-outlined">location_city</span>
                 {{proposal.name}}
               </div>
             </mat-option>
           }@else {
-            <mat-option [value]="proposal.name"><span class="material-symbols-outlined">train</span>{{proposal.name}} - Gare</mat-option>
+            <mat-option [value]="proposal.name">
+              <div class="places-autocomplete_proposal">
+                <span class="material-symbols-outlined">train</span>
+                {{proposal.name}} - Gare
+              </div>
+            </mat-option>
           }
         }
       </mat-autocomplete>
