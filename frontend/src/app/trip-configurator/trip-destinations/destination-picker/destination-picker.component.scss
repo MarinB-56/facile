@@ -1,6 +1,6 @@
-.places-autocomplete {
-  position: relative;
-}
+// .places-autocomplete {
+//   position: relative;
+// }
 
 .places-autocomplete__input {
   padding: 0.75em;
@@ -10,6 +10,7 @@
   width: 100%;
   /* border: 1px solid #ccc; */
   box-sizing: border-box;
+  margin: 0;
 }
 
 .places-autocomplete_proposal {

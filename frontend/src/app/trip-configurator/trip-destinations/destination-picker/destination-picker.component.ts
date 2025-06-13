@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input } from '@angular/core';
+import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input, OnInit } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 import { Destination } from '../../../models/destination.model';
 import { debounce, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, Subject, Subscription, switchMap } from 'rxjs';
@@ -16,22 +16,23 @@ import { AsyncPipe } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule,
-    AsyncPipe],
+    ReactiveFormsModule
+],
   templateUrl: './destination-picker.component.html',
   styleUrl: './destination-picker.component.scss'
 })
-export class DestinationPickerComponent {
+export class DestinationPickerComponent implements OnInit {
   // Paramètres pour l'appel API backend
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
+  @Output() selectedDestination = new EventEmitter<Destination>();
+  @Input() placeholderText = "";
+  @Input() defaultDestination = "";
+
   // Form autocomplete
   myControl = new FormControl('');
   autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
-
-  @Output() selectedDestination = new EventEmitter<Destination>();
-  @Input() placeholderText = "";
 
   private searchTerms = new Subject<string>();
   private searchSub: Subscription;
@@ -48,6 +49,13 @@ export class DestinationPickerComponent {
     })
   }
 
+  ngOnInit(): void {
+    if(this.defaultDestination !== ""){
+      this.myControl.setValue(this.defaultDestination);
+      this.myControl.disable();
+    }
+  }
+
   onInput(event :Event) :void {
     const input = event.target as HTMLInputElement;
 
@@ -56,7 +64,6 @@ export class DestinationPickerComponent {
       this.searchTerms.next(input.value);
     }else {
       this.autoCompleteResults.set([]);
-      // this.isDropdownOpen.set(false);
     }
   }
 

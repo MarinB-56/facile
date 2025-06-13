@@ -1,11 +1,11 @@
 <p>date-picker works!</p>
 
-<!-- <input type="date"> -->
-
 <mat-form-field class="date-picker__input">
   <mat-label>Choisissez une date</mat-label>
-  <input matInput [matDatepicker]="picker">
+  <input matInput
+    [matDatepicker]="picker"
+    (dateChange)="addEvent($event)">
   <mat-hint>DD/MM/YYYY</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <mat-datepicker #picker disabled="false"></mat-datepicker>
 </mat-form-field>

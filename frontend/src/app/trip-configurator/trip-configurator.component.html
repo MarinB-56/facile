@@ -1,9 +1,12 @@
 <div class="trip-configurator">
   <div class="trip-configurator__wrapper">
-    <app-trip-destinations (selectedDestination) = "onDestinationSelected($event)"></app-trip-destinations>
+    <app-trip-destinations
+      (selectedDestination) = "onDestinationSelected($event)"
+      (swappDestination)="onDestinationsSwapped()">
+    </app-trip-destinations>
   </div>
 
-  <app-date-picker></app-date-picker>
+  <app-trip-date-picker (dateSelected)="onDateSelected($event)"></app-trip-date-picker>
 
-  <app-trip-search-button [isDisabled]="isButtonDisabled()" (click)="onSearch()"></app-trip-search-button>
+  <app-trip-search-button [isDisabled]="!isTripValid()" (click)="onSearch()"></app-trip-search-button>
 </div>
