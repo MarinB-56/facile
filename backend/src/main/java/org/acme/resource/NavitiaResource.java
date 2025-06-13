@@ -44,3 +44,8 @@ public class NavitiaResource {
     System.out.println(destination.id);
   }
 }
+
+
+// public void searchTrip(DestinationDTO destination){
+//    System.out.println(destination.id);
+// }
