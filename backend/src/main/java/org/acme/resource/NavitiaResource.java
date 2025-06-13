@@ -1,12 +1,9 @@
 package org.acme.resource;
 
-import java.util.List;
-
 import org.acme.client.NavitiaClient;
 import org.acme.dto.DestinationDTO;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import jakarta.ws.rs.Produces;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DefaultValue;
@@ -14,9 +11,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 @Path("api/navitia")
 public class NavitiaResource {
