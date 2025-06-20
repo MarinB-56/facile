@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input, OnInit } from '@angular/core';
+import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input, OnInit, SimpleChanges } from '@angular/core';
 import { fakeAsync } from '@angular/core/testing';
 import { Destination } from '../../../models/destination.model';
 import { debounce, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, Subject, Subscription, switchMap } from 'rxjs';
@@ -26,9 +26,13 @@ export class DestinationPickerComponent implements OnInit {
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
 
+  // Envoi de la destination choisie par l'utilisateur au composant parent
   @Output() selectedDestination = new EventEmitter<Destination>();
+
+  // Réception des paramètres par le composant parent
+  @Input() direction ="";
   @Input() placeholderText = "";
-  @Input() defaultDestination = "";
+  @Input() defaultDestination :Destination = {name: "", embedded_type: "", id: ""};
 
   // Form autocomplete
   myControl = new FormControl('');
@@ -50,9 +54,23 @@ export class DestinationPickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.defaultDestination !== ""){
-      this.myControl.setValue(this.defaultDestination);
+    if(this.defaultDestination.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
+      this.myControl.setValue("Belle-Ile-En-Mer");
       this.myControl.disable();
+    }else if(this.defaultDestination.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
+      this.myControl.setValue(this.defaultDestination.name);
+      this.myControl.disable();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['defaultDestination']) {
+      const updatedDestination: Destination = changes['defaultDestination'].currentValue;
+
+      this.myControl.setValue(updatedDestination.name);
+      this.myControl.enable();
+
+      if(updatedDestination.name === "Quiberon (Quiberon)") this.myControl.disable();
     }
   }
 
@@ -75,12 +93,15 @@ export class DestinationPickerComponent implements OnInit {
     }
   }
 
+  // Vérification de la valeur cliquée par l'utilisateur dans l'autocomplete
   checkOptionSelected(event : MatAutocompleteSelectedEvent) {
     const selectedValue = event.option.value;
     const selectedDestination = this.autoCompleteResults().find(destination => destination.name === selectedValue);
 
+    // Si la valeur n'est pas vide
     if(selectedDestination){
       // On envoie l'objet sélectionné par l'utilisateur au composant parent
+      console.log("Composant destination-picker envoie la destination à trip-destination");
       this.selectedDestination.emit(selectedDestination);
     }
   }

@@ -1,8 +1,10 @@
 <div class="trip-configurator">
   <div class="trip-configurator__wrapper">
     <app-trip-destinations
-      (selectedDestination) = "onDestinationSelected($event)"
-      (swappDestination)="onDestinationsSwapped()">
+      (selectedDestinationEvent)="onDestinationSelected($event)"
+      (swappDestination)="onDestinationsSwapped()"
+      [departure] = "destination1()"
+      [arrival] = "destination2()">
     </app-trip-destinations>
   </div>
 

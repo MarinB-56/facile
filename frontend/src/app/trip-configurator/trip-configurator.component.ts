@@ -64,12 +64,11 @@ export class TripConfiguratorComponent {
 
   // Inversion des destinations
   onDestinationsSwapped(){
-    // Inversion de l'arrivée et du départ
+    // Inversion de l'arrivée et du départ niveau trip
     const tampon: Destination = this.destination1();
 
     this.destination1.set(this.destination2());
     this.destination2.set(tampon);
-
     console.log(this.trip());
   }
 

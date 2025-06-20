@@ -1,33 +1,19 @@
 <div class="trip-destination__pickers">
-  <div>
-    <!-- <p>Point de départ</p> -->
-    @if(isTripOrigin()) {
-      <app-destination-picker
-        placeholderText="Départ: d'où partons nous ?"
-        (selectedDestination)="onDestinationSelected($event)">
-      </app-destination-picker>
-    } @else {
-      <app-destination-picker
-        placeholderText="Départ: d'où partons nous ?"
-        defaultDestination="Belle-Île">
-      </app-destination-picker>
-    }
-  </div>
+  <!-- Appel des deux destinations picker -->
 
-  <div>
-    <!-- <p>Arrivée</p> -->
-    @if(isTripOrigin()) {
-      <app-destination-picker
-        placeholderText="Arrivée: où allons nous ?"
-        defaultDestination="Belle-Île">
-      </app-destination-picker>
-    } @else {
-      <app-destination-picker
-        placeholderText="Arrivée: où allons nous ?"
-        (selectedDestination)="onDestinationSelected($event)">
-      </app-destination-picker>
-    }
-  </div>
+  <!-- Input vide, choix de l'utilisateur -->
+  <app-destination-picker
+    placeholderText="Départ: d'où partons nous ?"
+    (selectedDestination)="onDestinationReceivedByPicker($event)"
+    [defaultDestination] = "departure">
+  ></app-destination-picker>
+
+  <!-- Par défaut, belle ile -->
+  <app-destination-picker
+    placeholderText = "Arrivée: où allons nous ?"
+    (selectedDestination)="onDestinationReceivedByPicker($event)"
+    [defaultDestination] = "arrival">
+  </app-destination-picker>
 
   <button class="trip-destination__swap-button" (click)="swapDestinations()">
     <span class="material-symbols-outlined">swap_vert</span>
