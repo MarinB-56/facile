@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal, HostListener, ElementRef, Output, EventEmitter, input, OnInit, SimpleChanges } from '@angular/core';
-import { fakeAsync } from '@angular/core/testing';
+import { Component, inject, Input, signal, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
 import { Destination } from '../../../models/destination.model';
-import { debounce, debounceTime, distinctUntilChanged, filter, map, Observable, startWith, Subject, Subscription, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-destination-picker',

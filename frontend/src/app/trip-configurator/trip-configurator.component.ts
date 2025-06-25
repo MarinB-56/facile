@@ -23,8 +23,8 @@ export class TripConfiguratorComponent {
 
   // Initialisation des destinations et dates
   departure = signal<Destination>({name: "", embedded_type: "", id: ""});
-  arrival = signal<Destination>({name: "", embedded_type: "", id: ""});
-  // arrival = signal<Destination>(BELLE_ILE); // Par défaut, la destination est Belle-ile
+  // arrival = signal<Destination>({name: "", embedded_type: "", id: ""});
+  arrival = signal<Destination>(BELLE_ILE); // Par défaut, la destination est Belle-ile
 
   tripDate = signal<Date | null>(null);
 
@@ -84,7 +84,7 @@ export class TripConfiguratorComponent {
     //Envoi des données au backend
     console.log(this.trip())
     this.http
-      .post<Destination>(`${this.urlAutoComplete}`, this.departure(), {headers})
+      .post<Destination>(`${this.urlAutoComplete}`, this.trip(), {headers})
       .subscribe(response => {
         console.log(response);
       });
