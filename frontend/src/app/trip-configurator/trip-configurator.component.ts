@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { TripDestinationsComponent } from "./trip-destinations/trip-destinations.component";
+import { TripDestinationsFormComponent } from "./trip-destinations/trip-destinations-form.component";
 import { TripSearchButtonComponent } from "./trip-search-button/trip-search-button.component";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
@@ -10,7 +10,7 @@ import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
 
 @Component({
   selector: 'app-trip-configurator',
-  imports: [TripDestinationsComponent, TripSearchButtonComponent, DatePickerComponent],
+  imports: [TripDestinationsFormComponent, TripSearchButtonComponent, DatePickerComponent],
   templateUrl: './trip-configurator.component.html',
   styleUrl: './trip-configurator.component.scss'
 })
