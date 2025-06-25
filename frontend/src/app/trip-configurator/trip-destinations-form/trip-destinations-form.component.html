@@ -4,17 +4,15 @@
   <!-- Input vide, choix de l'utilisateur -->
   <app-destination-picker
     placeholderText="Départ: d'où partons nous ?"
-    (selectedDestination)="onDestinationReceivedByPicker($event)"
     [defaultDestination] = "departure"
-    direction = "departure">
-  ></app-destination-picker>
+    (selectedDestinationEvent)="onDepartureReceivedByPicker($event)">
+  </app-destination-picker>
 
-  <!-- Par défaut, belle ile -->
+  <!-- Input vide, choix de l'utilisateur -->
   <app-destination-picker
-    placeholderText = "Arrivée: où allons nous ?"
-    (selectedDestination)="onDestinationReceivedByPicker($event)"
+    placeholderText="Arrivée: où allons nous ?"
     [defaultDestination] = "arrival"
-    direction = "arrival">
+    (selectedDestinationEvent)="onArrivalReceivedByPicker($event)">
   </app-destination-picker>
 
   <button class="trip-destination__swap-button" (click)="swapDestinations()">

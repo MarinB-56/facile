@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { TripDestinationsFormComponent } from "./trip-destinations/trip-destinations-form.component";
+import { TripDestinationsFormComponent } from "./trip-destinations-form/trip-destinations-form.component";
 import { TripSearchButtonComponent } from "./trip-search-button/trip-search-button.component";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
@@ -22,21 +22,23 @@ export class TripConfiguratorComponent {
   isButtonDisabled = signal(true);
 
   // Initialisation des destinations et dates
-  destination1 = signal<Destination>({name: "", embedded_type: "", id: ""});
-  destination2 = signal<Destination>(BELLE_ILE); // Par défaut, la destination est Belle-ile
+  departure = signal<Destination>({name: "", embedded_type: "", id: ""});
+  arrival = signal<Destination>({name: "", embedded_type: "", id: ""});
+  // arrival = signal<Destination>(BELLE_ILE); // Par défaut, la destination est Belle-ile
+
   tripDate = signal<Date | null>(null);
 
   // Voyage complet. Mis à jour si ses champs sont mis à jour (grâce à computed)
   trip = computed(() => ({
-    departure: this.destination1(),
-    arrival: this.destination2(), //Constante pour le moment
+    departure: this.departure(),
+    arrival: this.arrival(), //Constante pour le moment
     date: this.tripDate()
   }));
 
   // Vérification que le voyage est complet pour activation ou non du bouton de recherche
   isTripValid = computed(() => {
-    const departure = this.destination1();
-    const arrival = this.destination2();
+    const departure = this.departure();
+    const arrival = this.arrival();
     const date = this.tripDate();
 
     console.log("Vérification du bouton");
@@ -44,13 +46,15 @@ export class TripConfiguratorComponent {
     return departure.id !== "" && arrival.id !== "" && date !== null;
   });
 
-  // Récupération de la destination choisie
-  onDestinationSelected(destination: Destination){
-    if(destination !== undefined){
-      this.destination1.set(destination); // On met à jour la destination choisie
-    } else {
-      this.destination1.set({name: "", embedded_type: "", id: ""}); // On met une valeur par défaut dans l'input
-    }
+  // Récupération de la destination de départ
+  onDepartureSelected(destination: Destination){
+    this.departure.set(destination);
+    console.log(this.trip());
+  }
+
+  // Récupération de la destination d'arrivée
+  onArrivalSelected(destination: Destination){
+    this.arrival.set(destination);
     console.log(this.trip());
   }
 
@@ -65,10 +69,11 @@ export class TripConfiguratorComponent {
   // Inversion des destinations
   onDestinationsSwapped(){
     // Inversion de l'arrivée et du départ niveau trip
-    const tampon: Destination = this.destination1();
+    const tampon: Destination = this.arrival();
 
-    this.destination1.set(this.destination2());
-    this.destination2.set(tampon);
+    this.arrival.set(this.departure());
+    this.departure.set(tampon);
+    console.log("Swapped destinations");
     console.log(this.trip());
   }
 
@@ -79,7 +84,7 @@ export class TripConfiguratorComponent {
     //Envoi des données au backend
     console.log(this.trip())
     this.http
-      .post<Destination>(`${this.urlAutoComplete}`, this.destination1(), {headers})
+      .post<Destination>(`${this.urlAutoComplete}`, this.departure(), {headers})
       .subscribe(response => {
         console.log(response);
       });

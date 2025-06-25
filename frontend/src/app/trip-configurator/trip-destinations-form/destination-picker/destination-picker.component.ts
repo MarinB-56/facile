@@ -22,27 +22,36 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './destination-picker.component.scss'
 })
 export class DestinationPickerComponent implements OnInit {
+  // Réception des paramètres par le composant parent
+  @Input() placeholderText = "";
+  @Input() defaultDestination!: Destination;
+
+  // Envoi de la destination choisie par l'utilisateur au composant parent
+  @Output() selectedDestinationEvent = new EventEmitter<Destination>();
+
   // Paramètres pour l'appel API backend
   private http = inject(HttpClient);
   private urlAutoComplete = "http://localhost:8080/api/navitia/";
-
-  // Envoi de la destination choisie par l'utilisateur au composant parent
-  @Output() selectedDestination = new EventEmitter<Destination>();
-
-  // Réception des paramètres par le composant parent
-  @Input() direction ="";
-  @Input() placeholderText = "";
-  @Input() defaultDestination :Destination = {name: "", embedded_type: "", id: ""};
-
-  // Form autocomplete
-  myControl = new FormControl('');
-  autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
-
   private searchTerms = new Subject<string>();
   private searchSub: Subscription;
 
-  // Création d'un flux asynchrone
-  constructor(){
+  // Form ulaire d'autocomplétion (Angular material)
+  myControl = new FormControl('');
+  autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
+
+  // Création de l'input en cas de valeur par défaut
+  ngOnInit(): void {
+    console.log(this.defaultDestination);
+    if(this.defaultDestination.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
+      this.myControl.setValue("Belle-Ile-En-Mer");
+      this.myControl.disable();
+    }else if(this.defaultDestination.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
+      this.myControl.setValue(this.defaultDestination.name);
+      this.myControl.disable();
+    }
+  }
+  // Appel de l'api du backend pour autocomplete
+  constructor(){ // Création d'un flux asynchrone
     this.searchSub = this.searchTerms.pipe(
       debounceTime(400), // On attend 400 ms sans input avant de passer à la suite.
       filter((input: string) => input.length >= 3), // On filtre les input de moins de 3 char
@@ -53,24 +62,18 @@ export class DestinationPickerComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    if(this.defaultDestination.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
-      this.myControl.setValue("Belle-Ile-En-Mer");
-      this.myControl.disable();
-    }else if(this.defaultDestination.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
-      this.myControl.setValue(this.defaultDestination.name);
-      this.myControl.disable();
-    }
-  }
-
+  // Contrôle des changements sur les destinations
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['defaultDestination']) {
       const updatedDestination: Destination = changes['defaultDestination'].currentValue;
 
-      this.myControl.setValue(updatedDestination.name);
-      this.myControl.enable();
-
-      if(updatedDestination.name === "Quiberon (Quiberon)") this.myControl.disable();
+      if(updatedDestination.name === "Quiberon (Quiberon)") {
+        this.myControl.setValue("Belle-Ile-En-Mer");
+        this.myControl.disable();
+      } else {
+        this.myControl.setValue(updatedDestination.name);
+        this.myControl.enable();
+      }
     }
   }
 
@@ -102,7 +105,7 @@ export class DestinationPickerComponent implements OnInit {
     if(selectedDestination){
       // On envoie l'objet sélectionné par l'utilisateur au composant parent
       console.log("Composant destination-picker envoie la destination à trip-destination");
-      this.selectedDestination.emit(selectedDestination);
+      this.selectedDestinationEvent.emit(selectedDestination);
     }
   }
 }
