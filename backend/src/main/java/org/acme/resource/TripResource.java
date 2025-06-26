@@ -21,14 +21,6 @@ public class TripResource {
   @Inject
   TripRepository tripRepository;
 
-  // Index (trips)
-  // Show (trips/:id)
-  // New (trips/new)
-    // Create (trips)
-  // Edit (trips/:id/edit)
-    // Update (trips/:id)
-  // Delete (trips/:id)
-
   @GET
   public List<Trip> getAllTrips(){
     return tripRepository.findAll();
@@ -91,3 +83,11 @@ public class TripResource {
     // Ce code de statut indique que la requête a réussi, mais qu'il n'y a pas de contenu à renvoyer dans le corps de la réponse.
   }
 }
+
+  // Index (trips)
+  // Show (trips/:id)
+  // New (trips/new)
+    // Create (trips)
+  // Edit (trips/:id/edit)
+    // Update (trips/:id)
+  // Delete (trips/:id)
