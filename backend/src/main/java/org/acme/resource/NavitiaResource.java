@@ -2,6 +2,7 @@ package org.acme.resource;
 
 import org.acme.client.NavitiaClient;
 import org.acme.dto.TripDTO;
+import org.acme.service.NavitiaService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 // import jakarta.enterprise.inject.Produces; // Removed, not needed for REST endpoints
@@ -18,19 +19,18 @@ import jakarta.ws.rs.core.MediaType;
 @Path("api/navitia")
 public class NavitiaResource {
   @Inject
-  @RestClient
-  NavitiaClient navitiaClient;
+  NavitiaService navitiaService;
 
   @GET
   @Path("/{query}")
   public String getLocations(@PathParam("query") String query){
-    return navitiaClient.getAllLocations(query);
+    return navitiaService.getAllLocations(query);
   }
 
   @GET
   @Path("/{query}/{type:.*}")
   public String getLocations(@PathParam("query") String query, @PathParam("type") @DefaultValue("") String type){
-    return navitiaClient.getAllLocations(query, type);
+    return navitiaService.getAllLocations(query, type);
   }
 
   @GET
@@ -52,8 +52,3 @@ public class NavitiaResource {
     }
   }
 }
-
-
-// public void searchTrip(DestinationDTO destination){
-//    System.out.println(destination.id);
-// }
