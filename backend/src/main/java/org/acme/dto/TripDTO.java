@@ -1,13 +1,15 @@
 package org.acme.dto;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TripDTO {
   private DestinationDTO departure;
   private DestinationDTO arrival;
-  private Date date;
+  private LocalDateTime date;
 
   public TripDTO() {}
 
@@ -27,20 +29,16 @@ public class TripDTO {
     return this.arrival;
   }
 
-  public void setDate(Date date){
+  public void setDate(LocalDateTime date){
     this.date = date;
   }
 
-  public Date getDate(){
+  public LocalDateTime getDate(){
     return this.date;
   }
 
   @Override
   public String toString() {
-    return "TripDTO{" +
-          "departure=" + this.departure.toString() +
-          ", arrival=" + this.arrival.toString() +
-          ", date=" + this.date +
-          '}';
+    return "TripDTO:\n " + "- Departure = " + this.departure.toString() + ",\n - Arrival = " + this.arrival.toString() + ",\n - Date = " + this.date;
   }
 }

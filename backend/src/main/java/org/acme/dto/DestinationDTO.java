@@ -38,11 +38,7 @@ public class DestinationDTO {
 
   @Override
   public String toString() {
-    return "DestinationDTO{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            ", embedded_type='" + embedded_type + '\'' +
-            '}';
+    return "DestinationDTO : " +" id = '" + id + '\'' +", name = '" + name + '\'' +", embedded_type = '" + embedded_type + '\'';
   }
 
 }
