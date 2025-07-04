@@ -2,7 +2,6 @@ package org.acme.service;
 
 import org.acme.client.NavitiaClient;
 import org.acme.dto.TripDTO;
-import org.acme.model.Trip;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import jakarta.enterprise.context.ApplicationScoped;
