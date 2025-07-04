@@ -10,7 +10,7 @@
   </div>
 
   <app-trip-date-picker (dateChangeEvent)="onDateSelected($event)"></app-trip-date-picker>
-  <p>Value: {{tripDate()}}</p>
+  <!-- <p>Value: {{tripDate()}}</p> -->
 
   <app-trip-search-button [isDisabled]="!isTripValid()" (click)="onSearch()"></app-trip-search-button>
 </div>
