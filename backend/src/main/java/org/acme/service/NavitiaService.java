@@ -28,13 +28,13 @@ public class NavitiaService {
   // Itinary research
   public String getItinaries(TripDTO trip){
     System.out.println(trip.toString());
+
     // Travailler le truc pour ne pas juste avoir des résultats merdiques !
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
     String tripDate = trip.getDate().toString();
+    String datetimeRepresents = "departure";
 
-    // System.out.println(tripDate.toString());
-
-    return navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate );
+    return navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate, datetimeRepresents );
   }
 }
