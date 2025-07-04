@@ -60,9 +60,7 @@ export class TripConfiguratorComponent {
 
   // Récupération de la date choisie
   onDateSelected(date :Date | null){
-    if(date !== undefined){
-      this.tripDate.set(date);
-    }
+    this.tripDate.set(date);
     console.log(this.trip());
   }
 
