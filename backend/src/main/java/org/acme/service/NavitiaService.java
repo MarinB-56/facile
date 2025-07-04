@@ -1,5 +1,7 @@
 package org.acme.service;
 
+import java.time.LocalDateTime;
+
 import org.acme.client.NavitiaClient;
 import org.acme.dto.TripDTO;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -27,8 +29,12 @@ public class NavitiaService {
   public String getItinaries(TripDTO trip){
     System.out.println(trip.toString());
     // Travailler le truc pour ne pas juste avoir des résultats merdiques !
-    String id_departure = trip.getDeparture().getId();
-    String id_arrival = trip.getArrival().getId();
-    return navitiaClient.getAllItinaries(id_departure, id_arrival);
+    String idDeparture = trip.getDeparture().getId();
+    String idArrival = trip.getArrival().getId();
+    String tripDate = trip.getDate().toString();
+
+    // System.out.println(tripDate.toString());
+
+    return navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate );
   }
 }
