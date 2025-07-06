@@ -6,25 +6,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TripDTO {
-  private DestinationDTO departure;
-  private DestinationDTO arrival;
+  private StopPointDTO departure;
+  private StopPointDTO arrival;
   private LocalDateTime date;
 
   public TripDTO() {}
 
-  public void setDeparture(DestinationDTO departure){
+  public void setDeparture(StopPointDTO departure){
     this.departure = departure;
   }
 
-  public DestinationDTO getDeparture(){
+  public StopPointDTO getDeparture(){
     return this.departure;
   }
 
-  public void setArrival(DestinationDTO arrival){
+  public void setArrival(StopPointDTO arrival){
     this.arrival = arrival;
   }
 
-  public DestinationDTO getArrival(){
+  public StopPointDTO getArrival(){
     return this.arrival;
   }
 
