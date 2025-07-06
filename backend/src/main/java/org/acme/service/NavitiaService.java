@@ -1,10 +1,12 @@
 package org.acme.service;
 
-import java.time.LocalDateTime;
-
 import org.acme.client.NavitiaClient;
+import org.acme.dto.JourneyDTO;
+import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.TripDTO;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+
+import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -26,7 +28,7 @@ public class NavitiaService {
   }
 
   // Itinary research
-  public String getItinaries(TripDTO trip){
+  public void getItinaries(TripDTO trip){
     System.out.println(trip.toString());
 
     // Travailler le truc pour ne pas juste avoir des résultats merdiques !
@@ -35,6 +37,10 @@ public class NavitiaService {
     String tripDate = trip.getDate().toString();
     String datetimeRepresents = "departure";
 
-    return navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate, datetimeRepresents );
+    JourneyProposalsDTO journeyProposal = navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate, datetimeRepresents );
+
+    // return "Retour";
   }
+
+  // On creuse les itinéraires proposés
 }

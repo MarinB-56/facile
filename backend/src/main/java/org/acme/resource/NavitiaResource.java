@@ -43,13 +43,8 @@ public class NavitiaResource {
   @Path("/search")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public String searchTrip(TripDTO trip){
-    // if (trip == null) {
-    //   System.out.println("TripDTO is null");
-    // } else {
-    //   // Utilisation des données
-    //   System.out.println(trip.toString());
-    // }
-    return navitiaService.getItinaries(trip);
+  public void searchTrip(TripDTO trip){
+    navitiaService.getItinaries(trip);
+    // return navitiaService.getItinaries(trip);
   }
 }
