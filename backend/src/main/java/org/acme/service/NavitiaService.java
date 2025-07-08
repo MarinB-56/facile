@@ -28,7 +28,7 @@ public class NavitiaService {
   }
 
   // Itinary research
-  public void getItinaries(TripDTO trip){
+  public void getItinariesProposals(TripDTO trip){
     System.out.println(trip.toString());
 
     // Travailler le truc pour ne pas juste avoir des résultats merdiques !
@@ -38,9 +38,22 @@ public class NavitiaService {
     String datetimeRepresents = "departure";
 
     JourneyProposalsDTO journeyProposal = navitiaClient.getAllItinaries(idDeparture, idArrival, tripDate, datetimeRepresents );
-
+    digItinariesProposals(journeyProposal);
     // return "Retour";
   }
 
   // On creuse les itinéraires proposés
+  public void digItinariesProposals(JourneyProposalsDTO journeyProposal){
+    /// Pour chaque itinéraire
+    /// VERIF PARIS
+    // On vérifie si l'itinéraire fait passer par Paris
+    // Si oui, on fait un appel API en 2 fois (Départ - Paris + Paris - Arrivée)
+    // On en fait un unique trajet constitué de plusieurs sections
+  }
+
+  public void checkIfParis(JourneyProposalsDTO journeyProposal){
+    for(JourneyDTO journey : journeyProposal.getJourneyProposals()){
+      // journey.getSections().get
+    }
+  }
 }

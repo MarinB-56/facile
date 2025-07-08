@@ -44,7 +44,7 @@ public class NavitiaResource {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public void searchTrip(TripDTO trip){
-    navitiaService.getItinaries(trip);
+    navitiaService.getItinariesProposals(trip);
     // return navitiaService.getItinaries(trip);
   }
 }
