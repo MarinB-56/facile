@@ -1,6 +1,5 @@
 package org.acme.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SectionDTO {
@@ -16,7 +15,7 @@ public class SectionDTO {
   private StopPointDTO from;
   private StopPointDTO to;
 
-  // private Mode mode;
+  private String type;
 
   public SectionDTO(){}
 
@@ -45,7 +44,7 @@ public class SectionDTO {
   }
 
   public StopPointDTO getFrom() {
-    return from;
+    return this.from;
   }
 
   public void setFrom(StopPointDTO from) {
@@ -60,19 +59,21 @@ public class SectionDTO {
     this.to = to;
   }
 
-  // public Mode getMode() {
-  //   return mode;
-  // }
-
-  // public void setMode(Mode mode) {
-  //   this.mode = mode;
-  // }
-
-  @Override
-  public String toString() {
-    return "SectionDTO : SectionDuration = " + SectionDuration + ", departureDateTime = " + departureDateTime
-        + ", arrivalDateTime = " + arrivalDateTime + ", from = " + from + ", to = " + to ;
+  public String getType() {
+    return type;
   }
 
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  @Override
+  // public String toString() {
+  //   return "SectionDTO : SectionDuration = " + SectionDuration + ", departureDateTime = " + departureDateTime
+  //       + ", arrivalDateTime = " + arrivalDateTime + ", from = " + from + ", to = " + to + ", type = " + type ;
+  // }
+  public String toString() {
+    return "\n - SectionDTO : SectionDuration = " + SectionDuration + ", from = " + from + ", to = " + to + ", type = " + type + "\n ";
+  }
 
 }

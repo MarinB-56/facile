@@ -59,8 +59,19 @@ public class JourneyDTO {
   }
 
   @Override
+  // public String toString() {
+  //   return "JourneyDTO : totalDuration = " + totalDuration + ", nbTransfers = " + nbTransfers + ", durations = " + durations
+  //       + ", links = " + links + ", sections = " + sections;
+  // }
   public String toString() {
-    return "JourneyDTO : totalDuration = " + totalDuration + ", nbTransfers = " + nbTransfers + ", durations = " + durations
-        + ", links = " + links + ", sections = " + sections;
+    return "JourneyDTO : sections = " + sections + "\n";
+  }
+
+  public SectionDTO getJourneyLastSection(){
+    // Récupération du nombre de sections
+    int nbSections = getSections().size();
+
+    // Renvoie de l'id de la dernière section
+    return getSections().get(nbSections - 1);
   }
 }

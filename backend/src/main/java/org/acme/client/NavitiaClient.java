@@ -26,5 +26,10 @@ public interface NavitiaClient {
   @GET
   @Path("/sncf/journeys")
   @ClientHeaderParam(name = "Authorization", value = "287e5a3b-64ec-412c-b910-7ae2efe4cb2b")
-  JourneyProposalsDTO getAllItinaries(@QueryParam("from") String idDeparture, @QueryParam("to") String idArrival, @QueryParam("datetime") String dateTime, @QueryParam("datetime_represents") String datetimeRepresents);
+  JourneyProposalsDTO getItinerariesProposals(
+    @QueryParam("from") String idDeparture,
+    @QueryParam("to") String idArrival,
+    @QueryParam("datetime") String dateTime,
+    @QueryParam("datetime_represents") String datetimeRepresents,
+    @QueryParam("timeframe_duration") String timeframeDuration);
 }

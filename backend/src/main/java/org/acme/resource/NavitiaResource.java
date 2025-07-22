@@ -1,6 +1,7 @@
 package org.acme.resource;
 
 import org.acme.client.NavitiaClient;
+import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.TripDTO;
 import org.acme.service.NavitiaService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -43,8 +44,7 @@ public class NavitiaResource {
   @Path("/search")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public void searchTrip(TripDTO trip){
-    navitiaService.getItinariesProposals(trip);
-    // return navitiaService.getItinaries(trip);
+  public JourneyProposalsDTO searchTrip(TripDTO trip){
+    return navitiaService.getItineraries(trip);
   }
 }

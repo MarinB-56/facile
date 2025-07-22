@@ -38,8 +38,11 @@ public class StopPointDTO {
   }
 
   @Override
+  // public String toString() {
+  //   return "StopPointDTO : " +" id = '" + id + '\'' +", name = '" + name + '\'' +", embeddedType = '" + embeddedType + '\'';
+  // }
   public String toString() {
-    return "StopPointDTO : " +" id = '" + id + '\'' +", name = '" + name + '\'' +", embeddedType = '" + embeddedType + '\'';
+    return "StopPointDTO : " +", name = '" + name;
   }
 
 }
