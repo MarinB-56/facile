@@ -64,7 +64,7 @@ public class JourneyDTO {
   //       + ", links = " + links + ", sections = " + sections;
   // }
   public String toString() {
-    return "JourneyDTO : sections = " + sections + "\n";
+    return "\n VOYAGE: " + sections + "\n";
   }
 
   public SectionDTO getJourneyLastSection(){

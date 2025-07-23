@@ -42,7 +42,7 @@ public class StopPointDTO {
   //   return "StopPointDTO : " +" id = '" + id + '\'' +", name = '" + name + '\'' +", embeddedType = '" + embeddedType + '\'';
   // }
   public String toString() {
-    return "StopPointDTO : " +", name = '" + name;
+    return "" + name;
   }
 
 }

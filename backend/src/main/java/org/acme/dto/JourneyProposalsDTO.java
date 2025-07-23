@@ -20,6 +20,6 @@ public class JourneyProposalsDTO {
 
   @Override
   public String toString() {
-    return "JourneyProposalsDTO : journeyProposals = " + journeyProposals ;
+    return "" + journeyProposals ;
   }
 }

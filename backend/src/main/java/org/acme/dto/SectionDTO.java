@@ -73,7 +73,7 @@ public class SectionDTO {
   //       + ", arrivalDateTime = " + arrivalDateTime + ", from = " + from + ", to = " + to + ", type = " + type ;
   // }
   public String toString() {
-    return "\n - SectionDTO : SectionDuration = " + SectionDuration + ", from = " + from + ", to = " + to + ", type = " + type + "\n ";
+    return "\n -" + from + " to " + to + ", " + departureDateTime + " - " + arrivalDateTime;
   }
 
 }
