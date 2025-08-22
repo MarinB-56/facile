@@ -1,5 +1,7 @@
 package org.acme.dto;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -73,5 +75,17 @@ public class JourneyDTO {
 
     // Renvoie de l'id de la dernière section
     return getSections().get(nbSections - 1);
+  }
+
+  public SectionDTO getJourneyFirstSection(){
+    // Récupération de la première section
+    return getSections().get(0);
+  }
+
+  public LocalDateTime getFirstDeparturDateTime(){
+    String dateTimeStr = sections.get(0).getDepartureDateTime();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
+    return LocalDateTime.parse(dateTimeStr, formatter);
   }
 }
