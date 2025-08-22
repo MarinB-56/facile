@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -26,7 +28,7 @@ import jakarta.inject.Inject;
 public class NavitiaService {
 
   private static final String PARIS_REGION_ID = "admin:fr:75056";
-;  private static final String TIMEFRAME_DURATION = "86400";
+  private static final String TIMEFRAME_DURATION = "86400";
 
   @Inject
   @RestClient
@@ -52,13 +54,28 @@ public class NavitiaService {
     //   System.out.println("Par Paris");
     //   // Construction des trips en passant par Paris
     //   JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-
     //   // Fusion de toutes les propositions de voyage
     //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
     // }
 
+    // Construction de trajets en passant par Paris (arbitraire)
+    /*
+     * TODO:
+     * - Vérifier automatiquement si le trajet a besoin de passer par Paris ou non
+     */
     JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
     journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+
+    // Tri des voyages dans l'ordre de départ
+    journeyProposals.getJourneyProposals().sort(Comparator.comparing(
+      JourneyDTO::getFirstDeparturDateTime,
+      Comparator.nullsLast(Comparator.naturalOrder())
+    ));
+
+    // Affichage des voyages
+    // for(JourneyDTO journey : journeyProposals.getJourneyProposals()){
+    //   System.out.println(journey.getFirstDeparturDateTime());
+    // }
 
     return journeyProposals;
   }
@@ -84,25 +101,11 @@ public class NavitiaService {
 
   public JourneyProposalsDTO cleanJourneyProposals(JourneyProposalsDTO journeyProposals){
 
-    // System.out.println("=== AVANT CLEAN ===");
-    // for (JourneyDTO journey : journeyProposals.getJourneyProposals()) {
-    //   for (SectionDTO section : journey.getSections()) {
-    //     System.out.println("Section type: " + section.getType());
-    //   }
-    // }
-
     for (JourneyDTO journey : journeyProposals.getJourneyProposals()) {
       journey.getSections().removeIf(section ->
         section.getType() != null && section.getType().equalsIgnoreCase("crow_fly")
       );
     }
-
-    // System.out.println("=== Après CLEAN ===");
-    // for (JourneyDTO journey : journeyProposals.getJourneyProposals()) {
-    //   for (SectionDTO section : journey.getSections()) {
-    //     System.out.println("Section type: " + section.getType());
-    //   }
-    // }
 
     return journeyProposals;
   }
@@ -322,7 +325,15 @@ public class NavitiaService {
   }
 
   private int computeNbTransfers(List<SectionDTO> sections){
-    return sections.size() - 1;
+    // Pour chaque section avec au moins 1 public transport, on ajoute 1;
+    // On initialise à -1 (0 transfert pour un trajet direct)
+    int nbTransfers = -1 ; //
+    for(SectionDTO section : sections){
+      if(section.getType().equals("public_transport")){
+        nbTransfers++;
+      }
+    }
+    return nbTransfers;
   }
 
   private List<LinkDTO> joinLinks(JourneyDTO firstJourney, JourneyDTO secondJourney){
