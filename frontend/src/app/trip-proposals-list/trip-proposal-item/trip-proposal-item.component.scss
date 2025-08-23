@@ -1,0 +1,14 @@
+.trip-proposal-item {
+  background-color: #D0E9F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.trip-proposal-item__departure, .trip-proposal-item__arrival {
+  color: #013A63;
+  font-weight: bolder;
+}
