@@ -4,10 +4,11 @@ import { Destination } from '../models/destination.model';
 import { Router } from '@angular/router';
 import { TripResearchService } from '../services/trip-research.service';
 import { Journey } from '../models/journey.model';
+import { TripProposalItemComponent } from './trip-proposal-item/trip-proposal-item.component';
 
 @Component({
   selector: 'app-trip-proposals-list',
-  imports: [],
+  imports: [TripProposalItemComponent],
   templateUrl: './trip-proposals-list.component.html',
   styleUrl: './trip-proposals-list.component.scss'
 })

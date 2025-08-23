@@ -6,6 +6,8 @@ export interface Journey{
     total: number,
     waking: number
   },
+  journeyFirstSection: Section,
+  journeyLastSection: Section,
   firstDeparturDateTime: String,
   nb_transfers: number,
   sections: Section[]

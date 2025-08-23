@@ -1,1 +1,9 @@
-<p>trip-proposal-item works!</p>
+<ul>
+  <li>
+    {{ journey()?.journeyFirstSection?.from?.name }} -> {{ journey()?.journeyLastSection?.to?.name }}
+    <br>
+    Correspondance : {{ journey()?.nb_transfers }} - Durée : {{ journey()?.duration }}
+    <br>
+    Départ : {{ journey()?.journeyFirstSection?.departure_date_time }} -> {{ journey()?.journeyLastSection?.arrival_date_time}}
+  </li>
+</ul>

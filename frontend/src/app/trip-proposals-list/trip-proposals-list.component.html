@@ -1,9 +1,5 @@
 <p>trip-proposals-list works!</p>
 
-<ul>
-  @for (journey of results; track $index) {
-    <li>
-      {{ journey.duration }}
-    </li>
-  }
-</ul>
+@for (journey of results; track $index) {
+  <app-trip-proposal-item [journey]="journey" ></app-trip-proposal-item>
+}
