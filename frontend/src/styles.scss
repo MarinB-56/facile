@@ -21,10 +21,6 @@ html, body {
   margin: 0;
 }
 
-app-root {
-  display: block;
-  min-height: 100%;
-  font-family: "Playpen Sans", cursive;
-  font-optical-sizing: auto;
-  font-style: normal;
+* {
+  font-family: "Barlow", sans-serif;
 }
