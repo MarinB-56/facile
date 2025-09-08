@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, output, Output } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,9 +28,10 @@ export class DatePickerComponent {
   readonly minDate = this.today;
   readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours
 
-  dateSelected: Date | null = null;
+  dateSelected: Date = new Date();
 
-  @Output() dateChangeEvent = new EventEmitter<Date | null>();
+  // @Output() dateChangeEvent = new EventEmitter<Date | null>();
+  dateChangeEvent = output<Date>();
 
   onDateOrTimeChange() {
     this.dateChangeEvent.emit(this.dateSelected);
