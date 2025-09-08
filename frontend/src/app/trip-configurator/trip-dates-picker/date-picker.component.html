@@ -2,14 +2,10 @@
 
 <mat-form-field class="date-picker__input">
   <mat-label>Choisissez une date</mat-label>
-  <input matInput [matDatepicker]="datepicker" [(ngModel)]="dateSelected" (ngModelChange)="onDateOrTimeChange()">
+  <input matInput
+  [min]="minDate" [max]="maxDate"
+  [matDatepicker]="datepicker" [(ngModel)]="dateSelected" (ngModelChange)="onDateOrTimeChange()">
   <mat-datepicker touchUi #datepicker/>
-  <!-- <mat-datepicker touchUi #datepicker>
-    <mat-datepicker-actions>
-      <button matButton matDatepickerCancel>Cancel</button>
-      <button matButton="elevated" matDatepickerApply>Apply</button>
-    </mat-datepicker-actions>
-  </mat-datepicker> -->
   <mat-datepicker-toggle [for]="datepicker" matSuffix/>
 </mat-form-field>
 

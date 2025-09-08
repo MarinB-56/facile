@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
-import {FormsModule} from '@angular/forms';
-import {MatTimepickerModule} from '@angular/material/timepicker';
+import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 
 @Component({
   selector: 'app-trip-date-picker',
@@ -16,15 +16,19 @@ import {MatTimepickerModule} from '@angular/material/timepicker';
     FormsModule
   ],
   templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.scss',
+  styleUrls: ['./date-picker.component.scss'],
   providers: [
     provideNativeDateAdapter(),
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } // Format de dates à la française
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } // Format français
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent {
-  dateSelected!: Date | null;
+  readonly today = new Date(new Date().setHours(0, 0, 0, 0)); // minuit
+  readonly minDate = this.today;
+  readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours
+
+  dateSelected: Date | null = null;
 
   @Output() dateChangeEvent = new EventEmitter<Date | null>();
 
@@ -32,26 +36,3 @@ export class DatePickerComponent {
     this.dateChangeEvent.emit(this.dateSelected);
   }
 }
-
-
-
-
-// @Component({
-//   selector: 'app-trip-date-picker',
-//   imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule],
-//   templateUrl: './date-picker.component.html',
-//   styleUrl: './date-picker.component.scss',
-//   providers: [
-//     provideNativeDateAdapter(),
-//     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } // Format de dates à la française
-//   ],
-//   changeDetection: ChangeDetectionStrategy.OnPush,
-// })
-// export class DatePickerComponent {
-//   dateSelected = output<Date | null>();
-
-//   // Envoi de la
-//   addEvent(event: MatDatepickerInputEvent<Date>) {
-//     this.dateSelected.emit(event.value);
-//   }
-// }
