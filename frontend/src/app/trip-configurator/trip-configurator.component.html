@@ -9,7 +9,11 @@
     </app-trip-destinations-form>
   </div>
 
-  <app-trip-date-picker (dateSelected)="onDateSelected($event)"></app-trip-date-picker>
+  <app-trip-date-picker (dateChangeEvent)="onDateSelected($event)"></app-trip-date-picker>
+  <!-- <p>Value: {{tripDate()}}</p> -->
 
   <app-trip-search-button [isDisabled]="!isTripValid()" (click)="onSearch()"></app-trip-search-button>
+
+  <!-- <a routerLink="/essai">Voir les produits</a> -->
+
 </div>

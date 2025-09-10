@@ -1,25 +1,39 @@
-import { ChangeDetectionStrategy, Component, computed, EventEmitter, output, Output } from '@angular/core';
-import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
+import { ChangeDetectionStrategy, Component, EventEmitter, output, Output } from '@angular/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
+import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 
 @Component({
   selector: 'app-trip-date-picker',
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatTimepickerModule,
+    FormsModule
+  ],
   templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.scss',
+  styleUrls: ['./date-picker.component.scss'],
   providers: [
     provideNativeDateAdapter(),
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } // Format de dates à la française
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' } // Format français
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent {
-  dateSelected = output<Date | null>();
+  readonly today = new Date(new Date().setHours(0, 0, 0, 0)); // minuit
+  readonly minDate = this.today;
+  readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours
 
-  addEvent(event: MatDatepickerInputEvent<Date>) {
-    // console.log(event.value);
-    this.dateSelected.emit(event.value);
+  dateSelected: Date = new Date();
+
+  // @Output() dateChangeEvent = new EventEmitter<Date | null>();
+  dateChangeEvent = output<Date>();
+
+  onDateOrTimeChange() {
+    this.dateChangeEvent.emit(this.dateSelected);
   }
 }

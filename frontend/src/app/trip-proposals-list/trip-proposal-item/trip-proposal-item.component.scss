@@ -1,0 +1,82 @@
+.trip-proposal-item {
+  background-color: #D0E9F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+  border-radius: 20px;
+  margin: 10px;
+  border: 1px solid #013A63 ;
+  position: relative;
+  // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.trip-proposal-item__departure, .trip-proposal-item__arrival {
+  color: #013A63;
+  font-weight: bolder;
+  font-style: normal;
+  font-size: x-large;
+  // font-weight: 700;
+}
+
+.trip-proposal-item__departure {
+  margin: 15px 0px 0px 10px;
+}
+
+.trip-proposal-item__arrival {
+  margin: 5px 0px 0px 10px;
+}
+
+.circle__left {
+  width: 25px;          /* Largeur du rond */
+  height: 50px;         /* Hauteur du rond (doit être égale à la largeur) */
+  border-radius: 0px 100px 100px 0px;    /* Transforme l'élément en cercle */
+  background-color: #F0F8FA; /* Couleur de fond */
+  position:absolute;
+  left: -1px;
+  margin-top: 50px;
+  border: 1px solid #013A63 ;
+}
+
+.square__left {
+  width: 3px;
+  height: 50px;
+  background-color: #F0F8FA;
+  position:absolute;
+  left: -2px;
+  margin-top: 50px;
+}
+
+.circle__right {
+  width: 25px;          /* Largeur du rond */
+  height: 50px;         /* Hauteur du rond (doit être égale à la largeur) */
+  border-radius: 100px 0px 0px 100px;    /* Transforme l'élément en cercle */
+  background-color: #F0F8FA; /* Couleur de fond */
+  position:absolute;
+  right: -1px;
+  margin-top: 50px;
+  border: 1px solid #013A63 ;
+}
+
+.square__right {
+  width: 3px;
+  height: 50px;
+  background-color: #F0F8FA;
+  position:absolute;
+  right: -2px;
+  margin-top: 50px;
+}
+
+.transport-line {
+  border: 1px dashed #013A63;
+  position: absolute;
+  width: 80%;
+  margin: 50px 0px 0px 0px;
+    left: 50%; /* Positionne le début de la ligne au milieu */
+  transform: translateX(-50%); /* Décale la ligne de -50% de sa propre largeur */
+  // left: 70px;
+}
+
+.trip-proposal-item__duration {
+  margin-top: 70px;
+}

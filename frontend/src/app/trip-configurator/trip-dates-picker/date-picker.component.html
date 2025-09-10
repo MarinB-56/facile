@@ -1,11 +1,20 @@
-<p>date-picker works!</p>
+<!-- <p>date-picker works!</p> -->
 
 <mat-form-field class="date-picker__input">
   <mat-label>Choisissez une date</mat-label>
   <input matInput
-    [matDatepicker]="picker"
-    (dateChange)="addEvent($event)">
-  <mat-hint>DD/MM/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker disabled="false"></mat-datepicker>
+  [min]="minDate" [max]="maxDate"
+  [matDatepicker]="datepicker" [(ngModel)]="dateSelected" (ngModelChange)="onDateOrTimeChange()">
+  <mat-datepicker touchUi #datepicker/>
+  <mat-datepicker-toggle [for]="datepicker" matSuffix/>
+</mat-form-field>
+
+<mat-form-field class="date-picker__input">
+  <mat-label>Heure du départ</mat-label>
+  <input matInput
+    [matTimepicker]="timepicker"
+    [(ngModel)]="dateSelected"
+    (ngModelChange)="onDateOrTimeChange()">
+  <mat-timepicker touchUi #timepicker interval="2h"/>
+  <mat-timepicker-toggle [for]="timepicker" matSuffix/>
 </mat-form-field>

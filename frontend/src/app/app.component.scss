@@ -1,5 +1,7 @@
+@import '../../src/styles/variables';
+
 :host {
-  background-color: #6cceeb; /* Remplacez par la couleur de votre choix */
+  background-color: $background-color; /* Remplacez par la couleur de votre choix */
   padding: 20px; /* Optionnel : ajoutez un padding pour un meilleur espacement */
   height: 100vh; /* Utilisez height au lieu de min-height */
   box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
@@ -9,23 +11,33 @@
 }
 
 .header {
-  background-color: antiquewhite;
-  flex-grow: 0;
+  color: #013A63;
+  // background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 150px;
+  justify-content: space-around;
 }
 
 .header__title {
   margin: 0;
   text-align: center;
+  font-size: 40px;
+  font-family: "Lilita One";
 }
 
 .header__greeting {
   margin: 0;
+  font-size: 26px;
+  font-family: "Lilita One";
 }
 
-.trip-configurator {
+.main {
   flex: 1; /* Fait prendre toute la place au conteneur */
-  background-color: aliceblue;
+  background-color: #F0F8FA;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Centre les éléments au verticalement */
+  font-family: "Barlow", sans-serif;
 }

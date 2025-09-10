@@ -1,0 +1,38 @@
+<!-- <ul>
+  <li>
+    {{ journey()?.journeyFirstSection?.from?.name }} -> {{ journey()?.journeyLastSection?.to?.name }}
+    <br>
+    Correspondance : {{ journey()?.nb_transfers }} - Durée : {{ journey()?.duration }}
+    <br>
+    Départ : {{ journey()?.journeyFirstSection?.departure_date_time }} -> {{ journey()?.journeyLastSection?.arrival_date_time}}
+  </li>
+</ul> -->
+
+<div class="trip-proposal-item" (click)="getJourneyDetails()">
+  <div class="circle__left"></div>
+  <div class="square__left"></div>
+  <div class="transport-line"></div>
+  <div class="circle__right"></div>
+  <div class="square__right"></div>
+  <div>
+    <p class="trip-proposal-item__departure">06h12: {{ journey()?.journeyFirstSection?.from?.name }}</p>
+    <p class="trip-proposal-item__arrival">12:24: {{ journey()?.journeyLastSection?.to?.name }}</p>
+  </div>
+
+  <p class="trip-proposal-item__duration">{{ journey()?.duration }}, {{ journey()?.nb_transfers }} correspondances</p>
+</div>
+
+<!--
+<div class="trip-proposal-item">
+  <div class="circle__left"></div>
+  <div class="square__left"></div>
+  <div class="transport-line"></div>
+  <div class="circle__right"></div>
+  <div class="square__right"></div>
+  <div>
+    <p class="trip-proposal-item__departure">06h12: Toulon (GARE)</p>
+    <p class="trip-proposal-item__arrival">12:24: Auray (GARE)</p>
+  </div>
+
+  <p class="trip-proposal-item__duration">6h31, 3 correspondances</p>
+</div> -->

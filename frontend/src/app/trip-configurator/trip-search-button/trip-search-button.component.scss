@@ -1,7 +1,13 @@
+@import '../../../styles/variables' ;
+
 .trip-configurator__search-button {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
   padding: 10px; /* Exemple de padding */
   display: block; /* Assure que le padding fonctionne correctement */
-  background-color: #007bff; /* Exemple de couleur de fond */
+  background-color: $primary-color; /* Exemple de couleur de fond */
   color: white; /* Exemple de couleur de texte */
   text-decoration: none; /* Enlève le soulignement du lien */
   border-radius: 5px; /* Optionnel : arrondit les coins */
@@ -9,6 +15,8 @@
   width: 60%;
   margin: 0 auto;
   box-sizing: border-box;
+  font-family: "Lilita One";
+  font-size: 18px;
 }
 
 .trip-configurator__search-button:disabled{

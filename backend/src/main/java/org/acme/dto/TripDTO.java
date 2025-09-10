@@ -1,46 +1,43 @@
 package org.acme.dto;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TripDTO {
-  private DestinationDTO departure;
-  private DestinationDTO arrival;
-  private Date date;
+  private StopPointDTO departure;
+  private StopPointDTO arrival;
+  private LocalDateTime date;
 
   public TripDTO() {}
 
-  public void setDeparture(DestinationDTO departure){
+  public void setDeparture(StopPointDTO departure){
     this.departure = departure;
   }
 
-  public DestinationDTO getDeparture(){
+  public StopPointDTO getDeparture(){
     return this.departure;
   }
 
-  public void setArrival(DestinationDTO arrival){
+  public void setArrival(StopPointDTO arrival){
     this.arrival = arrival;
   }
 
-  public DestinationDTO getArrival(){
+  public StopPointDTO getArrival(){
     return this.arrival;
   }
 
-  public void setDate(Date date){
+  public void setDate(LocalDateTime date){
     this.date = date;
   }
 
-  public Date getDate(){
+  public LocalDateTime getDate(){
     return this.date;
   }
 
   @Override
   public String toString() {
-    return "TripDTO{" +
-          "departure=" + this.departure.toString() +
-          ", arrival=" + this.arrival.toString() +
-          ", date=" + this.date +
-          '}';
+    return "TripDTO:\n " + "- Departure = " + this.departure.toString() + ",\n - Arrival = " + this.arrival.toString() + ",\n - Date = " + this.date;
   }
 }

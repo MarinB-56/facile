@@ -4,9 +4,13 @@ import { TripSearchButtonComponent } from "./trip-search-button/trip-search-butt
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
 import { BELLE_ILE } from '../constants/destination.constants';
+import { Router, Routes } from '@angular/router';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
+import { RouterLink } from '@angular/router';
+import { TripResearchService } from '../services/trip-research.service';
+
 
 @Component({
   selector: 'app-trip-configurator',
@@ -15,7 +19,9 @@ import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
   styleUrl: './trip-configurator.component.scss'
 })
 export class TripConfiguratorComponent {
-  private http = inject(HttpClient);
+  private router = inject(Router);
+  private tripResearchService = inject(TripResearchService);
+
   readonly urlAutoComplete = "http://localhost:8080/api/navitia/search";
 
   // Le bouton de recherche est désactivé par défaut
@@ -60,9 +66,7 @@ export class TripConfiguratorComponent {
 
   // Récupération de la date choisie
   onDateSelected(date :Date | null){
-    if(date !== undefined){
-      this.tripDate.set(date);
-    }
+    this.tripDate.set(date);
     console.log(this.trip());
   }
 
@@ -79,14 +83,10 @@ export class TripConfiguratorComponent {
 
   // Lancement de la recherche ; envoi des données au backend
   onSearch(){
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // Sauvegarde du trip recherché
+    this.tripResearchService.setResults(this.trip());
 
-    //Envoi des données au backend
-    console.log(this.trip())
-    this.http
-      .post<Destination>(`${this.urlAutoComplete}`, this.trip(), {headers})
-      .subscribe(response => {
-        console.log(response);
-      });
+    // Navigation vers la page des résultats
+    this.router.navigate(['/results']);
   }
 }
