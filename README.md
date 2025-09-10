@@ -12,6 +12,14 @@ Le but de Facîle est de créer un outil tout-en-un, permettant de planifier fac
 - **BDD** : PostgreSQL
 - **Frontend** : Angular 19+. Utilisation de la librairie de composants Angular Materials
 
+## Maquette 
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  <img src="images/maquette/Page%20home%20facîle.png" alt="Home page" width="200" />
+  <img src="images/maquette/Page%20affichage%20itinéraires.png" alt="Trips proposals" width="200" />
+  <img src="images/maquette/Page%20détails%20itinéraire.png" alt="Trip details" width="200" />
+</div>
+
 ## Avancement 📅
 - [x] Planificateur d'itinéraires de trajets en train fonctionnel (jusqu'à Auray seulement, gare TGV principale pour Belle-île)
 - [x] Choix de la date du trajet
