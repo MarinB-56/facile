@@ -3,9 +3,10 @@
 Planificateur d'itinéraires optimisés tout-en-un, vers ou depuis Belle-Île-en-Mer !🚊🚢🚗🕰️
 
 ## Contexte ℹ️
-Les voyages vers (et depuis) Belle-Île-En-Mer en transports en commun sont souvent synonymes de longs trajets et de galères. À part si l'on est en voiture, les correspondances s'enchaînent et la diversification des opérateurs les rend le plus souvent très peu optimisés.
+Les voyages vers (et depuis) Belle-Île-En-Mer en transports en commun sont souvent synonymes de longs trajets et de galères. À part si l'on est en voiture, les correspondances s'enchaînent et la diversification des opérateurs les rend peu optimisées.
 
-Le but de Facîle est de créer un outil tout-en-un, permettant de planifier facilement un trajet vers (ou depuis) Belle-Île. En précisant simplement la date et le lieu de départ, l'application assemble les divers moyens de transports et propose un trajet optimisé (le plus court / avec le moins de correspondances possibles).
+Le but de Facîle est de créer un outil tout-en-un, permettant de planifier facilement un trajet vers (et depuis) Belle-Île. 
+En précisant simplement la date et le lieu de départ, l'application assemble les divers moyens de transports et propose un trajet optimisé (le plus court / avec le moins de correspondances possibles).
 
 ## Stack Technique 🛠️
 - **Backend** : Quarkus (avec Java 21).
