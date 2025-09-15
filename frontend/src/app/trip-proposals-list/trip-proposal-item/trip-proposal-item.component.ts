@@ -1,10 +1,11 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Journey } from '../../models/journey.model';
 import { Router } from '@angular/router';
+import { DurationPipePipe } from '../../pipes/duration-pipe/duration-pipe.pipe';
 
 @Component({
   selector: 'app-trip-proposal-item',
-  imports: [],
+  imports: [DurationPipePipe],
   templateUrl: './trip-proposal-item.component.html',
   styleUrl: './trip-proposal-item.component.scss'
 })

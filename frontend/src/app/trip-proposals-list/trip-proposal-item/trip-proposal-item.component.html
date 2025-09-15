@@ -15,11 +15,11 @@
   <div class="circle__right"></div>
   <div class="square__right"></div>
   <div>
-    <p class="trip-proposal-item__departure">06h12: {{ journey()?.journeyFirstSection?.from?.name }}</p>
-    <p class="trip-proposal-item__arrival">12:24: {{ journey()?.journeyLastSection?.to?.name }}</p>
+    <p class="trip-proposal-item__departure">8h33 : {{ journey()?.journeyFirstSection?.from?.name }}</p>
+    <p class="trip-proposal-item__arrival">12h24: {{ journey()?.journeyLastSection?.to?.name }}</p>
   </div>
 
-  <p class="trip-proposal-item__duration">{{ journey()?.duration }}, {{ journey()?.nb_transfers }} correspondances</p>
+  <p class="trip-proposal-item__duration">{{ journey()?.duration | durationPipe  }}, {{ journey()?.nb_transfers }} correspondances</p>
 </div>
 
 <!--
