@@ -15,7 +15,7 @@
   color: #013A63;
   font-weight: bolder;
   font-style: normal;
-  font-size: x-large;
+  font-size: larger;
   // font-weight: 700;
 }
 
@@ -28,55 +28,55 @@
 }
 
 .circle__left {
-  width: 25px;          /* Largeur du rond */
-  height: 50px;         /* Hauteur du rond (doit être égale à la largeur) */
+  width: 20px;          /* Largeur du rond */
+  height: 40px;         /* Hauteur du rond */
   border-radius: 0px 100px 100px 0px;    /* Transforme l'élément en cercle */
   background-color: #F0F8FA; /* Couleur de fond */
   position:absolute;
   left: -1px;
-  margin-top: 50px;
+  margin-top: 30px;
   border: 1px solid #013A63 ;
 }
 
 .square__left {
   width: 3px;
-  height: 50px;
+  height: 40px;
   background-color: #F0F8FA;
   position:absolute;
   left: -2px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .circle__right {
-  width: 25px;          /* Largeur du rond */
-  height: 50px;         /* Hauteur du rond (doit être égale à la largeur) */
+  width: 20px;          /* Largeur du rond */
+  height: 40px;         /* Hauteur du rond */
   border-radius: 100px 0px 0px 100px;    /* Transforme l'élément en cercle */
   background-color: #F0F8FA; /* Couleur de fond */
   position:absolute;
   right: -1px;
-  margin-top: 50px;
+  margin-top: 30px;
   border: 1px solid #013A63 ;
 }
 
 .square__right {
   width: 3px;
-  height: 50px;
+  height: 40px;
   background-color: #F0F8FA;
   position:absolute;
   right: -2px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .transport-line {
   border: 1px dashed #013A63;
   position: absolute;
   width: 80%;
-  margin: 50px 0px 0px 0px;
+  margin: 30px 0px 0px 0px;
     left: 50%; /* Positionne le début de la ligne au milieu */
   transform: translateX(-50%); /* Décale la ligne de -50% de sa propre largeur */
   // left: 70px;
 }
 
 .trip-proposal-item__duration {
-  margin-top: 70px;
+  margin-top: 50px;
 }
