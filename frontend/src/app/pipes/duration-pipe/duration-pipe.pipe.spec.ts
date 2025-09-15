@@ -19,7 +19,7 @@ describe('DurationPipePipe', () => {
     expect(pipe.transform(2542)).toBe('42 min');
   });
 
-  it('Affiche 0h59 pour 3540 secondes', () => {
+  it('Affiche 59 min pour 3540 secondes', () => {
     expect(pipe.transform(3540)).toBe('59 min');
   });
 
@@ -27,8 +27,12 @@ describe('DurationPipePipe', () => {
     expect(pipe.transform(9000)).toBe('2h30');
   });
 
-  it('Affiche 0h0 pour 30 secondes', () => {
+  it('Affiche 0 min pour 30 secondes', () => {
     expect(pipe.transform(30)).toBe('0 min');
+  });
+
+  it('Affiche 2h05 pour 7500 secondes', () => {
+    expect(pipe.transform(7500)).toBe('2h05');
   });
 
 });

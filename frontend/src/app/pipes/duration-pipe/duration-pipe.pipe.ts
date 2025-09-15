@@ -24,10 +24,11 @@ export class DurationPipePipe implements PipeTransform {
     // 1h0 => 1h
     // 0h42 => 42 min
     // 2h34 => 2h34
+    // 1h5 => 1h05
     if(hours === 0){
       return `${minutes} min`;
     }else if(minutes > 0){
-      return `${hours}h${minutes}`
+      return `${hours}h${minutes.toString().padStart(2,'0')}`
     }else {
       return `${hours}h`;
     }
