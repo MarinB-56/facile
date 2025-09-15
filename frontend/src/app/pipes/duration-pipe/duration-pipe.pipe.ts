@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DurationPipePipe implements PipeTransform {
 
-  transform(duration: number, ...args: unknown[]): string {
+  transform(duration: any, ...args: unknown[]): string {
     // duration est un nombre en secondes
     let hours = 0;
     let minutes = 0;
@@ -31,7 +31,6 @@ export class DurationPipePipe implements PipeTransform {
     }else {
       return `${hours}h`;
     }
-
   }
 
 }
