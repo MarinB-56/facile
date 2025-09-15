@@ -16,7 +16,11 @@ export class TimePipePipe implements PipeTransform {
 
     let date = new Date(year, month, day, hour, minutes, seconds);
 
-    return `${date.getHours()}h${date.getMinutes()}`;
+    // Ajoute des 0 si les heures ou les minutes sont inférieurs à 10
+    const formatedHour = date.getHours().toString().padStart(2,'0');
+    const formatedMinutes = date.getMinutes().toString().padStart(2, '0');
+
+    return `${formatedHour}h${formatedMinutes}`;
   }
 
 }
