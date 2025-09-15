@@ -21,7 +21,17 @@ export class DurationPipePipe implements PipeTransform {
       minutes = Math.floor( duration / 60);
     }
 
-    return minutes > 0 ? `${hours}h${minutes}` : `${hours}h`;
+    // 1h0 => 1h
+    // 0h42 => 42 min
+    // 2h34 => 2h34
+    if(hours === 0){
+      return `${minutes} min`;
+    }else if(minutes > 0){
+      return `${hours}h${minutes}`
+    }else {
+      return `${hours}h`;
+    }
+
   }
 
 }
