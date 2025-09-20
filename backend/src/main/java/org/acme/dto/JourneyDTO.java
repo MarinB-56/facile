@@ -2,6 +2,7 @@ package org.acme.dto;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,8 +16,8 @@ public class JourneyDTO {
 
   private DurationDTO durations;
 
-  private List<LinkDTO> links;
-  private List<SectionDTO> sections;
+  private List<LinkDTO> links = new ArrayList<>();
+  private List<SectionDTO> sections = new ArrayList<>();
 
   public JourneyDTO() {}
 

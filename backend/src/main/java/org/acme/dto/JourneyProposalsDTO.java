@@ -1,12 +1,13 @@
 package org.acme.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JourneyProposalsDTO {
   @JsonProperty("journeys")
-  private List<JourneyDTO> journeyProposals;
+  private List<JourneyDTO> journeyProposals = new ArrayList<>();
 
   public JourneyProposalsDTO(){}
 

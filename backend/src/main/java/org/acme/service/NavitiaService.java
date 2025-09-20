@@ -64,7 +64,9 @@ public class NavitiaService {
      * - Vérifier automatiquement si le trajet a besoin de passer par Paris ou non
      */
     JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+    if(journeyProposalsThroughParis != null){
+      journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+    }
 
     // Tri des voyages dans l'ordre de départ
     journeyProposals.getJourneyProposals().sort(Comparator.comparing(
