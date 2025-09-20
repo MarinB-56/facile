@@ -15,7 +15,7 @@ export class TripDestinationsFormComponent {
   departure = input.required<Destination>();
   arrival = input.required<Destination>();
 
-  // Envoie au composant parent
+  // Envoi au composant parent
   departureSelectedEvent = output<Destination>();
   arrivalSelectedEvent = output<Destination>();
   swappDestinationEvent = output();
@@ -32,8 +32,8 @@ export class TripDestinationsFormComponent {
 
   // Swap button
   swapDestinations() {
-    console.log("Swapped destinations");
-    this.swappDestinationEvent.emit();
+    console.log("Emit swappDestinationEvent");
+    this.swappDestinationEvent.emit(); // Prévient le composant parent
   }
 }
 
