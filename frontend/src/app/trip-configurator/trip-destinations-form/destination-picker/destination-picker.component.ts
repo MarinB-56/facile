@@ -22,7 +22,7 @@ import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/mate
 export class DestinationPickerComponent implements OnInit {
   // Réception des paramètres envoyés par le composant parent
   placeholderText = input();
-  defaultDestination = input<Destination>();
+  defaultDestination = input.required<Destination>();
 
   // Envoi de la destination choisie par l'utilisateur au composant parent
   selectedDestinationEvent = output<Destination>();
@@ -41,11 +41,11 @@ export class DestinationPickerComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.defaultDestination());
 
-    if(this.defaultDestination()?.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
+    if(this.defaultDestination().name == "Quiberon (Quiberon)"){ // Si on va à belle ile
       this.myControl.setValue("Belle-Ile-En-Mer");
       this.myControl.disable();
-    }else if(this.defaultDestination()?.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
-      this.myControl.setValue(this.defaultDestination.name);
+    }else if(this.defaultDestination().name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
+      this.myControl.setValue(this.defaultDestination().name);
       this.myControl.disable();
     }
   }
