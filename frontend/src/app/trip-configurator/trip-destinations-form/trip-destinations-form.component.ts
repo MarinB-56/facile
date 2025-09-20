@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, input, output, signal } from '@angular/core';
 import { DatePickerComponent } from "../trip-dates-picker/date-picker.component";
 import { DestinationPickerComponent } from "./destination-picker/destination-picker.component";
 import { Destination } from '../../models/destination.model';
@@ -11,13 +11,14 @@ import { BELLE_ILE } from '../../constants/destination.constants';
   styleUrl: './trip-destinations-form.component.scss'
 })
 export class TripDestinationsFormComponent {
-  // Fournit au composant enfant
-  @Input() departure!: Destination ;
-  @Input() arrival!: Destination;
+  // Fournit aux composants enfants
+  departure = input.required<Destination>();
+  arrival = input.required<Destination>();
 
-  @Output() departureSelectedEvent = new EventEmitter<Destination>();
-  @Output() arrivalSelectedEvent = new EventEmitter<Destination>();
-  @Output() swappDestinationEvent = new EventEmitter<void>();
+  // Envoie au composant parent
+  departureSelectedEvent = output<Destination>();
+  arrivalSelectedEvent = output<Destination>();
+  swappDestinationEvent = output();
 
   // Transmission de la destination de Départ
   onDepartureReceivedByPicker(destination: Destination) {
@@ -35,3 +36,11 @@ export class TripDestinationsFormComponent {
     this.swappDestinationEvent.emit();
   }
 }
+
+
+  // @Input() departure!: Destination ;
+  // @Input() arrival!: Destination;
+
+  // @Output() departureSelectedEvent = new EventEmitter<Destination>();
+  // @Output() arrivalSelectedEvent = new EventEmitter<Destination>();
+  // @Output() swappDestinationEvent = new EventEmitter<void>();

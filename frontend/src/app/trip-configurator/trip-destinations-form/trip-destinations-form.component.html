@@ -5,7 +5,7 @@
   <app-destination-picker
     class="trip-destination__pickers-departure"
     placeholderText="Départ: d'où partons nous ?"
-    [defaultDestination] = "departure"
+    [defaultDestination] = "departure()"
     (selectedDestinationEvent)="onDepartureReceivedByPicker($event)">
   </app-destination-picker>
 
@@ -17,7 +17,7 @@
   <app-destination-picker
     class="trip-destination__pickers-arrival"
     placeholderText="Arrivée: où allons nous ?"
-    [defaultDestination] = "arrival"
+    [defaultDestination] = "arrival()"
     (selectedDestinationEvent)="onArrivalReceivedByPicker($event)">
   </app-destination-picker>
 

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, input, signal, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
 import { Destination } from '../../../models/destination.model';
 import { debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -20,9 +20,9 @@ import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/mate
   styleUrl: './destination-picker.component.scss'
 })
 export class DestinationPickerComponent implements OnInit {
-  // Réception des paramètres par le composant parent
-  @Input() placeholderText = "";
-  @Input() defaultDestination!: Destination;
+  // Réception des paramètres envoyés par le composant parent
+  placeholderText = input();
+  defaultDestination = input<Destination>();
 
   // Envoi de la destination choisie par l'utilisateur au composant parent
   @Output() selectedDestinationEvent = new EventEmitter<Destination>();
