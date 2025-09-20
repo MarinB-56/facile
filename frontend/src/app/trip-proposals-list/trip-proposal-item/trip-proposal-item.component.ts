@@ -13,11 +13,11 @@ import { ConnectionPipePipe } from '../../pipes/connection-pipe/connection-pipe.
 })
 export class TripProposalItemComponent {
   router = inject(Router);
-
   journey = input<Journey>();
 
   getJourneyDetails(){
-
-    this.router.navigate(['/details']);
+    this.router.navigate(['/details'], {
+    state: { journey: this.journey() }
+  });
   }
 }
