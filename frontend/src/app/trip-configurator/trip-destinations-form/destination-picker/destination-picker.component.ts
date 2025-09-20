@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, input, signal, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, input, signal, output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
 import { Destination } from '../../../models/destination.model';
 import { debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -25,7 +25,7 @@ export class DestinationPickerComponent implements OnInit {
   defaultDestination = input<Destination>();
 
   // Envoi de la destination choisie par l'utilisateur au composant parent
-  @Output() selectedDestinationEvent = new EventEmitter<Destination>();
+  selectedDestinationEvent = output<Destination>();
 
   // Paramètres pour l'appel API backend
   private http = inject(HttpClient);
