@@ -39,11 +39,12 @@ export class DestinationPickerComponent implements OnInit {
 
   // Création de l'input en cas de valeur par défaut
   ngOnInit(): void {
-    console.log(this.defaultDestination);
-    if(this.defaultDestination.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
+    console.log(this.defaultDestination());
+
+    if(this.defaultDestination()?.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
       this.myControl.setValue("Belle-Ile-En-Mer");
       this.myControl.disable();
-    }else if(this.defaultDestination.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
+    }else if(this.defaultDestination()?.name !== ""){ // Si une destination par défaut a été précisée (autre que Belle ile)
       this.myControl.setValue(this.defaultDestination.name);
       this.myControl.disable();
     }

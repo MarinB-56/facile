@@ -11,7 +11,7 @@ import { BELLE_ILE } from '../../constants/destination.constants';
   styleUrl: './trip-destinations-form.component.scss'
 })
 export class TripDestinationsFormComponent {
-  // Fournit aux composants enfants
+  // Fournit par le composant parent
   departure = input.required<Destination>();
   arrival = input.required<Destination>();
 
