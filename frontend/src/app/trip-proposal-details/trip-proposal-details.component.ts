@@ -111,7 +111,7 @@ export class TripProposalDetailsComponent {
   }
 
   ngOnInit(){
-    this.trip = history.state.journey;
+    this.journey = history.state.journey;
   }
 }
 
