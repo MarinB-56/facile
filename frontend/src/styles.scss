@@ -1,12 +1,18 @@
 // Custom Theming for Angular Material
-// For more information: https://material.angular.dev/guide/theming
-/* You can add global styles to this file, and also import other style files */
-/* @import "tailwindcss"; */
-
 @use '@angular/material' as mat;
 
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; // Désactive le défilement au niveau global
+}
+
+* {
+  font-family: "Barlow", sans-serif;
+}
+
 html {
-@include mat.theme((
+  @include mat.theme((
     color: (
       theme-type: light,
       primary: mat.$azure-palette,
@@ -16,11 +22,42 @@ html {
   ));
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
+/* forcer le composant routé à occuper l'espace */
+app-trip-configurator {
+  display: flex;
+  // flex-direction: column;
+  flex: 1;
+  // min-height: 0;
 }
 
-* {
-  font-family: "Barlow", sans-serif;
-}
+// /* styles.scss (global) */
+// html, body {
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// /* garantir que app-root peut s'étendre */
+// app-root {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh; /* évite overflow avec padding */
+//   box-sizing: border-box;
+// }
+
+// /* .main doit pouvoir grandir et laisser ses enfants scroller */
+// app-root .main {
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1 1 auto;
+//   min-height: 0; /* CRUCIAL pour que les enfants avec overflow fonctionnent */
+// }
+
+// /* l'élément interne du composant */
+// app-trip-configurator .trip-configurator {
+//   display: flex;
+//   flex-direction: column;
+//   flex: 1 1 auto;
+//   min-height: 0;
+// }

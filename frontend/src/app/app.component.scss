@@ -1,43 +1,33 @@
 @import '../../src/styles/variables';
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Désactive le défilement au niveau global */
+}
+
 :host {
-  background-color: $background-color; /* Remplacez par la couleur de votre choix */
-  padding: 20px; /* Optionnel : ajoutez un padding pour un meilleur espacement */
-  height: 100vh; /* Utilisez height au lieu de min-height */
-  box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
+  background-color: $background-color;
+  padding: 20px;
+  box-sizing: border-box;
   overflow: auto; /* Ajoute une barre de défilement uniquement si nécessaire */
+  height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.header {
-  color: #013A63;
-  // background-color: aqua;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  max-height: 150px;
-  justify-content: space-around;
-}
-
-.header__title {
-  margin: 0;
-  text-align: center;
-  font-size: 40px;
-  font-family: "Lilita One";
-}
-
-.header__greeting {
-  margin: 0;
-  font-size: 26px;
-  font-family: "Lilita One";
 }
 
 .main {
   flex: 1; /* Fait prendre toute la place au conteneur */
-  background-color: #F0F8FA;
+  // background-color: #a12095;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centre les éléments au verticalement */
+  // justify-content: space-between; /* Centre les éléments au verticalement */
   font-family: "Barlow", sans-serif;
+}
+
+app-trip-configurator {
+  display: flex;
+  flex: 1;
+  min-height: 0;
 }
