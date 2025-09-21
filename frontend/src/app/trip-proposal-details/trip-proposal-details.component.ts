@@ -15,7 +15,4 @@ export class TripProposalDetailsComponent {
 
   // journey: Journey | undefined;
 
-  // ngOnInit(){
-  //   this.journey = history.state.journey;
-  //   console.log(this.journey);
-  // }
+

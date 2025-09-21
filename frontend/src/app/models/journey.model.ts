@@ -4,7 +4,7 @@ export interface Journey{
   duration: number,
   durations : {
     total: number,
-    waking: number
+    walking: number
   },
   journeyFirstSection: Section,
   journeyLastSection: Section,
