@@ -20,11 +20,16 @@
       <p class="trip-proposal-item__departure">{{ j.journeyFirstSection.departure_date_time | timePipe  }} : {{ j.journeyFirstSection.from.name }}</p>
       <p class="trip-proposal-item__arrival">{{ j.journeyLastSection.arrival_date_time | timePipe  }}: {{ j.journeyLastSection.to.name }}</p>
     </div>
-    @for (section of j.sections; track $index) {
-      @if (section.type != "waiting" && section.type != "boarding"){
-        <p>{{ section.type }}</p>
+    <div class="trip-proposal-item__symbol">
+      @for (section of j.sections; track $index) {
+        @if (section.type == "public_transport"){
+          <span class="material-symbols-outlined transport">train</span>
+          @if( (j.sections.length > 1) && ($index < j.sections.length - 1)){
+<span class="material-symbols-outlined arrow">arrow_right</span>
+          }
+        }
       }
-    }
+    </div>
     <p class="trip-proposal-item__duration">{{ j.duration | durationPipe  }}, {{ j.nb_transfers | connectionPipe }}</p>
   </div>
 }
@@ -39,6 +44,16 @@
   <div>
     <p class="trip-proposal-item__departure">06h12: Toulon (GARE)</p>
     <p class="trip-proposal-item__arrival">12:24: Auray (GARE)</p>
+  </div>
+
+  <div class="trip-proposal-item__symbol">
+    <span class="material-symbols-outlined transport">train</span>
+    <span class="material-symbols-outlined arrow">arrow_right</span>
+    <span class="material-symbols-outlined transport">train</span>
+    <span class="material-symbols-outlined arrow">arrow_right</span>
+    <span class="material-symbols-outlined transport">train</span>
+    <span class="material-symbols-outlined arrow">arrow_right</span>
+    <span class="material-symbols-outlined transport">train</span>
   </div>
 
   <p class="trip-proposal-item__duration">6h31, 3 correspondances</p>

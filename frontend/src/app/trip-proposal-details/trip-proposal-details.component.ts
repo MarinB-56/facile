@@ -11,9 +11,9 @@ import { ConnectionPipePipe } from '../pipes/connection-pipe/connection-pipe.pip
   styleUrl: './trip-proposal-details.component.scss'
 })
 export class TripProposalDetailsComponent {
-  trip: Journey | undefined;
+  journey: Journey | undefined;
 
-  journey: Journey = {
+  trip: Journey = {
     duration: 28140,
     durations : {
       total: 28140,

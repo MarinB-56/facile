@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 .trip-proposal-item {
   background-color: #D0E9F1;
   display: flex;
@@ -72,9 +74,21 @@
   position: absolute;
   width: 80%;
   margin: 30px 0px 0px 0px;
-    left: 50%; /* Positionne le début de la ligne au milieu */
+  left: 50%; /* Positionne le début de la ligne au milieu */
   transform: translateX(-50%); /* Décale la ligne de -50% de sa propre largeur */
   // left: 70px;
+}
+
+.trip-proposal-item__symbol {
+  display: flex;
+  flex-direction: row;
+  background-color: $secondary-color;
+  position: absolute;
+  left: 50%;
+  top: 78px;
+  transform: translate(-50%);
+  // gap: 20px;
+  padding: 0px 10px;
 }
 
 .trip-proposal-item__duration {

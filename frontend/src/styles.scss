@@ -29,35 +29,3 @@ app-trip-configurator {
   flex: 1;
   // min-height: 0;
 }
-
-// /* styles.scss (global) */
-// html, body {
-//   height: 100%;
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
-
-// /* garantir que app-root peut s'étendre */
-// app-root {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh; /* évite overflow avec padding */
-//   box-sizing: border-box;
-// }
-
-// /* .main doit pouvoir grandir et laisser ses enfants scroller */
-// app-root .main {
-//   display: flex;
-//   flex-direction: column;
-//   flex: 1 1 auto;
-//   min-height: 0; /* CRUCIAL pour que les enfants avec overflow fonctionnent */
-// }
-
-// /* l'élément interne du composant */
-// app-trip-configurator .trip-configurator {
-//   display: flex;
-//   flex-direction: column;
-//   flex: 1 1 auto;
-//   min-height: 0;
-// }
