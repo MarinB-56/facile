@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, input, signal, output, EventEmitter, OnInit, SimpleChanges, effect } from '@angular/core';
+import { Component, inject, input, signal, output, SimpleChanges, effect } from '@angular/core';
 import { Destination } from '../../../models/destination.model';
 import { debounceTime, distinctUntilChanged, filter, Subject, Subscription, switchMap } from 'rxjs';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -39,7 +39,8 @@ export class DestinationPickerComponent {
 
   constructor(){
 
-    // utilisation de effect pour traquer le changement de la destination
+    // utilisation de effect pour traquer le changement des destination
+    // (lors du choix de l'utilisateur ou lors de l'inversion du départ / destination)
     effect(() => {
       const destination = this.defaultDestination();
 
@@ -53,34 +54,16 @@ export class DestinationPickerComponent {
       }
     })
 
-    // Création d'un flux asynchrone
+    // Création d'un flux asynchrone pour l'autocomplete des destinations
     this.searchSub = this.searchTerms.pipe(
       debounceTime(400), // On attend 400 ms sans input avant de passer à la suite.
       filter((input: string) => input.length >= 3), // On filtre les input de moins de 3 char
       distinctUntilChanged(), // On ne fait rien si rien n'a changé dans l'input
       switchMap((input: string) => this.http.get<any>(`${this.urlAutoComplete}${encodeURIComponent(input)}`)) // Appel de l'url avec l'input
     ).subscribe(response => {
-      this.fillAutocomplete(response);
+      this.fillAutocomplete(response); // Récupération et affichage des propositions de l'API (autocomplete)
     })
   }
-
-  // Contrôle des changements sur les destinations (grâce aux signals)
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log("Destinations changed");
-
-  //   if (changes['defaultDestination']) {
-
-  //     const updatedDestination: Destination = changes['defaultDestination'].currentValue;
-  //     if(updatedDestination.name === "Auray (Auray)") {
-  //       this.myControl.setValue("Belle-Ile-En-Mer");
-  //       this.myControl.disable();
-  //     } else {
-  //       this.myControl.setValue(updatedDestination.name);
-  //       this.myControl.enable();
-  //     }
-  //   }
-  // }
-
 
   onInput(event :Event) :void {
     const input = event.target as HTMLInputElement;

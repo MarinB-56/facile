@@ -24,14 +24,13 @@ import { MatTimepickerModule } from '@angular/material/timepicker';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatePickerComponent {
+  dateChangeEvent = output<Date>();
+
   readonly today = new Date(new Date().setHours(0, 0, 0, 0)); // minuit
   readonly minDate = this.today;
   readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours
 
   dateSelected: Date = new Date();
-
-  // @Output() dateChangeEvent = new EventEmitter<Date | null>();
-  dateChangeEvent = output<Date>();
 
   onDateOrTimeChange() {
     this.dateChangeEvent.emit(this.dateSelected);
