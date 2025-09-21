@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TripProposalDetailsComponent } from './trip-proposal-details.component';
 
 describe('TripProposalDetailsComponent', () => {
@@ -19,5 +18,10 @@ describe('TripProposalDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('affiche le titre de la page "Détails du voyage"', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Détails du voyage');
   });
 });

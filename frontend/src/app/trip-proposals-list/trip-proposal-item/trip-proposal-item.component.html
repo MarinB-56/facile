@@ -20,6 +20,11 @@
       <p class="trip-proposal-item__departure">{{ j.journeyFirstSection.departure_date_time | timePipe  }} : {{ j.journeyFirstSection.from.name }}</p>
       <p class="trip-proposal-item__arrival">{{ j.journeyLastSection.arrival_date_time | timePipe  }}: {{ j.journeyLastSection.to.name }}</p>
     </div>
+    @for (section of j.sections; track $index) {
+      @if (section.type != "waiting" && section.type != "boarding"){
+        <p>{{ section.type }}</p>
+      }
+    }
     <p class="trip-proposal-item__duration">{{ j.duration | durationPipe  }}, {{ j.nb_transfers | connectionPipe }}</p>
   </div>
 }
