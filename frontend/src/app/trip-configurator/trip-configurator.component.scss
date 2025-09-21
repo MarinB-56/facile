@@ -1,12 +1,17 @@
+
 .trip-configurator {
   // background-color: chartreuse;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  // min-height: 0;
+  // height: 100vh;
 }
 
 .trip-configurator__wrapper {
-  // background-color: red;
+  // flex: 1;
+  overflow-y: auto;
 }
 
 .material-symbols-outlined {

@@ -1,0 +1,23 @@
+.header {
+  color: #013A63;
+  // background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 150px;
+  justify-content: space-around;
+  // background-color: aqua;
+}
+
+.header__title {
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  font-family: "Lilita One";
+}
+
+.header__greeting {
+  margin: 0;
+  font-size: 26px;
+  font-family: "Lilita One";
+}

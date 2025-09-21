@@ -10,11 +10,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
 import { RouterLink } from '@angular/router';
 import { TripResearchService } from '../services/trip-research.service';
+import { TripConfiguratorHeaderComponent } from "./trip-configurator-header/trip-configurator-header.component";
 
 
 @Component({
   selector: 'app-trip-configurator',
-  imports: [TripDestinationsFormComponent, TripSearchButtonComponent, DatePickerComponent],
+  imports: [TripDestinationsFormComponent, TripSearchButtonComponent, DatePickerComponent, TripConfiguratorHeaderComponent],
   templateUrl: './trip-configurator.component.html',
   styleUrl: './trip-configurator.component.scss'
 })
