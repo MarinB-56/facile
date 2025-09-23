@@ -84,6 +84,7 @@ public class TripResource {
   }
 }
 
+
   // Index (trips)
   // Show (trips/:id)
   // New (trips/new)
