@@ -1,14 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { TripDestinationsFormComponent } from "./trip-destinations-form/trip-destinations-form.component";
 import { TripSearchButtonComponent } from "./trip-search-button/trip-search-button.component";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
 import { BELLE_ILE } from '../constants/destination.constants';
-import { Router, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
-import { RouterLink } from '@angular/router';
 import { TripResearchService } from '../services/trip-research.service';
 import { TripConfiguratorHeaderComponent } from "./trip-configurator-header/trip-configurator-header.component";
 
