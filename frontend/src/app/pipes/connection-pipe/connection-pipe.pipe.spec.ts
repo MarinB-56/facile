@@ -18,4 +18,8 @@ describe('ConnectionPipePipe', () => {
   it("affiche 1 correspondance, pour 1 correspondance", () => {
     expect(pipe.transform(1)).toBe("1 correspondance");
   });
+
+  it("affiche NaN en cas de problème de correspondance (null ou undefined)", () => {
+    expect(pipe.transform(-1)).toBe("NaN");
+  });
 });
