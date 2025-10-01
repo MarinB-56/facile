@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DestinationPickerComponent } from './destination-picker.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { Destination } from '../../../models/destination.model';
 
 describe('DestinationPickerComponent', () => {
   let component: DestinationPickerComponent;
@@ -19,6 +20,12 @@ describe('DestinationPickerComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(DestinationPickerComponent);
+    fixture.componentRef.setInput('defaultDestination', {
+      id: "id",
+      name: "Toulon",
+      embedded_type: "Gare SNCF",
+    } as Destination);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

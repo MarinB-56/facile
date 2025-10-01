@@ -38,22 +38,6 @@ export class DestinationPickerComponent {
   autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
 
   constructor(){
-
-    // utilisation de effect pour traquer le changement des destination
-    // (lors du choix de l'utilisateur ou lors de l'inversion du départ / destination)
-    effect(() => {
-      const destination = this.defaultDestination();
-
-      if(destination.name == "Auray (Auray)"){ // Si on va à belle ile
-        // this.myControl.setValue("Belle-Ile-En-Mer");
-        this.myControl.setValue(this.defaultDestination().name);
-        this.myControl.disable();
-      }else { // Si une destination par défaut a été précisée (autre que Belle ile)
-        this.myControl.setValue(this.defaultDestination().name);
-        this.myControl.enable();
-      }
-    })
-
     // Création d'un flux asynchrone pour l'autocomplete des destinations
     this.searchSub = this.searchTerms.pipe(
       debounceTime(400), // On attend 400 ms sans input avant de passer à la suite.
@@ -65,7 +49,23 @@ export class DestinationPickerComponent {
     })
   }
 
-  onInput(event :Event) :void {
+  // Création d'un effect pour "suivre" l'input defaultDestination.
+  handleDestinationSwapp = effect(() => {
+    const destination = this.defaultDestination();
+
+
+    if(destination.name == "Auray (Auray)"){ // Si on va à belle ile
+      // this.myControl.setValue("Belle-Ile-En-Mer");
+      this.myControl.setValue(this.defaultDestination().name);
+      this.myControl.disable();
+    }else { // Si une destination par défaut a été précisée (autre que Belle ile)
+      this.myControl.setValue(this.defaultDestination().name);
+      this.myControl.enable();
+    }
+  })
+
+  //Lorsque l'utilisateur tape au clavier
+  onUserInput(event :Event) :void {
     const input = event.target as HTMLInputElement;
 
     // Déclenchement de l'appel API
