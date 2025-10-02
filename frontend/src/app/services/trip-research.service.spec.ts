@@ -37,6 +37,6 @@ describe('TripResearchService', () => {
     (service as any).results = testData;
     service.clearResults();
 
-    expect((service as any).results).toEqual(null); 
+    expect((service as any).results).toEqual(null);
   })
 });
