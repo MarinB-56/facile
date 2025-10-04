@@ -28,10 +28,11 @@ export class DatePickerComponent {
 
   readonly today = new Date(new Date().setHours(0, 0, 0, 0)); // minuit
   readonly minDate = this.today;
-  readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours
+  readonly maxDate = new Date(this.today.getTime() + 21 * 24 * 60 * 60 * 1000); // +22 jours (limité à 22 jours à cause des données SNCF limitées)
 
   dateSelected: Date = new Date();
 
+  // Sélection de la date par l'utilisateur
   onDateOrTimeChange() {
     this.dateChangeEvent.emit(this.dateSelected);
   }
