@@ -21,12 +21,16 @@ export class TripProposalsListComponent {
 
   ngOnInit(){
     // Récupération du trip envoyé via le service partagé
-    const trip = this.tripResearchService.getResults();
+    // const trip = this.tripResearchService.getResults();
+    const trip = history.state.trip;
 
     console.log(trip);
 
-    // Appel au serveur pour lancer la recherche d'itinéraires
-    if(trip){
+    // On vérifie si le service n'a pas déjà enregistré le résultat d'une recherche
+    if(this.tripResearchService.getResults()){
+      this.results = this.tripResearchService.getResults();
+
+    } else if(trip){ // Appel au serveur pour lancer la recherche d'itinéraires
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
       this.http .post<any>('http://localhost:8080/api/navitia/search', trip, {headers})
@@ -34,6 +38,8 @@ export class TripProposalsListComponent {
           // this.tripResearchService.setResults(response);
           console.log(response);
           this.results = response.journeys;
+
+          this.tripResearchService.setResults(this.results);
       });
     }
   }

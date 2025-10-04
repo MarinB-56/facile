@@ -81,10 +81,12 @@ export class TripConfiguratorComponent {
 
   // Lancement de la recherche ; envoi des données au backend
   onSearch(){
-    // Sauvegarde du trip recherché
-    this.tripResearchService.setResults(this.trip());
+    // On supprime les anciennes recherches
+    this.tripResearchService.clearResults();
 
     // Navigation vers la page des résultats
-    this.router.navigate(['/results']);
+    this.router.navigate(['/results'], {
+      state: { trip: this.trip() }
+    });
   }
 }

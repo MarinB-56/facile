@@ -114,7 +114,3 @@ export class TripProposalDetailsComponent {
     this.journey = history.state.journey;
   }
 }
-
-
-
-  // journey: Journey | undefined;
