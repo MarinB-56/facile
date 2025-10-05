@@ -1,8 +1,22 @@
 @if(section().type == "public_transport"){
   <div class="trip-section__transport">
-    <p>{{ section().departure_date_time | timePipe }} : {{ section().from.name }}</p>
-    <p><i>{{ section().duration | durationPipe}}</i></p>
-    <p>{{ section().arrival_date_time | timePipe }} : {{ section().to.name }}</p>
+    <div class="trip-section__transport-schedule">
+      <p>{{ section().departure_date_time | timePipe }}</p>
+      <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
+      <p>{{ section().arrival_date_time | timePipe }}</p>
+    </div>
+    <div class="trip-section__transport-color">
+
+    </div>
+    <div class="trip-section__transport-destination">
+      <div>
+        {{ section().from.name }}
+      </div>
+      <span class="material-symbols-outlined section-icon">directions_railway_2</span>
+      <div>
+        {{ section().to.name }}
+      </div>
+    </div>
   </div>
 
 }@else if(section().type == "connection" || section().type == "waiting"){
