@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-trip-search-button',
@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './trip-search-button.component.scss'
 })
 export class TripSearchButtonComponent {
-  @Input() isDisabled: boolean = true;
+  // @Input() isDisabled: boolean = true;
+  isDisabled = input<boolean>(true);
 
   onSearch(){
     console.log("On lance la recherche");
