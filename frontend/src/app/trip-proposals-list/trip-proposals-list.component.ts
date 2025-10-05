@@ -20,11 +20,10 @@ export class TripProposalsListComponent {
   results : Journey[] = [];
 
   ngOnInit(){
-    // Récupération du trip envoyé via le service partagé
-    // const trip = this.tripResearchService.getResults();
+    // Récupération du trip envoyé via le service partagé (évite une nouvelle recherche inutile)
     const trip = history.state.trip;
 
-    console.log(trip);
+    // console.log(trip);
 
     // On vérifie si le service n'a pas déjà enregistré le résultat d'une recherche
     if(this.tripResearchService.getResults()){
