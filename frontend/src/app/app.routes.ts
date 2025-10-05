@@ -9,9 +9,9 @@ export const routes: Routes = [
     path: '', component: TripConfiguratorComponent
   },
   {
-    path: 'results', component: TripProposalsListComponent
+    path: 'trips', component: TripProposalsListComponent
   },
   {
-    path: 'details', component: TripProposalDetailsComponent
+    path: 'trip', component: TripProposalDetailsComponent
   }
 ];

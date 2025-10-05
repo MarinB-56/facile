@@ -16,7 +16,7 @@ export class TripProposalItemComponent {
   journey = input<Journey>();
 
   getJourneyDetails(){
-    this.router.navigate(['/details'], {
+    this.router.navigate(['/trip'], {
     state: { journey: this.journey() }
   });
   }

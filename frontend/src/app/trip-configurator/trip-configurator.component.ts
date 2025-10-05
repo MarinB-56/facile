@@ -85,7 +85,7 @@ export class TripConfiguratorComponent {
     this.tripResearchService.clearResults();
 
     // Navigation vers la page des résultats
-    this.router.navigate(['/results'], {
+    this.router.navigate(['/trips'], {
       state: { trip: this.trip() }
     });
   }
