@@ -1,0 +1,12 @@
+@if(section().type == "public_transport"){
+  <div class="trip-section__transport">
+    <p>{{ section().departure_date_time | timePipe }} : {{ section().from.name }}</p>
+    <p><i>{{ section().duration | durationPipe}}</i></p>
+    <p>{{ section().arrival_date_time | timePipe }} : {{ section().to.name }}</p>
+  </div>
+
+}@else if(section().type == "connection" || section().type == "waiting"){
+  <div class="trip-section__connection">
+    <p>({{ section().duration | durationPipe }}) Correspondance</p>
+  </div>
+}

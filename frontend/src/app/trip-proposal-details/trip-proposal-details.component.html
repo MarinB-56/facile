@@ -4,10 +4,5 @@
 
 <h1>Trajet</h1>
 @for (section of this.journey?.sections; track $index) {
-  @if(section.type == "public_transport"){
-    <p>{{ section.departure_date_time | timePipe }} : {{ section.from.name }}</p>
-    <p><i>{{ section.duration | durationPipe}}</i></p>
-    <p>{{ section.arrival_date_time | timePipe }} : {{ section.to.name }}</p>
-    <p>_________________________________________</p>
-  }
+  <app-trip-proposal-section [section]="section" ></app-trip-proposal-section>
 }
