@@ -5,9 +5,10 @@
       <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
       <p>{{ section().arrival_date_time | timePipe }}</p>
     </div>
-    <div class="trip-section__transport-color">
 
+    <div class="trip-section__transport-color {{section().transport_type}}">
     </div>
+
     <div class="trip-section__transport-destination">
       <div>
         {{ section().from.name }}

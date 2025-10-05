@@ -24,7 +24,7 @@
   // color: red;
   // font-family: 'Times New Roman', Times, serif;
   // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-} 
+}
 
 .trip-section__transport-destination div, .trip-section__transport-schedule p {
   font-family: "Lilita One";
@@ -32,11 +32,22 @@
 }
 
 .trip-section__transport-color {
-  background-color: black;
   min-width: 0.1 em;
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
+
+  &.train {
+    background-color: $train-color;
+  }
+
+  &.boat {
+    background-color: $boat-color;
+  }
+
+  &.bus {
+    background-color: $bus-color;
+  }
 }
 
 .trip-section__connection {
@@ -49,7 +60,6 @@
 p {
   margin: 10px;
 }
-
 
 .section-duration, .section-icon {
   color: $neutral-color;

@@ -14,104 +14,115 @@ import { TripProposalSectionComponent } from "./trip-proposal-section/trip-propo
 export class TripProposalDetailsComponent {
   journey: Journey | undefined;
 
-  trip: Journey = {
-    duration: 28140,
-    durations : {
-      total: 28140,
-      walking: -3960,
-    },
-    journeyFirstSection: {
-      arrival_date_time: "20250922T095100",
-      departure_date_time: "20250922T054900",
-      duration: 14520,
-      from: {
-        embedded_type: "stop_point",
-        id: "stop_point:SNCF:87755009:LongDistanceTrain",
-        name: "Toulon (Toulon)"
-      },
-      sectionDuration: 14520,
-      to: {
-        embedded_type: "stop_point",
-        id: "stop_point:SNCF:87686006:LongDistanceTrain",
-        name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)"
-      },
-      type: "public_transport"
-    },
-    journeyLastSection: {
-      type : "public_transport",
-      sectionDuration : 9660,
-      duration : 9660,
-      from: {
-        id : "stop_point:SNCF:87391003:LongDistanceTrain",
-        name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
-        embedded_type : "stop_point"
-      },
-      to: {
-        id : "stop_point:SNCF:87476200:LongDistanceTrain",
-        name : "Auray (Auray)",
-        embedded_type : "stop_point"
-      },
-      departure_date_time : "20250922T105700",
-      arrival_date_time : "20250922T133800"
-    },
-    firstDeparturDateTime : "2025-09-22T05:49:00",
-    nb_transfers : 1,
-    sections: [
-      {
-        from: {
-          id : "stop_point:SNCF:87755009:LongDistanceTrain",
-          name : "Toulon (Toulon)",
-          embedded_type : "stop_point"
-        },
-          to : {
-            id : "stop_point:SNCF:87686006:LongDistanceTrain",
-            name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
-            embedded_type : "stop_point"
-          },
-          type : "public_transport",
-          sectionDuration : 14520,
-          duration : 14520,
-          departure_date_time : "20250922T054900",
-          arrival_date_time : "20250922T095100"
-      },
-      {
-        from : {
-          id : "stop_point:SNCF:87686006:LongDistanceTrain",
-          name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
-          embedded_type : "stop_point"
-        },
-        to : {
-          id : "stop_point:SNCF:87391003:LongDistanceTrain",
-          name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
-          embedded_type : "stop_point"
-        },
-        type : "Walking",
-        sectionDuration : 3960,
-        duration : 3960,
-        departure_date_time : "20250922T105700",
-        arrival_date_time : "20250922T095100"
-      },
-      {
-        from : {
-          id : "stop_point:SNCF:87391003:LongDistanceTrain",
-          name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
-          embedded_type : "stop_point"
-        },
-        to: {
-          id : "stop_point:SNCF:87476200:LongDistanceTrain",
-          name : "Auray (Auray)",
-          embedded_type : "stop_point"
-        },
-        type : "public_transport",
-        sectionDuration : 9660,
-        duration : 9660,
-        departure_date_time : "20250922T105700",
-        arrival_date_time : "20250922T133800"
-      }
-    ]
-  }
-
   ngOnInit(){
     this.journey = history.state.journey;
+
+    // Arbitrairement, on met toutes les sections à train
+    if (this.journey?.sections) {
+      for (const section of this.journey.sections) {
+        // Do something with section
+        section.transport_type = "train";
+      }
+    }
   }
 }
+
+
+  // trip: Journey = {
+  //   duration: 28140,
+  //   durations : {
+  //     total: 28140,
+  //     walking: -3960,
+  //   },
+  //   journeyFirstSection: {
+  //     arrival_date_time: "20250922T095100",
+  //     departure_date_time: "20250922T054900",
+  //     duration: 14520,
+  //     from: {
+  //       embedded_type: "stop_point",
+  //       id: "stop_point:SNCF:87755009:LongDistanceTrain",
+  //       name: "Toulon (Toulon)"
+  //     },
+  //     sectionDuration: 14520,
+  //     to: {
+  //       embedded_type: "stop_point",
+  //       id: "stop_point:SNCF:87686006:LongDistanceTrain",
+  //       name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)"
+  //     },
+  //     type: "public_transport",
+  //     transporter: ""
+  //   },
+  //   journeyLastSection: {
+  //     type : "public_transport",
+  //     sectionDuration : 9660,
+  //     duration : 9660,
+  //     from: {
+  //       id : "stop_point:SNCF:87391003:LongDistanceTrain",
+  //       name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+  //       embedded_type : "stop_point"
+  //     },
+  //     to: {
+  //       id : "stop_point:SNCF:87476200:LongDistanceTrain",
+  //       name : "Auray (Auray)",
+  //       embedded_type : "stop_point"
+  //     },
+  //     departure_date_time : "20250922T105700",
+  //     arrival_date_time : "20250922T133800"
+  //   },
+  //   firstDeparturDateTime : "2025-09-22T05:49:00",
+  //   nb_transfers : 1,
+  //   sections: [
+  //     {
+  //       from: {
+  //         id : "stop_point:SNCF:87755009:LongDistanceTrain",
+  //         name : "Toulon (Toulon)",
+  //         embedded_type : "stop_point"
+  //       },
+  //         to : {
+  //           id : "stop_point:SNCF:87686006:LongDistanceTrain",
+  //           name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+  //           embedded_type : "stop_point"
+  //         },
+  //         type : "public_transport",
+  //         transporter: "SNCF",
+  //         sectionDuration : 14520,
+  //         duration : 14520,
+  //         departure_date_time : "20250922T054900",
+  //         arrival_date_time : "20250922T095100"
+  //     },
+  //     {
+  //       from : {
+  //         id : "stop_point:SNCF:87686006:LongDistanceTrain",
+  //         name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+  //         embedded_type : "stop_point"
+  //       },
+  //       to : {
+  //         id : "stop_point:SNCF:87391003:LongDistanceTrain",
+  //         name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+  //         embedded_type : "stop_point"
+  //       },
+  //       type : "Walking",
+  //       sectionDuration : 3960,
+  //       duration : 3960,
+  //       departure_date_time : "20250922T105700",
+  //       arrival_date_time : "20250922T095100"
+  //     },
+  //     {
+  //       from : {
+  //         id : "stop_point:SNCF:87391003:LongDistanceTrain",
+  //         name : "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+  //         embedded_type : "stop_point"
+  //       },
+  //       to: {
+  //         id : "stop_point:SNCF:87476200:LongDistanceTrain",
+  //         name : "Auray (Auray)",
+  //         embedded_type : "stop_point"
+  //       },
+  //       type : "public_transport",
+  //       sectionDuration : 9660,
+  //       duration : 9660,
+  //       departure_date_time : "20250922T105700",
+  //       arrival_date_time : "20250922T133800"
+  //     }
+  //   ]
+  // }

@@ -7,5 +7,6 @@ export interface Section{
   from: Destination,
   sectionDuration: number,
   to: Destination,
-  type: String
+  type: String,
+  transport_type: String
 }
