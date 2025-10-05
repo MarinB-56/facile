@@ -4,10 +4,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.acme.client.NavitiaClient;
 import org.acme.dto.DurationDTO;
@@ -34,16 +32,39 @@ public class NavitiaService {
   @RestClient
   NavitiaClient navitiaClient;
 
-  // Locations input autocomplete
+  /**
+   * Récupère les lieux possibles suite à l'input utilisateur.
+   * @param query: l'input utilisateur (le début d'un lieu).
+   * @return Une liste de propositions de lieu.
+   */
   public String getAllLocations(String query){
-    return navitiaClient.getAllLocations(query);
+    try {
+      return navitiaClient.getAllLocations(query);
+    } catch (Exception e) {
+      System.err.println(e);
+      return "NaN";
+    }
   }
 
-  // Locations input autocomplete (with possible filter (ex: only stop point))
+  /**
+   * Récupère les lieux possibles suite à l'input utilisateur, accepte une option supplémentaire (ex: only stop point)
+   * @param query: l'input utilisateur (le début d'un lieu).
+   * @return Une liste de propositions de lieu.
+   */
   public String getAllLocations(String query, String type){
-    return navitiaClient.getAllLocations(query, type);
+    try {
+      return navitiaClient.getAllLocations(query, type);
+    } catch (Exception e) {
+      System.err.println(e);
+      return "NaN";
+    }
   }
 
+  /**
+    * Récupère une liste d'itinéraires possibles en fonction d'un lieu de départ, d'arrivée et d'une date
+    * @param query: Lieu de départ, lieu d'arrivée et date du voyage
+    * @return une liste de propositions d'itinéraires possibles
+    */
   // Itinary research
   public JourneyProposalsDTO getItineraries(TripDTO trip){
     // Récupération des propositions brut (trip pour la journée)
@@ -83,25 +104,29 @@ public class NavitiaService {
   }
 
   // Récupération des données brut
-  public JourneyProposalsDTO getItinerariesProposals(TripDTO trip){
+  private JourneyProposalsDTO getItinerariesProposals(TripDTO trip){
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
     String tripDate = trip.getDate().toString();
     String datetimeRepresents = "departure";
 
+    JourneyProposalsDTO journeyProposals = new JourneyProposalsDTO();
+
     // Récupération des propositions brut (itinéraires de toute la journée)
     // Appel à l'API Navitia
-    JourneyProposalsDTO journeyProposals = navitiaClient.getItinerariesProposals(idDeparture, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+    try {
+      journeyProposals = navitiaClient.getItinerariesProposals(idDeparture, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+      journeyProposals = cleanJourneyProposals(journeyProposals); // Suppression des crow_fly
 
-    // On supprime les crow_fly
-    journeyProposals = cleanJourneyProposals(journeyProposals);
+    } catch (Exception e) {
 
-    // System.out.println(journeyProposals.toString());
+      System.out.println(e);
+    }
 
     return journeyProposals;
   }
 
-  public JourneyProposalsDTO cleanJourneyProposals(JourneyProposalsDTO journeyProposals){
+  private JourneyProposalsDTO cleanJourneyProposals(JourneyProposalsDTO journeyProposals){
 
     for (JourneyDTO journey : journeyProposals.getJourneyProposals()) {
       journey.getSections().removeIf(section ->
@@ -113,7 +138,7 @@ public class NavitiaService {
   }
 
   // Vérification si le trajet a un stop à Paris
-  public boolean containsStopAtParis(JourneyProposalsDTO journeyProposals){
+  private boolean containsStopAtParis(JourneyProposalsDTO journeyProposals){
 
     for(JourneyDTO journeyProposal : journeyProposals.getJourneyProposals()){
       for( SectionDTO section : journeyProposal.getSections() ){
@@ -134,7 +159,7 @@ public class NavitiaService {
     return false;
   }
 
-  public JourneyProposalsDTO getItinerariesThroughParis(TripDTO trip){
+  private JourneyProposalsDTO getItinerariesThroughParis(TripDTO trip){
     // On trouve les informations du Trip
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
@@ -149,24 +174,28 @@ public class NavitiaService {
     }
 
     // Itinéraires: du départ -> à PARIS
-    JourneyProposalsDTO journeyProposalsToParis = navitiaClient.getItinerariesProposals(idDeparture, PARIS_REGION_ID, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
-    // Itinéraires: de PARIS -> à l'arrivée
-    JourneyProposalsDTO journeyProposalsFromParis = navitiaClient.getItinerariesProposals(PARIS_REGION_ID, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+    try {
 
-    // Nettoyage des propositions (suppression des crow_fly)
-    journeyProposalsToParis = cleanJourneyProposals(journeyProposalsToParis);
-    journeyProposalsFromParis = cleanJourneyProposals(journeyProposalsFromParis);
+      JourneyProposalsDTO journeyProposalsToParis = navitiaClient.getItinerariesProposals(idDeparture, PARIS_REGION_ID, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+      JourneyProposalsDTO journeyProposalsFromParis = navitiaClient.getItinerariesProposals(PARIS_REGION_ID, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
 
-    // System.out.println(journeyProposalsToParis.toString());
-    // System.out.println(journeyProposalsFromParis.toString());
+      // Nettoyage des propositions (suppression des crow_fly)
+      journeyProposalsToParis = cleanJourneyProposals(journeyProposalsToParis);
+      journeyProposalsFromParis = cleanJourneyProposals(journeyProposalsFromParis);
 
-    // Construction des itinéraires du départ -> à Paris -> à l'arrivée
-    JourneyProposalsDTO journeyProposalsThroughParis = joinJourneyProposals(journeyProposalsToParis, journeyProposalsFromParis);
+      // Construction des itinéraires du départ -> à Paris -> à l'arrivée
+      JourneyProposalsDTO journeyProposalsThroughParis = joinJourneyProposals(journeyProposalsToParis, journeyProposalsFromParis);
 
-    return journeyProposalsThroughParis;
+      return journeyProposalsThroughParis;
+    } catch (Exception e) {
+      System.err.println(e);
+      return new JourneyProposalsDTO();
+    }
+
+
   }
 
-  public JourneyProposalsDTO  joinJourneyProposals(JourneyProposalsDTO journeyProposalsToParis, JourneyProposalsDTO journeyProposalsFromParis){
+  private JourneyProposalsDTO  joinJourneyProposals(JourneyProposalsDTO journeyProposalsToParis, JourneyProposalsDTO journeyProposalsFromParis){
     JourneyProposalsDTO journeyProposalsThroughParis = new JourneyProposalsDTO();
     journeyProposalsThroughParis.setJourneyProposals(new ArrayList<>());
 
@@ -197,7 +226,7 @@ public class NavitiaService {
     return journeyProposalsThroughParis;
   }
 
-  public TransferCompatibility checkTransferCompatibility(JourneyDTO firstJourney, JourneyDTO secondJourney){
+  private TransferCompatibility checkTransferCompatibility(JourneyDTO firstJourney, JourneyDTO secondJourney){
 
     SectionDTO lastArrivalSection = firstJourney.getJourneyLastSection();
     SectionDTO firstDepartureSection = secondJourney.getSections().get(0);
@@ -216,7 +245,7 @@ public class NavitiaService {
     return new TransferCompatibility(isTransferPossible, areSameStations, transferDurationInSeconds, lastArrivalSection, firstDepartureSection);
   }
 
-  public int getSectionDuration(String firstDateTime, String secondDateTime){
+  private int getSectionDuration(String firstDateTime, String secondDateTime){
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
 
@@ -227,7 +256,7 @@ public class NavitiaService {
     return (int) transferDurationInSeconds;
   }
 
-  public boolean areSectionsCompatibles(SectionDTO lastArrivalSection, SectionDTO firstDepartureSection, boolean areSameStations, long transferDuration){
+  private boolean areSectionsCompatibles(SectionDTO lastArrivalSection, SectionDTO firstDepartureSection, boolean areSameStations, long transferDuration){
     if(transferDuration < 600){ // Moins de 10 minutes
       return false;
     } else if(areSameStations && transferDuration >= 600){ // Plus de 10 minutes
@@ -240,7 +269,7 @@ public class NavitiaService {
     return false;
   }
 
-  public JourneyDTO buildJourneyThroughParis(JourneyDTO journeyToParis, JourneyDTO journeyFromParis, TransferCompatibility compatibilityCheckResult){
+  private JourneyDTO buildJourneyThroughParis(JourneyDTO journeyToParis, JourneyDTO journeyFromParis, TransferCompatibility compatibilityCheckResult){
     // - Si compatibles, les assembler (trajet1, trajet2, temps entre les deux, même station)
     // - Création d'un voyage général (JourneyDTO)
     JourneyDTO newJourney = new JourneyDTO();
