@@ -103,7 +103,7 @@ public class NavitiaService {
     return journeyProposals;
   }
 
-  // Récupération des données brut
+  // Journey builder
   private JourneyProposalsDTO getItinerariesProposals(TripDTO trip){
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
@@ -126,6 +126,7 @@ public class NavitiaService {
     return journeyProposals;
   }
 
+  // cleaner
   private JourneyProposalsDTO cleanJourneyProposals(JourneyProposalsDTO journeyProposals){
 
     for (JourneyDTO journey : journeyProposals.getJourneyProposals()) {
@@ -137,7 +138,7 @@ public class NavitiaService {
     return journeyProposals;
   }
 
-  // Vérification si le trajet a un stop à Paris
+  // transfer compatibility
   private boolean containsStopAtParis(JourneyProposalsDTO journeyProposals){
 
     for(JourneyDTO journeyProposal : journeyProposals.getJourneyProposals()){
@@ -159,6 +160,7 @@ public class NavitiaService {
     return false;
   }
 
+  // journey builder
   private JourneyProposalsDTO getItinerariesThroughParis(TripDTO trip){
     // On trouve les informations du Trip
     String idDeparture = trip.getDeparture().getId();
@@ -195,6 +197,7 @@ public class NavitiaService {
 
   }
 
+  // Journey builder
   private JourneyProposalsDTO  joinJourneyProposals(JourneyProposalsDTO journeyProposalsToParis, JourneyProposalsDTO journeyProposalsFromParis){
     JourneyProposalsDTO journeyProposalsThroughParis = new JourneyProposalsDTO();
     journeyProposalsThroughParis.setJourneyProposals(new ArrayList<>());
@@ -226,6 +229,7 @@ public class NavitiaService {
     return journeyProposalsThroughParis;
   }
 
+  // tranfer compatibility
   private TransferCompatibility checkTransferCompatibility(JourneyDTO firstJourney, JourneyDTO secondJourney){
 
     SectionDTO lastArrivalSection = firstJourney.getJourneyLastSection();
@@ -245,6 +249,7 @@ public class NavitiaService {
     return new TransferCompatibility(isTransferPossible, areSameStations, transferDurationInSeconds, lastArrivalSection, firstDepartureSection);
   }
 
+  // transfer compatibility
   private int getSectionDuration(String firstDateTime, String secondDateTime){
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
@@ -256,6 +261,7 @@ public class NavitiaService {
     return (int) transferDurationInSeconds;
   }
 
+  // transfer compatibility
   private boolean areSectionsCompatibles(SectionDTO lastArrivalSection, SectionDTO firstDepartureSection, boolean areSameStations, long transferDuration){
     if(transferDuration < 600){ // Moins de 10 minutes
       return false;
@@ -269,6 +275,7 @@ public class NavitiaService {
     return false;
   }
 
+  // journey builder
   private JourneyDTO buildJourneyThroughParis(JourneyDTO journeyToParis, JourneyDTO journeyFromParis, TransferCompatibility compatibilityCheckResult){
     // - Si compatibles, les assembler (trajet1, trajet2, temps entre les deux, même station)
     // - Création d'un voyage général (JourneyDTO)
@@ -297,6 +304,7 @@ public class NavitiaService {
     return newJourney;
   }
 
+  // journey builder
   private List<SectionDTO> joinSections(JourneyDTO journeyToParis, JourneyDTO journeyFromParis, TransferCompatibility compatibilityCheckResult){
     List<SectionDTO> sections = new ArrayList<>();
 
@@ -313,6 +321,7 @@ public class NavitiaService {
     return sections;
   }
 
+  // transfer compatibility
   private SectionDTO buildTransferSection(TransferCompatibility compatibilityCheckResult){
     SectionDTO newSection = new SectionDTO();
 
@@ -333,12 +342,14 @@ public class NavitiaService {
     return newSection;
   }
 
+
   private int computeTotalDuration(int firstSectionDuration, int secondSectionDuration, TransferCompatibility compatibilityCheckResult){
     long totalDuration = (int) firstSectionDuration + secondSectionDuration + compatibilityCheckResult.transferDurationInSeconds();
 
     return (int) totalDuration;
   }
 
+  // journey builder
   private DurationDTO computeDurations(List<SectionDTO> joinedSections, int totalDuration){
     DurationDTO duration = new DurationDTO();
 
@@ -355,6 +366,7 @@ public class NavitiaService {
     return duration;
   }
 
+  // journey builder
   private int computeNbTransfers(List<SectionDTO> sections){
     // Pour chaque section avec au moins 1 public transport, on ajoute 1;
     // On initialise à -1 (0 transfert pour un trajet direct)
@@ -367,6 +379,7 @@ public class NavitiaService {
     return nbTransfers;
   }
 
+  // journey builder
   private List<LinkDTO> joinLinks(JourneyDTO firstJourney, JourneyDTO secondJourney){
     List<LinkDTO> links = new ArrayList<>();
 
