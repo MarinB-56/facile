@@ -23,9 +23,8 @@ public class GtfsResource {
 
   @GET
   @Path("/essai")
-  public String demarrageGTFS(){
-    gtfsService.getTripsFromTo("I56QUI", "I56BIP");
-    return "Ca marche";
+  public Collection<Trip> demarrageGTFS(){
+    return gtfsService.getTripsFromTo("I56QUI", "I56BIP");
   }
 
   @GET

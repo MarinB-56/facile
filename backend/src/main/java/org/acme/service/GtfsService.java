@@ -2,6 +2,7 @@ package org.acme.service;
 
 import java.io.File;
 import java.sql.Date;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -12,11 +13,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.Set;
 
 import org.jboss.logging.Logger;
 import org.onebusaway.gtfs.impl.GtfsDaoImpl;
 import org.onebusaway.gtfs.model.AgencyAndId;
 import org.onebusaway.gtfs.model.ServiceCalendar;
+import org.onebusaway.gtfs.model.ServiceCalendarDate;
 import org.onebusaway.gtfs.model.Stop;
 import org.onebusaway.gtfs.model.StopTime;
 import org.onebusaway.gtfs.model.Transfer;
@@ -24,6 +27,7 @@ import org.onebusaway.gtfs.model.Trip;
 import org.onebusaway.gtfs.serialization.GtfsReader;
 import org.onebusaway.gtfs.serialization.mappings.StopTimeFieldMappingFactory;
 
+import com.aayushatharva.brotli4j.common.annotations.Local;
 
 import io.quarkus.runtime.Startup;
 import io.vertx.mutiny.ext.web.Route;
@@ -41,6 +45,7 @@ public class GtfsService {
     private org.onebusaway.gtfs.model.Route agency;
     private Collection<StopTime> stopTimes;
     private Collection<ServiceCalendar> calendars;
+    private Collection<ServiceCalendarDate> calendarDates;
 
     private String BELLE_ILE_ID = "I56BIP";
     private String QUIBERON_ID = "I56QUI";
@@ -65,6 +70,7 @@ public class GtfsService {
             this.routes = store.getAllRoutes();
             this.stopTimes = store.getAllStopTimes();
             this.calendars = store.getAllCalendars();
+            this.calendarDates = store.getAllCalendarDates();
 
             System.out.println("✅ GTFS chargé : " + store.getAllStops().size() + " arrêts, " +
                               store.getAllRoutes().size() + " routes, " +
@@ -76,90 +82,77 @@ public class GtfsService {
         }
     }
 
-    // Comment donner la direction ?
-    public void getScheduledTripsFromTo(String departureStopId, String arrivalStopId){
-      // Récupération des stopTime de la gare de départ(stopSequence == 1)
-      List<StopTime> stopTimeDeparture = this.stopTimes.stream()
-                  .filter(stop -> stop.getStop().getId().getId().contentEquals(departureStopId) && stop.getStopSequence() == 1)
-                  .collect(Collectors.toList());
-
-      // Récupération des stopTime de la gare d'arrivée (stopSequence == 2)
-      List<StopTime> stopTimeArrival = this.stopTimes.stream()
-                  .filter(stop -> stop.getStop().getId().getId().contentEquals(arrivalStopId) && stop.getStopSequence() == 2)
-                  .collect(Collectors.toList());
-
-      // Je ne garde que les stop times où departureStopId a le numéro 1
-      // Je cherche le stopTime avec le trip id 11806
-      StopTime arret1 = stopTimeDeparture.stream()
-                  .filter(s -> s.getTrip().getId().getId().contentEquals("11806"))
-                  .findAny()
-                  .orElseThrow(() -> new IllegalStateException("StopTime introuvable pour l’ID 11806"));
-
-      StopTime arret2 = stopTimeArrival.stream()
-                  .filter(s -> s.getTrip().getId().getId().contentEquals("11806"))
-                  .findAny()
-                  .orElseThrow(() -> new IllegalStateException("StopTime introuvable pour l’ID 11806"));
-
-      System.out.println("Trajet: " + StopTimeFieldMappingFactory.getSecondsAsString(arret1.getArrivalTime()) + " - " + arret2);
-      System.out.println("Nombre d'horaires au départ de Belle-Ile : " + stopTimeDeparture.size());
-
-      for(StopTime st : stopTimeDeparture){
-        System.out.println(st);
-      }
-      // Trajet: StopTime(seq=1 stop=29_I56BIP trip=29_11806 times=12:45:00-12:45:00) - StopTime(seq=2 stop=29_I56QUI trip=29_11806 times=13:35:00-13:35:00)
-    }
-
     // Récupération des trajets Quiberon -> Belle ile
-    public List<Integer> getTripsFromTo(String departureId, String arrivalId){
-      // departureId a un sequenceStop à 1
-      // arrivalId a un sequenceStop à 2
-      List<StopTime> stopTimesFromTo = this.stopTimes.stream()
-                  .filter(st -> (st.getStop().getId().getId().equals(departureId) && st.getStopSequence() == 1)
-                    || (st.getStop().getId().getId().equals(arrivalId) && st.getStopSequence() == 2))
-                  .collect(Collectors.toList());
+    public List<Trip> getTripsFromTo(String departureId, String arrivalId){
+      // Récupération des trips departure -> arrival (trip_id)
+      Set<String> tripsId = this.stopTimes.stream()
+                .filter(st -> (st.getStop().getId().getId().equals(departureId) && st.getStopSequence() == 1)
+                          || (st.getStop().getId().getId().equals(arrivalId) && st.getStopSequence() == 2))
+                .collect(Collectors.groupingBy(st -> st.getTrip().getId().getId()))
+                .values().stream()
+                .filter(list -> list.size() == 2) // ne garder que les trip_id présents 2 fois (1 departure & 1 arrival)
+                .flatMap(List::stream)
+                .map(c -> c.getTrip().getId().getId())
+                .collect(Collectors.toSet());
 
-      // J'ai une liste avec tous les trip_id depart -> arrivée
-      LocalDate travelDate = LocalDate.of(2025, 10, 11);
+      LocalDate travelDate = LocalDate.of(2025, 10, 12);
 
-      // Je récupère tous les service_id qui correspondent à ma date (via Calendar)
-      List<ServiceCalendar> servicesOnDate = this.calendars.stream()
-                              .filter(c -> {
-                                LocalDate start = c.getStartDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                                LocalDate end = c.getEndDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                                return ( !start.isAfter(travelDate) && !end.isBefore(travelDate) );
-                              })
-                              .collect(Collectors.toList());
+      // Je récupère tous les service_id qui sont supprimés à la date recherchée (via calendar_dates)
+      Set<String> servicesDeletedOnDate = this.calendarDates.stream()
+                                  .filter(cd -> {
+                                    LocalDate date = cd.getDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                                    return (date.equals(travelDate));
+                                  })
+                                  .map(c -> c.getServiceId().getId())
+                                  .collect(Collectors.toSet());
 
-                                
-      // System.out.println("Nombre de stop Q & B: " + stops.size());
-      // for(StopTime element : stopTimesFromTo){
-      //   System.out.println(element);
+      // System.out.println("Nombre de service id supprimés le " + travelDate + ": " + servicesDeletedOnDate.size());
+      // for(String s : servicesDeletedOnDate){
+      //   System.out.println(s);
       // }
 
-      System.out.println("Nombre de service trouvés qui correspondent à " + travelDate + " : " + servicesOnDate.size());
-      for(ServiceCalendar service : servicesOnDate){
-        System.out.println(service);
+      // Pour avoir les jours de la semaine
+      DayOfWeek day = travelDate.getDayOfWeek();
+
+      // Je récupère tous les service_id qui sont prévus à la date recherchée (via Calendar)
+      Set<String> servicesOnDate = this.calendars.stream()
+                    .filter(c -> {
+                        LocalDate start = c.getStartDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                        LocalDate end = c.getEndDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                        if (start.isAfter(travelDate) || end.isBefore(travelDate)) return false;
+
+                        // Vérifier le jour de la semaine
+                        switch(day) {
+                            case MONDAY: return c.getMonday() == 1;
+                            case TUESDAY: return c.getTuesday() == 1;
+                            case WEDNESDAY: return c.getWednesday() == 1;
+                            case THURSDAY: return c.getThursday() == 1;
+                            case FRIDAY: return c.getFriday() == 1;
+                            case SATURDAY: return c.getSaturday() == 1;
+                            case SUNDAY: return c.getSunday() == 1;
+                            default: return false;
+                        }
+                    })
+                    .map(c -> c.getServiceId().getId())
+                    .collect(Collectors.toSet());
+
+      // Je recoupe les dates prévues et les dates supprimées pour avoir les dates effectives
+      List<Trip> validTrips = this.trips.stream()
+                      .filter(t -> servicesOnDate.contains(t.getServiceId().getId()))
+                      .filter(t -> !servicesDeletedOnDate.contains(t.getServiceId().getId()))
+                      .filter(t -> tripsId.contains(t.getId().getId()))
+                      .collect(Collectors.toList());
+
+      System.out.println("Nombre de trips valides: " + validTrips.size());
+      for(Trip t : validTrips){
+        System.out.println(t.getId().getId());
       }
 
-      return new ArrayList<Integer>();
+      return validTrips;
     }
 
     public Collection<StopTime> getStopTimes(){
       return this.stopTimes;
     }
-
-    // public List<Trip> getTrips(){
-    //   //List<Trip> routeIds = this.trips.stream().filter(element -> element.getRoute().getId().getId().contentEquals("2") ).collect(Collectors.toList());
-    //   List<Trip> quiberon_bi = this.trips.stream().filter(element -> element.getRoute().getLongName().contentEquals("Quiberon <> Belle-Île-en-Mer")).collect(Collectors.toList());
-    //   // System.out.println("Nombre de trips avec longName Quiberon <> Belle-Île-en-Mer:" + quiberon_bi.size());
-
-    //   return quiberon_bi;
-    // }
-
-    // public Collection<Stop> getStops(){
-    //   return this.stops;
-    // }
-
-
 
 }
