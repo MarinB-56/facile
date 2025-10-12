@@ -67,9 +67,11 @@ public class NavitiaService {
     */
   // Itinary research
   public JourneyProposalsDTO getItineraries(TripDTO trip){
+    System.out.println("Date du voyage recherché : " + trip.getDate());
     // Récupération des propositions brut (trip pour la journée)
     JourneyProposalsDTO journeyProposals = getItinerariesProposals(trip);
 
+    System.out.println("Nombre de journey trouvés: " + journeyProposals.getJourneyProposals().size() );
     // Vérification si passe par Paris
     // if(containsStopAtParis(journeyProposals)){
     //   System.out.println("Par Paris");
@@ -88,6 +90,9 @@ public class NavitiaService {
     if(journeyProposalsThroughParis != null){
       journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
     }
+
+    System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
+
 
     // Tri des voyages dans l'ordre de départ
     journeyProposals.getJourneyProposals().sort(Comparator.comparing(
@@ -214,10 +219,10 @@ public class NavitiaService {
         if(compatibilityCheckResult.isTransferPossible()){
           JourneyDTO journeyThroughParis = buildJourneyThroughParis(journeyToParis, journeyFromParis, compatibilityCheckResult);
 
-          System.out.println(journeyToParis.getJourneyLastSection().toString());
-          System.out.println(journeyFromParis.getSections().get(0).toString());
+          // System.out.println(journeyToParis.getJourneyLastSection().toString());
+          // System.out.println(journeyFromParis.getSections().get(0).toString());
 
-          System.out.println("------ TRAJETS COMPATIBLES ------");
+          // System.out.println("------ TRAJETS COMPATIBLES ------");
 
           // Ajout du trajet construit à la liste des trajets qui passent par Paris
           journeyProposalsThroughParis.getJourneyProposals().add(journeyThroughParis);

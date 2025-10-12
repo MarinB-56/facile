@@ -22,11 +22,11 @@ public class GtfsResource {
   @Inject
   GtfsService gtfsService;
 
-  @GET
-  @Path("/essai")
-  public Map<String, List<StopTime>> demarrageGTFS(){
-    return gtfsService.getTripsFromTo("I56QUI", "I56BIP");
-  }
+  // @GET
+  // @Path("/essai")
+  // public Map<String, List<StopTime>> demarrageGTFS(){
+  //   return gtfsService.getTripsFromTo("I56QUI", "I56BIP");
+  // }
 
   @GET
   @Path("/stop")

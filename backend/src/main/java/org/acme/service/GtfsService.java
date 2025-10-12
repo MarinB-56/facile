@@ -3,13 +3,20 @@ package org.acme.service;
 import java.io.File;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.Set;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
+import org.acme.dto.SectionDTO;
+import org.acme.dto.StopPointDTO;
+import org.acme.dto.TripDTO;
 import org.onebusaway.gtfs.impl.GtfsDaoImpl;
 import org.onebusaway.gtfs.model.ServiceCalendar;
 import org.onebusaway.gtfs.model.ServiceCalendarDate;
@@ -17,6 +24,8 @@ import org.onebusaway.gtfs.model.Stop;
 import org.onebusaway.gtfs.model.StopTime;
 import org.onebusaway.gtfs.serialization.GtfsReader;
 
+import com.arjuna.ats.internal.jta.resources.errorhandlers.tibco;
+import com.arjuna.ats.txoj.common.txojPropertyManager;
 
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
@@ -40,7 +49,6 @@ public class GtfsService {
 
     @PostConstruct
     public void init() {
-      // LOG.info("Initialisation de GTFS");
       System.out.println("Initialisation de GTFS Service");
         try {
             File gtfsFile = new File("data/BREIZHGO_BATEAU_56.gtfs.zip");
@@ -71,16 +79,25 @@ public class GtfsService {
     }
 
     // Récupération des trajets Quiberon -> Belle ile
-    public  Map<String, List<StopTime>> getTripsFromTo(String departureId, String arrivalId){
-      /*
-       *  TODO : Déplacer traverDate en argument de la fonction
-       */
-      LocalDate travelDate = LocalDate.of(2025, 10, 12);
+    public  Map<String, List<StopTime>> getTripsFromTo(TripDTO trip){
+
+      String departureGtfsId;
+      String arrivalGtfsId;
+      LocalDateTime travelDate = trip.getDate();
+
+      if(trip.getDeparture().getName().contains("Quiberon")){
+        // On quitte Belle ile
+        departureGtfsId = this.BELLE_ILE_ID;
+        arrivalGtfsId = this.QUIBERON_ID;
+      }else{
+        departureGtfsId = this.QUIBERON_ID;
+        arrivalGtfsId = this.BELLE_ILE_ID;
+      }
 
       // 1) Récupération des trip_id qui correspondent à un trajet depart -> arrivée
       Map<String, List<StopTime>> stopTimesFromTo = this.stopTimes.stream()
-                                        .filter(st -> (st.getStop().getId().getId().equals(departureId) && st.getStopSequence() == 1)
-                                          || (st.getStop().getId().getId().equals(arrivalId) && st.getStopSequence() == 2))
+                                        .filter(st -> (st.getStop().getId().getId().equals(departureGtfsId) && st.getStopSequence() == 1)
+                                          || (st.getStop().getId().getId().equals(arrivalGtfsId) && st.getStopSequence() == 2))
                                         .collect(Collectors.groupingBy(st -> st.getTrip().getId().getId()));
       // ==> On a une collection de stopTimes qui sont reliés à des trip_id (map)
 
@@ -95,7 +112,7 @@ public class GtfsService {
       Set<String> deletedServicesOnDate = this.calendarDates.stream()
                                   .filter(cd -> {
                                     LocalDate date = cd.getDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                                    return (date.equals(travelDate));
+                                    return (date.equals(travelDate.toLocalDate()));
                                   })
                                   .map(c -> c.getServiceId().getId())
                                   .collect(Collectors.toSet());
@@ -105,7 +122,7 @@ public class GtfsService {
                     .filter(c -> {
                         LocalDate start = c.getStartDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                         LocalDate end = c.getEndDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                        if (start.isAfter(travelDate) || end.isBefore(travelDate)) return false;
+                        if (start.isAfter(travelDate.toLocalDate()) || end.isBefore(travelDate.toLocalDate())) return false;
 
                         // Vérifier le jour de la semaine
                         switch(weekDay) {
@@ -132,7 +149,80 @@ public class GtfsService {
                         t -> stopTimesFromTo.get(t.getId().getId())
                       ));
 
-      return validTrips;
+      // 5) On supprime les trajets qui sont avant l'heure demandée
+      Map<String, List<StopTime>> filteredTrips = validTrips.entrySet().stream()
+        .filter(entry -> {
+          // Find the departure StopTime (stopSequence == 1)
+          StopTime departureStopTime = entry.getValue().stream()
+            .filter(st -> st.getStopSequence() == 1)
+            .findFirst()
+            .orElse(null);
+          if (departureStopTime == null) return false;
+          // Convert GTFS time (seconds since midnight) to LocalDateTime
+          int departureSeconds = departureStopTime.getDepartureTime();
+          LocalDate tripDate = trip.getDate().toLocalDate();
+          LocalDateTime departureDateTime = tripDate.atStartOfDay().plusSeconds(departureSeconds);
+          return !departureDateTime.isBefore(trip.getDate());
+        })
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+      return filteredTrips;
+    }
+
+    public Set<SectionDTO> getSectionsFromGtfsData(TripDTO trip){
+
+      Map<String, List<StopTime>> gtfsValidTrips = getTripsFromTo(trip);
+
+      System.out.println("Nombre de bateaux trouvés:  " + gtfsValidTrips.size());
+      Set<SectionDTO> gtfsSections = new HashSet<SectionDTO>();
+
+      // Formatage de gtfsValidTrips en SectionDTO
+      for (List<StopTime> stopTime : gtfsValidTrips.values()) {
+        SectionDTO section = new SectionDTO();
+
+        StopTime departure = stopTime.get(0);
+        StopTime arrival = stopTime.get(1);
+
+        StopPointDTO from = new StopPointDTO();
+        from.setId(departure.getStop().getId().getId()); // QUI56
+        from.setName( this.stops.stream()
+                        .filter(s -> s.getId().getId().equals(from.getId()))
+                        .map(Stop::getName)
+                        .findFirst()
+                        .orElse(null)
+                    );
+
+        from.embeddedType = "harbor";
+
+        StopPointDTO to = new StopPointDTO();
+        to.setId(arrival.getStop().getId().getId()); // BI56
+        to.setName( this.stops.stream()
+                        .filter(s -> s.getId().getId().equals(to.getId()))
+                        .map(Stop::getName)
+                        .findFirst()
+                        .orElse(null)
+                  );
+
+        section.setFrom(from);
+        section.setTo(to);
+        section.setSectionDuration(arrival.getArrivalTime() - departure.getDepartureTime());
+
+        LocalTime departureTime = LocalTime.ofSecondOfDay(departure.getDepartureTime());
+        LocalTime arrivalTime = LocalTime.ofSecondOfDay(arrival.getArrivalTime());
+
+        LocalDateTime tripDate = trip.getDate();
+
+        section.setArrivalDateTime(tripDate.toLocalDate().atTime(arrivalTime).toString());
+        section.setDepartureDateTime(tripDate.toLocalDate().atTime(departureTime).toString());
+
+        System.out.println(section.getDepartureDateTime());
+        System.out.println(section.getArrivalDateTime());
+
+        gtfsSections.add(section);
+
+      }
+
+      return gtfsSections;
     }
 
     public Collection<StopTime> getStopTimes(){
