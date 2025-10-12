@@ -14,6 +14,7 @@ import org.onebusaway.gtfs.model.Trip;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Path("/gtfs")
@@ -23,7 +24,7 @@ public class GtfsResource {
 
   @GET
   @Path("/essai")
-  public Collection<Trip> demarrageGTFS(){
+  public Map<String, List<StopTime>> demarrageGTFS(){
     return gtfsService.getTripsFromTo("I56QUI", "I56BIP");
   }
 
