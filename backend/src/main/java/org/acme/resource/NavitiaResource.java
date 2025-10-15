@@ -1,20 +1,15 @@
 package org.acme.resource;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.util.Date;
 
-import org.acme.client.NavitiaClient;
 import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.StopPointDTO;
 import org.acme.dto.TripDTO;
 import org.acme.service.BuildJourneyService;
 import org.acme.service.NavitiaService;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 // import jakarta.enterprise.inject.Produces; // Removed, not needed for REST endpoints
 import jakarta.ws.rs.Produces;
@@ -93,6 +88,7 @@ public class NavitiaResource {
     trip.setDate(localParis);
     System.out.println("Date du voyage recherché resource : " + trip.getDate());
 
-    return navitiaService.getItineraries(trip);
+    // return navitiaService.getItineraries(trip);
+    return buildJourneyService.buildJourney(trip);
   }
 }
