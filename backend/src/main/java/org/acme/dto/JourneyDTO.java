@@ -89,4 +89,11 @@ public class JourneyDTO {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
     return LocalDateTime.parse(dateTimeStr, formatter);
   }
+
+  public LocalDateTime getLastArrivalDateTime(){
+    String dateTimeStr = sections.get(getSections().size() - 1).getArrivalDateTime();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
+    return LocalDateTime.parse(dateTimeStr, formatter);
+  }
 }
