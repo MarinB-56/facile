@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +25,7 @@ import org.onebusaway.gtfs.model.Stop;
 import org.onebusaway.gtfs.model.StopTime;
 import org.onebusaway.gtfs.serialization.GtfsReader;
 
+import com.aayushatharva.brotli4j.common.annotations.Local;
 import com.arjuna.ats.internal.jta.resources.errorhandlers.tibco;
 import com.arjuna.ats.txoj.common.txojPropertyManager;
 
@@ -176,6 +178,11 @@ public class GtfsService {
       System.out.println("Nombre de bateaux trouvés:  " + gtfsValidTrips.size());
       Set<SectionDTO> gtfsSections = new HashSet<SectionDTO>();
 
+      // Pour unifier le format de LocalDateTime (yyyyMMdd'T'HHmmss)
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
+
+
+
       // Formatage de gtfsValidTrips en SectionDTO
       for (List<StopTime> stopTime : gtfsValidTrips.values()) {
         SectionDTO section = new SectionDTO();
@@ -191,7 +198,6 @@ public class GtfsService {
                         .findFirst()
                         .orElse(null)
                     );
-
         from.embeddedType = "harbor";
 
         StopPointDTO to = new StopPointDTO();
@@ -212,8 +218,11 @@ public class GtfsService {
 
         LocalDateTime tripDate = trip.getDate();
 
-        section.setArrivalDateTime(tripDate.toLocalDate().atTime(arrivalTime).toString());
-        section.setDepartureDateTime(tripDate.toLocalDate().atTime(departureTime).toString());
+        LocalDateTime departureDateTime = tripDate.toLocalDate().atTime(departureTime);
+        LocalDateTime arrivLocalDateTime = tripDate.toLocalDate().atTime(arrivalTime);
+
+        section.setDepartureDateTime(departureDateTime.format(formatter));
+        section.setArrivalDateTime(arrivLocalDateTime.format(formatter));
 
         System.out.println(section.getDepartureDateTime());
         System.out.println(section.getArrivalDateTime());
