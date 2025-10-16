@@ -37,8 +37,6 @@ public class BuildJourneyService {
     // Ajout des sections gtfs aux trajets de Navitia
     JourneyProposalsDTO completeJourneyProposals = assembleNavitiaAndGtfsSections(trip, navitiaJourneyProposals, gtfsSectionProposals);
 
-    System.out.println("Nombre de voyages : " + completeJourneyProposals.getJourneyProposals().size());
-
     // On renvoie l'objet entier formaté
     return completeJourneyProposals;
   }
@@ -62,7 +60,6 @@ public class BuildJourneyService {
 
     for(JourneyDTO navitiaJourneyProposal : navitiaJourneyProposals.getJourneyProposals()){
       navitiaJourneyProposal = addGtfsSection(navitiaJourneyProposal, gtfsSectionProposals, isBoatFirstSection);
-      System.out.println(navitiaJourneyProposal.toString());
     }
 
     return navitiaJourneyProposals;
@@ -138,6 +135,10 @@ public class BuildJourneyService {
           }
         }
       }
+
+      /*
+       * TODO : Ajout d'une connection au milieu (pour la transition)
+       */
 
       // Si un trajet a été trouvé, on l'ajoute au voyage Journey
       if(mostOptimizedBoatSection.getDepartureDateTime() == null){
