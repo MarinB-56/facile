@@ -28,6 +28,7 @@ import org.onebusaway.gtfs.serialization.GtfsReader;
 import com.aayushatharva.brotli4j.common.annotations.Local;
 import com.arjuna.ats.internal.jta.resources.errorhandlers.tibco;
 import com.arjuna.ats.txoj.common.txojPropertyManager;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
@@ -208,10 +209,7 @@ public class GtfsService {
                         .findFirst()
                         .orElse(null)
                   );
-
-        section.setFrom(from);
-        section.setTo(to);
-        section.setSectionDuration(arrival.getArrivalTime() - departure.getDepartureTime());
+        from.embeddedType = "harbor";
 
         LocalTime departureTime = LocalTime.ofSecondOfDay(departure.getDepartureTime());
         LocalTime arrivalTime = LocalTime.ofSecondOfDay(arrival.getArrivalTime());
@@ -221,14 +219,22 @@ public class GtfsService {
         LocalDateTime departureDateTime = tripDate.toLocalDate().atTime(departureTime);
         LocalDateTime arrivLocalDateTime = tripDate.toLocalDate().atTime(arrivalTime);
 
+
+
+        section.setFrom(from);
+        section.setTo(to);
+
         section.setDepartureDateTime(departureDateTime.format(formatter));
         section.setArrivalDateTime(arrivLocalDateTime.format(formatter));
+
+        section.setSectionDuration(arrival.getArrivalTime() - departure.getDepartureTime());
+
+        section.setType("Boat");
 
         System.out.println(section.getDepartureDateTime());
         System.out.println(section.getArrivalDateTime());
 
         gtfsSections.add(section);
-
       }
 
       return gtfsSections;
