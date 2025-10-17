@@ -41,22 +41,24 @@ public class BuildJourneyService {
     return completeJourneyProposals;
   }
 
-  private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){
-    // Trouver le sens du trajet
-    boolean isBoatFirstSection = false;
+  protected boolean getIfBoatIsFirstSection(TripDTO trip){
     // On vérifie la direction
     if(trip.getDeparture().getName().contains("Quiberon")){
       // Trajet depuis Belle ile
-      isBoatFirstSection = true;
+      return true;
 
     }else if(trip.getArrival().getName().contains("Quiberon")){
       // Trajet qui va à belle ile
-      isBoatFirstSection = false;
+      return false;
     }
 
-    /*
-     * TODO : Gérer le cas où aucun voyage en train n'est trouvé
-     */
+    System.out.println("Impossible de déterminer la place du bateau dans le trajet");
+    return false;
+  }
+
+  private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){
+    // Trouver le sens du trajet
+    boolean isBoatFirstSection = getIfBoatIsFirstSection(trip);
 
     for(JourneyDTO navitiaJourneyProposal : navitiaJourneyProposals.getJourneyProposals()){
       navitiaJourneyProposal = addGtfsSection(navitiaJourneyProposal, gtfsSectionProposals, isBoatFirstSection);
@@ -66,7 +68,6 @@ public class BuildJourneyService {
   }
 
   private JourneyDTO addGtfsSection(JourneyDTO navitiaJourneyProposal, Set<SectionDTO> gtfSectionProposals, boolean isBoatFirstSection){
-
 
     long minTimeToWaitBetweenBoatAndTrainSections = Long.MAX_VALUE;
     SectionDTO mostOptimizedBoatSection = new SectionDTO();
@@ -81,6 +82,7 @@ public class BuildJourneyService {
     // Si bateau à la fin, on ajoute à la fin
     if(!isBoatFirstSection){
       LocalDateTime journeyArrivalDateTime = navitiaJourneyProposal.getLastArrivalDateTime();
+
       for(SectionDTO boatSection : gtfSectionProposals){
 
         LocalDateTime boatSectionDepartureDateTime = LocalDateTime.parse(boatSection.getDepartureDateTime(), formatter);;
