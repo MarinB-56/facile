@@ -1,6 +1,8 @@
 package org.acme.service;
 
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.acme.dto.DurationDTO;
 import org.acme.dto.JourneyDTO;
@@ -28,7 +30,7 @@ public class BuildJourneyService {
   GtfsService gtfsService;
 
   public JourneyProposalsDTO buildJourney(TripDTO trip){
-    // Récupération des trajets créés par Navitia
+    // Création de trajets via Navitia
     JourneyProposalsDTO navitiaJourneyProposals = navitiaService.getItineraries(trip);
 
     // Récupération des sections créés par GTFS
@@ -69,92 +71,86 @@ public class BuildJourneyService {
 
   private JourneyDTO addGtfsSection(JourneyDTO navitiaJourneyProposal, Set<SectionDTO> gtfSectionProposals, boolean isBoatFirstSection){
 
-    long minTimeToWaitBetweenBoatAndTrainSections = Long.MAX_VALUE;
-    SectionDTO mostOptimizedBoatSection = new SectionDTO();
+    Set<SectionDTO> compatibleBoats = getCompatibleBoats(gtfSectionProposals, navitiaJourneyProposal, isBoatFirstSection);
+    SectionDTO mostOptimizedBoat = getMostOptimizedBoat(compatibleBoats, navitiaJourneyProposal, isBoatFirstSection);
 
-    // System.out.println("Recherche du bateau le plus optimisé. Arrivée à quiberon : "
-    //             + navitiaJourneyProposal.getJourneyLastSection().getArrivalDateTime());
-
-    // On vérifie si le trajet est compatible ou non
-      // Pour ça, on fait une liste avec chaque bateau compatible avec le trajet
-      // On garde celui qui est le plus arrangeant (on compare l'heure d'arrivée du bateau, on ajoute 30 min de marche, on regarde l'heure de départ du train)
-
-    // Si bateau à la fin, on ajoute à la fin
-    if(!isBoatFirstSection){
-      LocalDateTime journeyArrivalDateTime = navitiaJourneyProposal.getLastArrivalDateTime();
-
-      for(SectionDTO boatSection : gtfSectionProposals){
-
-        LocalDateTime boatSectionDepartureDateTime = LocalDateTime.parse(boatSection.getDepartureDateTime(), formatter);;
-
-        Long timeToWaitBeforeBoat = journeyArrivalDateTime.until(boatSectionDepartureDateTime, ChronoUnit.SECONDS);
-
-        // heure d'arrivée until heure de départ du bateau 1800 secondes nécessaires à la traversée
-        // si la durée est au moins aussi grande que 1800, alors on peut considérer que c'est compatible
-        // On enregistre la durée d'attente
-
-        if(timeToWaitBeforeBoat >= MIN_TRANSFERT_TIME_IN_SECONDS){
-          // compatible
-          //System.out.println("Temps d'attente : " + timeToWaitBeforeBoat);
-
-          if(minTimeToWaitBetweenBoatAndTrainSections > timeToWaitBeforeBoat){
-            //System.out.println("Trajet le plus court mis à jour");
-            minTimeToWaitBetweenBoatAndTrainSections = timeToWaitBeforeBoat;
-            mostOptimizedBoatSection = boatSection;
-          }
-        }
+    if(isBoatFirstSection){
+      if(mostOptimizedBoat.getDepartureDateTime() != null){
+        navitiaJourneyProposal.getSections().add(0, mostOptimizedBoat); // <- ajouté ici
       }
-
-      // Si un trajet a été trouvé, on l'ajoute au voyage Journey
-      if(mostOptimizedBoatSection.getDepartureDateTime() == null){
-        System.out.println("Aucun bateau compatible");
-      }else{
-        navitiaJourneyProposal.getSections().add(mostOptimizedBoatSection);
-      }
-
-      // System.out.println("après: " + navitiaJourneyProposal.getSections().size());
-    } else if(isBoatFirstSection){
-      LocalDateTime journeyDepartureDateTime = navitiaJourneyProposal.getFirstDeparturDateTime();
-
-      for(SectionDTO boatSection : gtfSectionProposals){
-
-        LocalDateTime boatSectionArrivalDateTime = LocalDateTime.parse(boatSection.getArrivalDateTime(), formatter);;
-
-        Long timeToWaitAfterBoat = boatSectionArrivalDateTime.until(journeyDepartureDateTime, ChronoUnit.SECONDS);
-
-        // heure d'arrivée until heure de départ du bateau 1800 secondes nécessaires à la traversée
-        // si la durée est au moins aussi grande que 1800, alors on peut considérer que c'est compatible
-        // On enregistre la durée d'attente
-
-        if(timeToWaitAfterBoat >= MIN_TRANSFERT_TIME_IN_SECONDS){
-          // compatible
-          //System.out.println("Temps d'attente : " + timeToWaitBeforeBoat);
-
-          if(minTimeToWaitBetweenBoatAndTrainSections > timeToWaitAfterBoat){
-            //System.out.println("Trajet le plus court mis à jour");
-            minTimeToWaitBetweenBoatAndTrainSections = timeToWaitAfterBoat;
-            mostOptimizedBoatSection = boatSection;
-          }
-        }
-      }
-
-      /*
-       * TODO : Ajout d'une connection au milieu (pour la transition)
-       */
-
-      // Si un trajet a été trouvé, on l'ajoute au voyage Journey
-      if(mostOptimizedBoatSection.getDepartureDateTime() == null){
-        System.out.println("Aucun bateau compatible");
-      }else{
-        // ajout du bateau au voyage (au début du voyage) // Pas très optimisé
-        /*
-         * TODO : optimiser l'insertion dans la liste (changer en LinkedList ?)
-         */
-        navitiaJourneyProposal.getSections().add(0, mostOptimizedBoatSection);
+    }else{
+      if(mostOptimizedBoat.getDepartureDateTime() != null){
+        navitiaJourneyProposal.getSections().add(mostOptimizedBoat); // <- ajouté ici
       }
     }
 
+    // Si bateau à la fin, on ajoute à la fin
+
     return navitiaJourneyProposal;
+  }
+
+  protected Set<SectionDTO> getCompatibleBoats(Set<SectionDTO> gtfsSectionProposals , JourneyDTO journeyProposal, boolean isBoatFirstSection){
+    Set<SectionDTO> compatibleGtfsSections = new HashSet<SectionDTO>();
+
+    LocalDateTime trainDeparture = journeyProposal.getFirstDeparturDateTime();
+    LocalDateTime trainArrival = journeyProposal.getLastArrivalDateTime();
+
+    if(isBoatFirstSection){
+      compatibleGtfsSections = gtfsSectionProposals.stream()
+                                .filter(s -> {
+                                  LocalDateTime boatArrival = LocalDateTime.parse(s.getArrivalDateTime());
+                                  long connectionTime = boatArrival.until(trainDeparture, ChronoUnit.SECONDS);
+                                  return connectionTime >= MIN_TRANSFERT_TIME_IN_SECONDS;
+                                } )
+                                .collect(Collectors.toSet());
+    }else{
+      compatibleGtfsSections = gtfsSectionProposals.stream()
+                                .filter(s -> {
+                                  LocalDateTime boatDeparture = LocalDateTime.parse(s.getDepartureDateTime());
+                                  long connectionTime = trainArrival.until(boatDeparture, ChronoUnit.SECONDS);
+                                  return connectionTime >= MIN_TRANSFERT_TIME_IN_SECONDS;
+                                } )
+                                .collect(Collectors.toSet());
+    }
+
+    return compatibleGtfsSections;
+  }
+
+  protected SectionDTO getMostOptimizedBoat(Set<SectionDTO> gtfsSectionProposals , JourneyDTO journeyProposal, boolean isBoatFirstSection){
+
+    long minConnectionTime = Long.MAX_VALUE;
+    SectionDTO mostOptimizedBoat = new SectionDTO();
+
+    if(isBoatFirstSection){
+      for(SectionDTO boatSection : gtfsSectionProposals){
+        LocalDateTime boatArrival = LocalDateTime.parse(boatSection.getArrivalDateTime());
+        LocalDateTime trainDeparture = journeyProposal.getFirstDeparturDateTime();
+
+        long connectionTime = boatArrival.until(trainDeparture, ChronoUnit.SECONDS);
+
+        if(minConnectionTime >= connectionTime) {
+          minConnectionTime = connectionTime;
+          mostOptimizedBoat = boatSection;
+
+        }
+      }
+    }else{
+      for(SectionDTO boatSection : gtfsSectionProposals){
+        LocalDateTime boatDeparture = LocalDateTime.parse(boatSection.getDepartureDateTime());
+        LocalDateTime trainArrival = journeyProposal.getLastArrivalDateTime();
+
+        long connectionTime = trainArrival.until(boatDeparture, ChronoUnit.SECONDS);
+
+        if(minConnectionTime >= connectionTime){
+          minConnectionTime = connectionTime;
+          mostOptimizedBoat = boatSection;
+        }
+
+      }
+    }
+
+    return mostOptimizedBoat;
+
   }
 }
 
