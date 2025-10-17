@@ -74,15 +74,7 @@ public class BuildJourneyService {
     Set<SectionDTO> compatibleBoats = getCompatibleBoats(gtfSectionProposals, navitiaJourneyProposal, isBoatFirstSection);
     SectionDTO mostOptimizedBoat = getMostOptimizedBoat(compatibleBoats, navitiaJourneyProposal, isBoatFirstSection);
 
-    if(isBoatFirstSection){
-      if(mostOptimizedBoat.getDepartureDateTime() != null){
-        navitiaJourneyProposal.getSections().add(0, mostOptimizedBoat);
-      }
-    }else{
-      if(mostOptimizedBoat.getDepartureDateTime() != null){
-        navitiaJourneyProposal.getSections().add(mostOptimizedBoat);
-      }
-    }
+    navitiaJourneyProposal = addBoatSection(isBoatFirstSection, navitiaJourneyProposal, mostOptimizedBoat);
 
     return navitiaJourneyProposal;
   }
@@ -96,7 +88,7 @@ public class BuildJourneyService {
     if(isBoatFirstSection){
       compatibleGtfsSections = gtfsSectionProposals.stream()
                                 .filter(s -> {
-                                  LocalDateTime boatArrival = LocalDateTime.parse(s.getArrivalDateTime());
+                                  LocalDateTime boatArrival = LocalDateTime.parse(s.getArrivalDateTime(), formatter);
                                   long connectionTime = boatArrival.until(trainDeparture, ChronoUnit.SECONDS);
                                   return connectionTime >= MIN_TRANSFERT_TIME_IN_SECONDS;
                                 } )
@@ -104,7 +96,7 @@ public class BuildJourneyService {
     }else{
       compatibleGtfsSections = gtfsSectionProposals.stream()
                                 .filter(s -> {
-                                  LocalDateTime boatDeparture = LocalDateTime.parse(s.getDepartureDateTime());
+                                  LocalDateTime boatDeparture = LocalDateTime.parse(s.getDepartureDateTime(), formatter);
                                   long connectionTime = trainArrival.until(boatDeparture, ChronoUnit.SECONDS);
                                   return connectionTime >= MIN_TRANSFERT_TIME_IN_SECONDS;
                                 } )
@@ -121,7 +113,7 @@ public class BuildJourneyService {
 
     if(isBoatFirstSection){
       for(SectionDTO boatSection : gtfsSectionProposals){
-        LocalDateTime boatArrival = LocalDateTime.parse(boatSection.getArrivalDateTime());
+        LocalDateTime boatArrival = LocalDateTime.parse(boatSection.getArrivalDateTime(), formatter);
         LocalDateTime trainDeparture = journeyProposal.getFirstDeparturDateTime();
 
         long connectionTime = boatArrival.until(trainDeparture, ChronoUnit.SECONDS);
@@ -134,7 +126,7 @@ public class BuildJourneyService {
       }
     }else{
       for(SectionDTO boatSection : gtfsSectionProposals){
-        LocalDateTime boatDeparture = LocalDateTime.parse(boatSection.getDepartureDateTime());
+        LocalDateTime boatDeparture = LocalDateTime.parse(boatSection.getDepartureDateTime(), formatter);
         LocalDateTime trainArrival = journeyProposal.getLastArrivalDateTime();
 
         long connectionTime = trainArrival.until(boatDeparture, ChronoUnit.SECONDS);
@@ -156,7 +148,7 @@ public class BuildJourneyService {
     // Création d'une section de correspondance
     SectionDTO connection = new SectionDTO();
 
-    if(isBoatFirstSection && mostOptimizedBoat.getDepartureDateTime() != null){
+    if(isBoatFirstSection && mostOptimizedBoat.getArrivalDateTime() != null){
       // Ajout d'une correspondance
       LocalDateTime connectionDeparture = LocalDateTime.parse(mostOptimizedBoat.getArrivalDateTime(), formatter);
       LocalDateTime connectionArrival = navitiaJourneyProposal.getFirstDeparturDateTime();
@@ -165,7 +157,7 @@ public class BuildJourneyService {
       connection.setDepartureDateTime(connectionDeparture.toString());
       connection.setArrivalDateTime(connection.toString());
       connection.setSectionDuration(connectionDuration);
-      connection.setType("walking");
+      connection.setType("Walking");
       connection.setFrom(mostOptimizedBoat.getTo());
       connection.setTo(navitiaJourneyProposal.getJourneyFirstSection().getFrom());
 
@@ -186,6 +178,35 @@ public class BuildJourneyService {
       navitiaJourneyProposal.setTotalDuration(totalDuration);
 
       return navitiaJourneyProposal;
+    }else if(!isBoatFirstSection && mostOptimizedBoat.getDepartureDateTime() != null){
+      // Ajout d'une correspondance
+      LocalDateTime connectionDeparture = navitiaJourneyProposal.getLastArrivalDateTime();
+      LocalDateTime connectionArrival = LocalDateTime.parse(mostOptimizedBoat.getDepartureDateTime(), formatter);
+
+      int connectionDuration = (int) connectionDeparture.until(connectionArrival, ChronoUnit.SECONDS);
+
+      connection.setDepartureDateTime(connectionDeparture.toString());
+      connection.setArrivalDateTime(connection.toString());
+      connection.setSectionDuration(connectionDuration);
+      connection.setType("Walking");
+      connection.setFrom(navitiaJourneyProposal.getJourneyLastSection().getTo());
+      connection.setTo(mostOptimizedBoat.getFrom());
+
+      navitiaJourneyProposal.getSections().add(connection);
+
+      // Ajout du bateau
+      navitiaJourneyProposal.getSections().add(mostOptimizedBoat);
+
+      // Ajustement des détails du trajet
+      int boatAndConnectionDuration = connection.getSectionDuration() + mostOptimizedBoat.getSectionDuration();
+      int totalDuration = boatAndConnectionDuration + navitiaJourneyProposal.getTotalDuration();
+
+      DurationDTO totalDurationDTO = new DurationDTO();
+      totalDurationDTO.setTotal(totalDuration);
+
+      navitiaJourneyProposal.setDurations(totalDurationDTO);
+      navitiaJourneyProposal.setNbTransfers(navitiaJourneyProposal.getNbTransfers() + 1);
+      navitiaJourneyProposal.setTotalDuration(totalDuration);
     }
 
     return navitiaJourneyProposal;
