@@ -208,12 +208,18 @@ public class BuildJourneyServiceTest {
     // Simulation de sections composant un voyage (départ 17h, arrivée 19h)
     SectionDTO firstSection = new SectionDTO();
     firstSection.setDepartureDateTime("20251030T170000");
+    firstSection.setArrivalDateTime("20251030T173000");
     StopPointDTO firstSectionFrom = new StopPointDTO();
     firstSectionFrom.setName("Quiberon (Quiberon)");
     StopPointDTO firstSectionTo = new StopPointDTO();
     firstSectionTo.setName("Auray (Auray)");
 
+    SectionDTO connection = new SectionDTO();
+    connection.setDepartureDateTime("20251030T173000");
+    connection.setArrivalDateTime("20251030T183000");
+
     SectionDTO lastSection = new SectionDTO();
+    lastSection.setDepartureDateTime("20251030T183000");
     lastSection.setArrivalDateTime("20251030T190000");
     StopPointDTO secondSectionFrom = new StopPointDTO();
     secondSectionFrom.setName("Auray (Auray)");
@@ -223,6 +229,7 @@ public class BuildJourneyServiceTest {
     navitiaJourneyProposal.setDurations(journeyDuration);
     navitiaJourneyProposal.setTotalDuration(7200);
     navitiaJourneyProposal.getSections().add(firstSection);
+    navitiaJourneyProposal.getSections().add(connection);
     navitiaJourneyProposal.getSections().add(lastSection);
     navitiaJourneyProposal.setNbTransfers(1); // 1 train + 1 train
 
@@ -254,8 +261,9 @@ public class BuildJourneyServiceTest {
     assertAll(
       () -> assertEquals(mostOptimizedBoat, finalJourney.getJourneyFirstSection(), "Section bateau non ajoutée correctement au départ du trajet"),
       () -> assertEquals(totalDuration, finalJourney.getTotalDuration(), "La durée totale du trajet n'est pas correctement calculée"),
-      () -> assertEquals(totalConnection, finalJourney.getTotalDuration(), "Le nombre de correspondances ne correspond pas"),
-      () -> assertEquals(computedTotalDuration, finalJourney.getDurations(), "La durée du trajet n'est pas correctement calculée")
+      () -> assertEquals(totalConnection, finalJourney.getNbTransfers(), "Le nombre de correspondances ne correspond pas"),
+      () -> assertEquals(5,finalJourney.getSections().size(),"Le nombre de sections n'est pas le bon"),
+      () -> assertEquals(computedTotalDuration.getTotal(), finalJourney.getDurations().getTotal(), "La durée du trajet n'est pas correctement calculée")
     );
   }
 
