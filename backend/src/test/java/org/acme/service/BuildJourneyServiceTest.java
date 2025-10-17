@@ -1,11 +1,14 @@
 package org.acme.service;
 
+import org.acme.dto.DurationDTO;
 import org.acme.dto.JourneyDTO;
 import org.acme.dto.SectionDTO;
 import org.acme.dto.StopPointDTO;
 import org.acme.dto.TripDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDateTime;
@@ -187,6 +190,78 @@ public class BuildJourneyServiceTest {
     SectionDTO expectedOptimizedBoat = secondCompatibleBoat;
 
     assertEquals(expectedOptimizedBoat, mostOptimizedBoat, "Le bateau choisi n'est pas le plus optimisé");
+  }
+
+  @Test
+  void shouldAddBoatAtTheBeginning(){
+
+    // Simulation de la direction du bateau
+    boolean isBoatFirstSection = true;
+
+    // Simulation d'un voyage JourneyDTO
+    JourneyDTO navitiaJourneyProposal = new JourneyDTO();
+
+    // Simulation de la durée du voyage
+    DurationDTO journeyDuration = new DurationDTO();
+    journeyDuration.setTotal(7200); // 2h
+
+    // Simulation de sections composant un voyage (départ 17h, arrivée 19h)
+    SectionDTO firstSection = new SectionDTO();
+    firstSection.setDepartureDateTime("20251030T170000");
+    StopPointDTO firstSectionFrom = new StopPointDTO();
+    firstSectionFrom.setName("Quiberon (Quiberon)");
+    StopPointDTO firstSectionTo = new StopPointDTO();
+    firstSectionTo.setName("Auray (Auray)");
+
+    SectionDTO lastSection = new SectionDTO();
+    lastSection.setArrivalDateTime("20251030T190000");
+    StopPointDTO secondSectionFrom = new StopPointDTO();
+    secondSectionFrom.setName("Auray (Auray)");
+    StopPointDTO secondSectionTo = new StopPointDTO();
+    secondSectionTo.setName("Paris");
+
+    navitiaJourneyProposal.setDurations(journeyDuration);
+    navitiaJourneyProposal.setTotalDuration(7200);
+    navitiaJourneyProposal.getSections().add(firstSection);
+    navitiaJourneyProposal.getSections().add(lastSection);
+    navitiaJourneyProposal.setNbTransfers(1); // 1 train + 1 train
+
+    // Simulation du bateau le plus optimisé
+    SectionDTO mostOptimizedBoat = new SectionDTO();
+    StopPointDTO boatDeparture = new StopPointDTO();
+    StopPointDTO boatArrival = new StopPointDTO();
+    boatDeparture.setName("Belle-Île-en-Mer - Le Palais");
+    boatDeparture.setId("I56BIP");
+    boatArrival.setName("Quiberon");
+    boatArrival.setId("I56QUI");
+
+    mostOptimizedBoat.setDepartureDateTime("20251030T151000");
+    mostOptimizedBoat.setArrivalDateTime("20251030T160000");
+    mostOptimizedBoat.setSectionDuration(3000); //50 minutes
+    mostOptimizedBoat.setFrom(boatDeparture);
+    mostOptimizedBoat.setTo(boatArrival);
+
+    // Calcul duration
+    int totalDuration = 13800; // 3h50
+    int totalConnection = 2; // 1 bateau + 1 train + 1 train
+    DurationDTO computedTotalDuration = new DurationDTO();
+    computedTotalDuration.setTotal(13800);
+
+    // Appel de la fonction testée
+    JourneyDTO finalJourney = buildJourneyService.addBoatSection(isBoatFirstSection, navitiaJourneyProposal, mostOptimizedBoat);
+
+    // Tests
+    assertAll(
+      () -> assertEquals(mostOptimizedBoat, finalJourney.getJourneyFirstSection(), "Section bateau non ajoutée correctement au départ du trajet"),
+      () -> assertEquals(totalDuration, finalJourney.getTotalDuration(), "La durée totale du trajet n'est pas correctement calculée"),
+      () -> assertEquals(totalConnection, finalJourney.getTotalDuration(), "Le nombre de correspondances ne correspond pas"),
+      () -> assertEquals(computedTotalDuration, finalJourney.getDurations(), "La durée du trajet n'est pas correctement calculée")
+    );
+  }
+
+  @Test
+  void shouldAddBoatAtTheEnd(){
+    boolean isBoatFirstSection = false;
   }
 }
 

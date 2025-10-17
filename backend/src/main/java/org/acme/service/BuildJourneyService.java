@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.acme.dto.DurationDTO;
 import org.acme.dto.JourneyDTO;
 import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.TripDTO;
@@ -43,6 +42,17 @@ public class BuildJourneyService {
     return completeJourneyProposals;
   }
 
+  private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){
+    // Trouver le sens du trajet
+    boolean isBoatFirstSection = getIfBoatIsFirstSection(trip);
+
+    for(JourneyDTO navitiaJourneyProposal : navitiaJourneyProposals.getJourneyProposals()){
+      navitiaJourneyProposal = addGtfsSection(navitiaJourneyProposal, gtfsSectionProposals, isBoatFirstSection);
+    }
+
+    return navitiaJourneyProposals;
+  }
+
   protected boolean getIfBoatIsFirstSection(TripDTO trip){
     // On vérifie la direction
     if(trip.getDeparture().getName().contains("Quiberon")){
@@ -58,17 +68,6 @@ public class BuildJourneyService {
     return false;
   }
 
-  private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){
-    // Trouver le sens du trajet
-    boolean isBoatFirstSection = getIfBoatIsFirstSection(trip);
-
-    for(JourneyDTO navitiaJourneyProposal : navitiaJourneyProposals.getJourneyProposals()){
-      navitiaJourneyProposal = addGtfsSection(navitiaJourneyProposal, gtfsSectionProposals, isBoatFirstSection);
-    }
-
-    return navitiaJourneyProposals;
-  }
-
   private JourneyDTO addGtfsSection(JourneyDTO navitiaJourneyProposal, Set<SectionDTO> gtfSectionProposals, boolean isBoatFirstSection){
 
     Set<SectionDTO> compatibleBoats = getCompatibleBoats(gtfSectionProposals, navitiaJourneyProposal, isBoatFirstSection);
@@ -76,15 +75,13 @@ public class BuildJourneyService {
 
     if(isBoatFirstSection){
       if(mostOptimizedBoat.getDepartureDateTime() != null){
-        navitiaJourneyProposal.getSections().add(0, mostOptimizedBoat); // <- ajouté ici
+        navitiaJourneyProposal.getSections().add(0, mostOptimizedBoat);
       }
     }else{
       if(mostOptimizedBoat.getDepartureDateTime() != null){
-        navitiaJourneyProposal.getSections().add(mostOptimizedBoat); // <- ajouté ici
+        navitiaJourneyProposal.getSections().add(mostOptimizedBoat);
       }
     }
-
-    // Si bateau à la fin, on ajoute à la fin
 
     return navitiaJourneyProposal;
   }
@@ -152,6 +149,12 @@ public class BuildJourneyService {
     return mostOptimizedBoat;
 
   }
+
+  protected JourneyDTO addBoatSection(boolean isBoatFirstSection, JourneyDTO navitiaJourneyProposal, SectionDTO mostOptimizedBoat){
+
+    return navitiaJourneyProposal;
+  }
+
 }
 
 
