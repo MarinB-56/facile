@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.acme.dto.DurationDTO;
 import org.acme.dto.JourneyDTO;
 import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.TripDTO;
@@ -151,6 +152,41 @@ public class BuildJourneyService {
   }
 
   protected JourneyDTO addBoatSection(boolean isBoatFirstSection, JourneyDTO navitiaJourneyProposal, SectionDTO mostOptimizedBoat){
+
+    // Création d'une section de correspondance
+    SectionDTO connection = new SectionDTO();
+
+    if(isBoatFirstSection && mostOptimizedBoat.getDepartureDateTime() != null){
+      // Ajout d'une correspondance
+      LocalDateTime connectionDeparture = LocalDateTime.parse(mostOptimizedBoat.getArrivalDateTime(), formatter);
+      LocalDateTime connectionArrival = navitiaJourneyProposal.getFirstDeparturDateTime();
+      int connectionDuration = (int) connectionDeparture.until(connectionArrival, ChronoUnit.SECONDS);
+
+      connection.setDepartureDateTime(connectionDeparture.toString());
+      connection.setArrivalDateTime(connection.toString());
+      connection.setSectionDuration(connectionDuration);
+      connection.setType("walking");
+      connection.setFrom(mostOptimizedBoat.getTo());
+      connection.setTo(navitiaJourneyProposal.getJourneyFirstSection().getFrom());
+
+      navitiaJourneyProposal.getSections().add(0, connection);
+
+      // Ajout du bateau
+      navitiaJourneyProposal.getSections().add(0, mostOptimizedBoat);
+
+      // Ajustement des détails du trajet
+      int boatAndConnectionDuration = connection.getSectionDuration() + mostOptimizedBoat.getSectionDuration();
+      int totalDuration = boatAndConnectionDuration + navitiaJourneyProposal.getTotalDuration();
+
+      DurationDTO totalDurationDTO = new DurationDTO();
+      totalDurationDTO.setTotal(totalDuration);
+
+      navitiaJourneyProposal.setDurations(totalDurationDTO);
+      navitiaJourneyProposal.setNbTransfers(navitiaJourneyProposal.getNbTransfers() + 1);
+      navitiaJourneyProposal.setTotalDuration(totalDuration);
+
+      return navitiaJourneyProposal;
+    }
 
     return navitiaJourneyProposal;
   }
