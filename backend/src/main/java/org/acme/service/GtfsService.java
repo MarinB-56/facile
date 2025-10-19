@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.acme.dto.SectionDTO;
@@ -24,11 +23,6 @@ import org.onebusaway.gtfs.model.ServiceCalendarDate;
 import org.onebusaway.gtfs.model.Stop;
 import org.onebusaway.gtfs.model.StopTime;
 import org.onebusaway.gtfs.serialization.GtfsReader;
-
-import com.aayushatharva.brotli4j.common.annotations.Local;
-import com.arjuna.ats.internal.jta.resources.errorhandlers.tibco;
-import com.arjuna.ats.txoj.common.txojPropertyManager;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.quarkus.runtime.Startup;
 import jakarta.annotation.PostConstruct;
@@ -219,8 +213,6 @@ public class GtfsService {
         LocalDateTime departureDateTime = tripDate.toLocalDate().atTime(departureTime);
         LocalDateTime arrivLocalDateTime = tripDate.toLocalDate().atTime(arrivalTime);
 
-
-
         section.setFrom(from);
         section.setTo(to);
 
@@ -231,8 +223,8 @@ public class GtfsService {
 
         section.setType("Boat");
 
-        System.out.println(section.getDepartureDateTime());
-        System.out.println(section.getArrivalDateTime());
+        // System.out.println(section.getDepartureDateTime());
+        // System.out.println(section.getArrivalDateTime());
 
         gtfsSections.add(section);
       }

@@ -86,7 +86,7 @@ public class NavitiaResource {
     LocalDateTime localParis = odtUtc.atZoneSameInstant(parisZone).toLocalDateTime();
 
     trip.setDate(localParis);
-    System.out.println("Date du voyage recherché resource : " + trip.getDate());
+    // System.out.println("Date du voyage recherché resource : " + trip.getDate());
 
     // return navitiaService.getItineraries(trip);
     return buildJourneyService.buildJourney(trip);

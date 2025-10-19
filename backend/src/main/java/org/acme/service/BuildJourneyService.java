@@ -213,19 +213,3 @@ public class BuildJourneyService {
   }
 
 }
-
-
-      // Pour chaque bateau trouvé
-        // Je vérifie que l'heure d'arrivée du bateau est bien avant celle du train + temps
-        // Je calcule le temps d'attente
-        // Si je trouve un temps d'attente moindre, je le remplace
-
-      // On vérifie que l'heure de départ du bateau est bien avant celle du train (+ du temps pour la correspondance)
-
-      // durations -> Modification de total + walking avec la correspondance
-
-      // sections -> insertion de la section au début de la liste
-      // firstDeparturDateTime -> on met à jour avec l'heure de départ du bateau (heure de départ de la section gtfs)
-      // journeyFirstSection est remplacée par la section gtfs
-      // duration est mis à jour avec la nouvelle durée
-      // nb_transfers est incrémenté de 1

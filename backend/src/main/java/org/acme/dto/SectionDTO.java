@@ -17,6 +17,9 @@ public class SectionDTO {
 
   private String type;
 
+  @JsonProperty("display_informations")
+  private DisplayInformationsDTO displayInformations;
+
   public SectionDTO(){}
 
   public int getSectionDuration() {

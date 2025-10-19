@@ -72,27 +72,29 @@ public class NavitiaService {
     JourneyProposalsDTO journeyProposals = getItinerariesProposals(trip);
 
     System.out.println("Nombre de journey trouvés: " + journeyProposals.getJourneyProposals().size() );
-    // Vérification si passe par Paris
-    // if(containsStopAtParis(journeyProposals)){
-    //   System.out.println("Par Paris");
-    //   // Construction des trips en passant par Paris
-    //   JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    //   // Fusion de toutes les propositions de voyage
-    //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-    // }
+
+    //Vérification si passe par Paris
+    if(containsStopAtParis(journeyProposals)){
+      System.out.println("Par Paris");
+      // Construction des trips en passant par Paris
+      JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
+      // Fusion de toutes les propositions de voyage
+      if(journeyProposalsThroughParis != null){
+        journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+      }
+    }
 
     // Construction de trajets en passant par Paris (arbitraire)
     /*
      * TODO:
      * - Vérifier automatiquement si le trajet a besoin de passer par Paris ou non
      */
-    JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    if(journeyProposalsThroughParis != null){
-      journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-    }
+    // JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
+    // if(journeyProposalsThroughParis != null){
+    //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+    // }
 
     System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
-
 
     // Tri des voyages dans l'ordre de départ
     journeyProposals.getJourneyProposals().sort(Comparator.comparing(
