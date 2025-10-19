@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.acme.dto.DisplayInformationsDTO;
 import org.acme.dto.SectionDTO;
 import org.acme.dto.StopPointDTO;
 import org.acme.dto.TripDTO;
@@ -75,7 +76,7 @@ public class GtfsService {
         }
     }
 
-    // Récupération des trajets Quiberon -> Belle ile
+    // Récupération des trajets en Bateau
     public  Map<String, List<StopTime>> getTripsFromTo(TripDTO trip){
 
       String departureGtfsId;
@@ -102,10 +103,7 @@ public class GtfsService {
       // ex: Quiberon -> Houat (Quiberon apparait bien comme un départ (avec stop sequence à 1) mais n'est pas relié à un trajet avec notre arrivée)
       stopTimesFromTo.entrySet().removeIf(element -> element.getValue().size() != 2);
 
-      // 2) Récupération des services qui opèrent le jour demandé
-      DayOfWeek weekDay = travelDate.getDayOfWeek();
-
-      // 3) Récupération des services qui sont supprimés à la date recherchée
+      // 2) Récupération des services qui sont supprimés à la date recherchée
       Set<String> deletedServicesOnDate = this.calendarDates.stream()
                                   .filter(cd -> {
                                     LocalDate date = cd.getDate().getAsDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -113,6 +111,9 @@ public class GtfsService {
                                   })
                                   .map(c -> c.getServiceId().getId())
                                   .collect(Collectors.toSet());
+
+      // 3) Récupération des services qui opèrent le jour demandé
+      DayOfWeek weekDay = travelDate.getDayOfWeek();
 
       // Liste de service_id (services opérant le jour demandé)
       Set<String> validServicesOnDate = this.calendars.stream()
@@ -137,7 +138,7 @@ public class GtfsService {
                     .map(c -> c.getServiceId().getId())
                     .collect(Collectors.toSet());
 
-      // 4) Recoupage des StopTime départ -> arrivée avec les services opérant - les services supprimés
+      // 4) Recoupage des StopTime départ -> arrivée avec (les services opérant - les services supprimés)
       Map<String, List<StopTime>> validTrips = this.trips.stream()
                       .filter(t -> validServicesOnDate.contains(t.getServiceId().getId()))
                       .filter(t -> stopTimesFromTo.keySet().contains(t.getId().getId()))
@@ -168,15 +169,26 @@ public class GtfsService {
 
     public Set<SectionDTO> getSectionsFromGtfsData(TripDTO trip){
 
+      System.out.println("1");
       Map<String, List<StopTime>> gtfsValidTrips = getTripsFromTo(trip);
+      System.out.println("2");
+      // On récupère les blocks ID et on les associe aux trajets ID (pour récupérer le nom du bateau)
+      Map<String, String> tripBlocksId = this.trips.stream()
+                      .filter(t -> gtfsValidTrips.keySet().contains(t.getId().getId()))
+                      .collect(Collectors.toMap(
+                        t -> t.getId().getId(),
+                        t -> t.getBlockId())
+                      );
+
+      for(String key : tripBlocksId.keySet()){
+        System.out.println(tripBlocksId.get(key));
+      }
 
       System.out.println("Nombre de bateaux trouvés:  " + gtfsValidTrips.size());
       Set<SectionDTO> gtfsSections = new HashSet<SectionDTO>();
 
       // Pour unifier le format de LocalDateTime (yyyyMMdd'T'HHmmss)
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
-
-
 
       // Formatage de gtfsValidTrips en SectionDTO
       for (List<StopTime> stopTime : gtfsValidTrips.values()) {
@@ -205,6 +217,11 @@ public class GtfsService {
                   );
         from.embeddedType = "harbor";
 
+        DisplayInformationsDTO informations = new DisplayInformationsDTO();
+        informations.setCompany("BreizhGo Océane");
+        informations.setPhysicalMode("Bateau");
+        informations.setNetwork("BELLE_ILE_ID");
+
         LocalTime departureTime = LocalTime.ofSecondOfDay(departure.getDepartureTime());
         LocalTime arrivalTime = LocalTime.ofSecondOfDay(arrival.getArrivalTime());
 
@@ -221,7 +238,7 @@ public class GtfsService {
 
         section.setSectionDuration(arrival.getArrivalTime() - departure.getDepartureTime());
 
-        section.setType("Boat");
+        section.setType("public_transport");
 
         // System.out.println(section.getDepartureDateTime());
         // System.out.println(section.getArrivalDateTime());
