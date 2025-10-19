@@ -1,27 +1,55 @@
-@if(section().type == "public_transport"){
-  <div class="trip-section__transport">
-    <div class="trip-section__transport-schedule">
-      <p>{{ section().departure_date_time | timePipe }}</p>
-      <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
-      <p>{{ section().arrival_date_time | timePipe }}</p>
-    </div>
+  @if(section().type == "public_transport"){
 
-    <div class="trip-section__transport-color {{section().transport_type}}">
-    </div>
-
-    <div class="trip-section__transport-destination">
-      <div>
-        {{ section().from.name }}
+    <div class="trip-section__transport">
+      <div class="trip-section__transport-schedule">
+        <p>{{ section().departure_date_time | timePipe }}</p>
+        <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
+        <p>{{ section().arrival_date_time | timePipe }}</p>
       </div>
-      <span class="material-symbols-outlined section-icon">directions_railway_2</span>
-      <div>
-        {{ section().to.name }}
+
+      <div class="trip-section__transport-color {{section().display_informations.physical_mode | transportTypePipe }}">
+      </div>
+
+      <div class="trip-section__transport-destination">
+        <div>
+          {{ section().from.name }}
+        </div>
+
+        @if(section().display_informations.physical_mode.includes("Train") || section().display_informations.physical_mode.includes("TER") ){
+
+          <div class="trip-section__transport-details">
+            <span class="material-symbols-outlined section-icon">directions_railway_2</span>
+            @if(section().display_informations.physical_mode.includes("Train")){
+              <p><i>{{ section().display_informations.network }}</i></p>
+            }@else if(section().display_informations.physical_mode.includes("TER")){
+              <p><i>{{ section().display_informations.physical_mode }}</i></p>
+            }
+          </div>
+
+        }@else if(section().display_informations.physical_mode.includes("Bateau")) {
+
+          <div class="trip-section__transport-details">
+            <span class="material-symbols-outlined section-icon">directions_boat</span>
+            <p><i>{{ section().display_informations.physical_mode }} - {{ section().display_informations.network }}</i></p>
+          </div>
+
+        }@else if(section().display_informations.physical_mode.includes("Autocar")){
+
+          <div class="trip-section__transport-details">
+            <span class="material-symbols-outlined section-icon">directions_bus</span>
+            <p><i> {{ section().display_informations.physical_mode }}</i></p>
+          </div>
+
+        }
+
+        <div>
+          {{ section().to.name }}
+        </div>
       </div>
     </div>
-  </div>
 
-}@else if(section().type == "connection" || section().type == "waiting"){
-  <div class="trip-section__connection">
-    <p>({{ section().duration | durationPipe }}) Correspondance</p>
-  </div>
-}
+  }@else if(section().type == "connection" || section().type == "waiting" || section().type == "Walking"){
+    <div class="trip-section__connection">
+      <p>({{ section().duration | durationPipe }}) Correspondance</p>
+    </div>
+  }
