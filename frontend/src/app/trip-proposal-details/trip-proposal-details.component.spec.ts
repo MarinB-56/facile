@@ -13,7 +13,7 @@ describe('TripProposalDetailsComponent', () => {
       total: 28140,
       walking: -3960,
     },
-    journey_first_section: {
+    journeyFirstSection: {
       arrival_date_time: "20250922T095100",
       departure_date_time: "20250922T054900",
       duration: 14520,
@@ -37,7 +37,7 @@ describe('TripProposalDetailsComponent', () => {
         physical_mode: ""
       }
     },
-    journey_last_section: {
+    journeyLastSection: {
       type : "public_transport",
       section_duration : 9660,
       duration : 9660,
@@ -61,7 +61,7 @@ describe('TripProposalDetailsComponent', () => {
         physical_mode: ""
       }
     },
-    first_departure_date_time : "2025-09-22T05:49:00",
+    firstDeparturDateTime : "2025-09-22T05:49:00",
     nb_transfers : 1,
     sections: [
       {

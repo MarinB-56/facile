@@ -17,8 +17,8 @@
     <div class="square__right"></div>
 
     <div>
-      <p class="trip-proposal-item__departure">{{ j.journey_first_section.departure_date_time | timePipe  }} : {{ j.journey_first_section.from.name }}</p>
-      <p class="trip-proposal-item__arrival">{{ j.journey_last_section.arrival_date_time | timePipe  }}: {{ j.journey_last_section.to.name }}</p>
+      <p class="trip-proposal-item__departure">{{ j.journeyFirstSection.departure_date_time | timePipe  }} : {{ j.journeyFirstSection.from.name }}</p>
+      <p class="trip-proposal-item__arrival">{{ j.journeyLastSection.arrival_date_time | timePipe  }}: {{ j.journeyLastSection.to.name }}</p>
     </div>
     <div class="trip-proposal-item__symbol">
       @for (section of j.sections; track $index) {
