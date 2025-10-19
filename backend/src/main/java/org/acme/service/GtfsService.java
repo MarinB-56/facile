@@ -172,16 +172,16 @@ public class GtfsService {
       System.out.println("1");
       Map<String, List<StopTime>> gtfsValidTrips = getTripsFromTo(trip);
       System.out.println("2");
-      // On récupère les blocks ID et on les associe aux trajets ID (pour récupérer le nom du bateau)
-      Map<String, String> tripBlocksId = this.trips.stream()
+      // On récupère les block ID et on les associe aux trajets ID (pour récupérer le nom du bateau)
+      Map<String, String> tripBlockIds = this.trips.stream()
                       .filter(t -> gtfsValidTrips.keySet().contains(t.getId().getId()))
                       .collect(Collectors.toMap(
                         t -> t.getId().getId(),
                         t -> t.getBlockId())
                       );
 
-      for(String key : tripBlocksId.keySet()){
-        System.out.println(tripBlocksId.get(key));
+      for(String key : tripBlockIds.keySet()){
+        System.out.println(tripBlockIds.get(key));
       }
 
       System.out.println("Nombre de bateaux trouvés:  " + gtfsValidTrips.size());
@@ -191,11 +191,16 @@ public class GtfsService {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
 
       // Formatage de gtfsValidTrips en SectionDTO
-      for (List<StopTime> stopTime : gtfsValidTrips.values()) {
+      // for (List<StopTime> stopTime : gtfsValidTrips.values()) {
+      for(String key : gtfsValidTrips.keySet()){
+
+        List<StopTime> stopTimeList = gtfsValidTrips.get(key);
+        String tripBlockId = tripBlockIds.get(key);
+
         SectionDTO section = new SectionDTO();
 
-        StopTime departure = stopTime.get(0);
-        StopTime arrival = stopTime.get(1);
+        StopTime departure = stopTimeList.get(0);
+        StopTime arrival = stopTimeList.get(1);
 
         StopPointDTO from = new StopPointDTO();
         from.setId(departure.getStop().getId().getId()); // QUI56
@@ -220,7 +225,12 @@ public class GtfsService {
         DisplayInformationsDTO informations = new DisplayInformationsDTO();
         informations.setCompany("BreizhGo Océane");
         informations.setPhysicalMode("Bateau");
-        informations.setNetwork("BELLE_ILE_ID");
+
+        if(tripBlockId.contains("VDLS")){
+          informations.setNetwork("Vindilis");
+        }else if(tripBlockId.contains("BNGR")){
+          informations.setNetwork("Bangor");
+        }
 
         LocalTime departureTime = LocalTime.ofSecondOfDay(departure.getDepartureTime());
         LocalTime arrivalTime = LocalTime.ofSecondOfDay(arrival.getArrivalTime());
@@ -239,9 +249,10 @@ public class GtfsService {
         section.setSectionDuration(arrival.getArrivalTime() - departure.getDepartureTime());
 
         section.setType("public_transport");
+        section.setDisplayInformationsDTO(informations);
 
-        // System.out.println(section.getDepartureDateTime());
-        // System.out.println(section.getArrivalDateTime());
+        System.out.print(section.getDepartureDateTime() + " " + section.getArrivalDateTime());
+        System.out.println(section.getDisplayInformationsDTO().getNetwork());
 
         gtfsSections.add(section);
       }

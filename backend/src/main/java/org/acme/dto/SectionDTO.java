@@ -70,6 +70,14 @@ public class SectionDTO {
     this.type = type;
   }
 
+  public DisplayInformationsDTO getDisplayInformationsDTO(){
+    return this.displayInformations;
+  }
+
+  public void setDisplayInformationsDTO(DisplayInformationsDTO displayInformations){
+    this.displayInformations = displayInformations;
+  }
+
   @Override
   // public String toString() {
   //   return "SectionDTO : SectionDuration = " + SectionDuration + ", departureDateTime = " + departureDateTime
