@@ -67,27 +67,34 @@ public class NavitiaService {
     */
   // Itinary research
   public JourneyProposalsDTO getItineraries(TripDTO trip){
+    System.out.println("Date du voyage recherché : " + trip.getDate());
     // Récupération des propositions brut (trip pour la journée)
     JourneyProposalsDTO journeyProposals = getItinerariesProposals(trip);
 
-    // Vérification si passe par Paris
-    // if(containsStopAtParis(journeyProposals)){
-    //   System.out.println("Par Paris");
-    //   // Construction des trips en passant par Paris
-    //   JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    //   // Fusion de toutes les propositions de voyage
-    //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-    // }
+    System.out.println("Nombre de journey trouvés: " + journeyProposals.getJourneyProposals().size() );
+
+    //Vérification si passe par Paris
+    if(containsStopAtParis(journeyProposals)){
+      System.out.println("Par Paris");
+      // Construction des trips en passant par Paris
+      JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
+      // Fusion de toutes les propositions de voyage
+      if(journeyProposalsThroughParis != null){
+        journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+      }
+    }
 
     // Construction de trajets en passant par Paris (arbitraire)
     /*
      * TODO:
      * - Vérifier automatiquement si le trajet a besoin de passer par Paris ou non
      */
-    JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    if(journeyProposalsThroughParis != null){
-      journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-    }
+    // JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
+    // if(journeyProposalsThroughParis != null){
+    //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+    // }
+
+    System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
 
     // Tri des voyages dans l'ordre de départ
     journeyProposals.getJourneyProposals().sort(Comparator.comparing(
@@ -214,10 +221,10 @@ public class NavitiaService {
         if(compatibilityCheckResult.isTransferPossible()){
           JourneyDTO journeyThroughParis = buildJourneyThroughParis(journeyToParis, journeyFromParis, compatibilityCheckResult);
 
-          System.out.println(journeyToParis.getJourneyLastSection().toString());
-          System.out.println(journeyFromParis.getSections().get(0).toString());
+          // System.out.println(journeyToParis.getJourneyLastSection().toString());
+          // System.out.println(journeyFromParis.getSections().get(0).toString());
 
-          System.out.println("------ TRAJETS COMPATIBLES ------");
+          // System.out.println("------ TRAJETS COMPATIBLES ------");
 
           // Ajout du trajet construit à la liste des trajets qui passent par Paris
           journeyProposalsThroughParis.getJourneyProposals().add(journeyThroughParis);

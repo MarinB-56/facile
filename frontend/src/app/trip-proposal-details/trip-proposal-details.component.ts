@@ -17,13 +17,23 @@ export class TripProposalDetailsComponent {
   ngOnInit(){
     this.journey = history.state.journey;
 
+    console.log(this.journey);
+
+
     // Arbitrairement, on met toutes les sections à train
-    if (this.journey?.sections) {
-      for (const section of this.journey.sections) {
-        // Do something with section
-        section.transport_type = "train";
-      }
-    }
+    // if (this.journey?.sections) {
+    //   for (const section of this.journey.sections) {
+    //     if(section.type === "Boat"){
+    //       // Do something with section
+    //       console.log("OUI MINS");
+    //       section.type = "public_transport"
+    //       section.transport_type = "boat";
+    //     }else{
+    //       section.transport_type = "train";
+    //     }
+    //     console.log(section);
+    //   }
+    // }
   }
 }
 

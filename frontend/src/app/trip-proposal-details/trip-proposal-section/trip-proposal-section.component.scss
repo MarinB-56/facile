@@ -65,3 +65,10 @@ p {
   color: $neutral-color;
   font-weight: lighter;
 }
+
+.trip-section__transport-details{
+  display:flex;
+  align-items: center;
+  color: $neutral-color;
+  font-weight: lighter;
+}

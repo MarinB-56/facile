@@ -30,6 +30,18 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Core GTFS Library -->
+        <dependency>
+          <groupId>org.onebusaway</groupId>
+          <artifactId>onebusaway-gtfs</artifactId>
+          <version>1.3.3</version>
+        </dependency>
+        <!-- Pour ZIP -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.21</version>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
@@ -66,6 +78,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jacoco</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

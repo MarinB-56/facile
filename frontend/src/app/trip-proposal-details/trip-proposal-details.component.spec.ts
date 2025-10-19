@@ -22,17 +22,24 @@ describe('TripProposalDetailsComponent', () => {
         id: "stop_point:SNCF:87755009:LongDistanceTrain",
         name: "Toulon (Toulon)"
       },
-      sectionDuration: 14520,
+      section_duration: 14520,
       to: {
         embedded_type: "stop_point",
         id: "stop_point:SNCF:87686006:LongDistanceTrain",
         name : "Paris - Gare de Lyon - Hall 1 & 2 (Paris)"
       },
-      type: "public_transport"
+      type: "public_transport",
+      transport_type: "",
+      display_informations: {
+        commercial_mode: "",
+        company: "",
+        network: "",
+        physical_mode: ""
+      }
     },
     journeyLastSection: {
       type : "public_transport",
-      sectionDuration : 9660,
+      section_duration : 9660,
       duration : 9660,
       from: {
         id : "stop_point:SNCF:87391003:LongDistanceTrain",
@@ -45,7 +52,14 @@ describe('TripProposalDetailsComponent', () => {
         embedded_type : "stop_point"
       },
       departure_date_time : "20250922T105700",
-      arrival_date_time : "20250922T133800"
+      arrival_date_time : "20250922T133800",
+      transport_type: "",
+      display_informations: {
+        commercial_mode: "",
+        company: "",
+        network: "",
+        physical_mode: ""
+      }
     },
     firstDeparturDateTime : "2025-09-22T05:49:00",
     nb_transfers : 1,
@@ -62,10 +76,17 @@ describe('TripProposalDetailsComponent', () => {
             embedded_type : "stop_point"
           },
           type : "public_transport",
-          sectionDuration : 14520,
+          section_duration : 14520,
           duration : 14520,
           departure_date_time : "20250922T054900",
-          arrival_date_time : "20250922T095100"
+          arrival_date_time : "20250922T095100",
+          transport_type: "",
+          display_informations: {
+            commercial_mode: "",
+            company: "",
+            network: "",
+            physical_mode: ""
+          }
       },
       {
         from : {
@@ -79,10 +100,17 @@ describe('TripProposalDetailsComponent', () => {
           embedded_type : "stop_point"
         },
         type : "Walking",
-        sectionDuration : 3960,
+        section_duration : 3960,
         duration : 3960,
         departure_date_time : "20250922T105700",
-        arrival_date_time : "20250922T095100"
+        arrival_date_time : "20250922T095100",
+        transport_type: "",
+        display_informations: {
+          commercial_mode: "",
+          company: "",
+          network: "",
+          physical_mode: ""
+        }
       },
       {
         from : {
@@ -96,10 +124,17 @@ describe('TripProposalDetailsComponent', () => {
           embedded_type : "stop_point"
         },
         type : "public_transport",
-        sectionDuration : 9660,
+        section_duration : 9660,
         duration : 9660,
         departure_date_time : "20250922T105700",
-        arrival_date_time : "20250922T133800"
+        arrival_date_time : "20250922T133800",
+        transport_type: "",
+        display_informations: {
+          commercial_mode: "",
+          company: "",
+          network: "",
+          physical_mode: ""
+        }
       }
     ]
   }

@@ -1,0 +1,3956 @@
+{
+  "journeys": [
+    {
+      "durations": {
+        "total": 39840,
+        "walking": 300
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T054900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=4&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87319012%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T054900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=4&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87319012%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87319012:LongDistanceTrain",
+            "name": "Aix-en-Provence TGV (Aix-en-Provence)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T054900",
+          "arrival_date_time": "20251030T063700"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 6540,
+          "duration": 6540,
+          "departure_date_time": "20251030T063700",
+          "arrival_date_time": "20251030T082600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87319012:LongDistanceTrain",
+            "name": "Aix-en-Provence TGV (Aix-en-Provence)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5280,
+          "duration": 5280,
+          "departure_date_time": "20251030T082600",
+          "arrival_date_time": "20251030T095400"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 2160,
+          "duration": 2160,
+          "departure_date_time": "20251030T095400",
+          "arrival_date_time": "20251030T103000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 10740,
+          "duration": 10740,
+          "departure_date_time": "20251030T103000",
+          "arrival_date_time": "20251030T132900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 990,
+          "duration": 990,
+          "departure_date_time": "20251030T132900",
+          "arrival_date_time": "20251030T134530"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T134530",
+          "arrival_date_time": "20251030T134600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7920,
+          "duration": 7920,
+          "departure_date_time": "20251030T134600",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87319012:LongDistanceTrain",
+          "name": "Aix-en-Provence TGV (Aix-en-Provence)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 2880,
+        "duration": 2880,
+        "departure_date_time": "20251030T054900",
+        "arrival_date_time": "20251030T063700"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T05:49:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 39840,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 32340,
+        "walking": -3960
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T054900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T054900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T105700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T105700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14520,
+          "duration": 14520,
+          "departure_date_time": "20251030T054900",
+          "arrival_date_time": "20251030T095100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 3960,
+          "duration": 3960,
+          "departure_date_time": "20251030T105700",
+          "arrival_date_time": "20251030T095100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9660,
+          "duration": 9660,
+          "departure_date_time": "20251030T105700",
+          "arrival_date_time": "20251030T133800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T133800",
+          "arrival_date_time": "20251030T134300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1020,
+          "duration": 1020,
+          "departure_date_time": "20251030T134300",
+          "arrival_date_time": "20251030T140000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T140000",
+          "arrival_date_time": "20251030T144800"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T171500",
+          "arrival_date_time": "20251030T180500"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+          "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 14520,
+        "duration": 14520,
+        "departure_date_time": "20251030T054900",
+        "arrival_date_time": "20251030T095100"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T171500",
+        "arrival_date_time": "20251030T180500"
+      },
+      "firstDeparturDateTime": "2025-10-30T05:49:00",
+      "lastArrivalDateTime": "2025-10-30T18:05:00",
+      "duration": 32340,
+      "nb_transfers": 2
+    },
+    {
+      "durations": {
+        "total": 39420,
+        "walking": -9420
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T055600&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T055600&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T055600",
+          "arrival_date_time": "20251030T065300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T065300",
+          "arrival_date_time": "20251030T065800"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 180,
+          "duration": 180,
+          "departure_date_time": "20251030T065800",
+          "arrival_date_time": "20251030T070100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 12120,
+          "duration": 12120,
+          "departure_date_time": "20251030T070100",
+          "arrival_date_time": "20251030T102300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 9420,
+          "duration": 9420,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T102300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5100,
+          "duration": 5100,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T142500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1170,
+          "duration": 1170,
+          "departure_date_time": "20251030T142500",
+          "arrival_date_time": "20251030T144430"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T144430",
+          "arrival_date_time": "20251030T144500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4380,
+          "duration": 4380,
+          "departure_date_time": "20251030T144500",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T055600",
+        "arrival_date_time": "20251030T065300"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T05:56:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 39420,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 37560,
+        "walking": -6900
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T062700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87763029%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T062700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87763029%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T062700",
+          "arrival_date_time": "20251030T072400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T072400",
+          "arrival_date_time": "20251030T072900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T072900",
+          "arrival_date_time": "20251030T073400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87763029:LongDistanceTrain",
+            "name": "Valence TGV Rhône-Alpes Sud (Alixan)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3900,
+          "duration": 3900,
+          "departure_date_time": "20251030T073400",
+          "arrival_date_time": "20251030T083900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 840,
+          "duration": 840,
+          "departure_date_time": "20251030T083900",
+          "arrival_date_time": "20251030T085300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87763029:LongDistanceTrain",
+            "name": "Valence TGV Rhône-Alpes Sud (Alixan)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7920,
+          "duration": 7920,
+          "departure_date_time": "20251030T085300",
+          "arrival_date_time": "20251030T110500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 6900,
+          "duration": 6900,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T110500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5100,
+          "duration": 5100,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T142500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1170,
+          "duration": 1170,
+          "departure_date_time": "20251030T142500",
+          "arrival_date_time": "20251030T144430"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T144430",
+          "arrival_date_time": "20251030T144500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4380,
+          "duration": 4380,
+          "departure_date_time": "20251030T144500",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T062700",
+        "arrival_date_time": "20251030T072400"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T06:27:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 37560,
+      "nb_transfers": 5
+    },
+    {
+      "durations": {
+        "total": 36120,
+        "walking": -6180
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T065100&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T065100&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T065100",
+          "arrival_date_time": "20251030T074100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T074100",
+          "arrival_date_time": "20251030T074600"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 810,
+          "duration": 810,
+          "departure_date_time": "20251030T074600",
+          "arrival_date_time": "20251030T075930"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T075930",
+          "arrival_date_time": "20251030T080000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 11820,
+          "duration": 11820,
+          "departure_date_time": "20251030T080000",
+          "arrival_date_time": "20251030T111700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 6180,
+          "duration": 6180,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T111700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5100,
+          "duration": 5100,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T142500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1170,
+          "duration": 1170,
+          "departure_date_time": "20251030T142500",
+          "arrival_date_time": "20251030T144430"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T144430",
+          "arrival_date_time": "20251030T144500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4380,
+          "duration": 4380,
+          "departure_date_time": "20251030T144500",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T065100",
+        "arrival_date_time": "20251030T074100"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T06:51:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 36120,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 35820,
+        "walking": 600
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T065600&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=4&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T065600&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=4&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T065600",
+          "arrival_date_time": "20251030T075300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T075300",
+          "arrival_date_time": "20251030T075800"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 840,
+          "duration": 840,
+          "departure_date_time": "20251030T075800",
+          "arrival_date_time": "20251030T081200"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 6120,
+          "duration": 6120,
+          "departure_date_time": "20251030T081200",
+          "arrival_date_time": "20251030T095400"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 2160,
+          "duration": 2160,
+          "departure_date_time": "20251030T095400",
+          "arrival_date_time": "20251030T103000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 10740,
+          "duration": 10740,
+          "departure_date_time": "20251030T103000",
+          "arrival_date_time": "20251030T132900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 990,
+          "duration": 990,
+          "departure_date_time": "20251030T132900",
+          "arrival_date_time": "20251030T134530"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T134530",
+          "arrival_date_time": "20251030T134600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7920,
+          "duration": 7920,
+          "departure_date_time": "20251030T134600",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T065600",
+        "arrival_date_time": "20251030T075300"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T06:56:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 35820,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 32610,
+        "walking": 465
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T074930&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=5&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87686030%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87393702%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758797%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758607%3ARapidTransit&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T074930&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=5&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87686030%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87393702%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758797%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87396002%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758607%3ARapidTransit&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T074930",
+          "arrival_date_time": "20251030T075000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14580,
+          "duration": 14580,
+          "departure_date_time": "20251030T075000",
+          "arrival_date_time": "20251030T115300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686030:RapidTransit",
+            "name": "Paris - Gare de Lyon - Banlieue (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 8,
+          "duration": 8,
+          "departure_date_time": "20251030T115300",
+          "arrival_date_time": "20251030T115308"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 292,
+          "duration": 292,
+          "departure_date_time": "20251030T115308",
+          "arrival_date_time": "20251030T115800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686030:RapidTransit",
+            "name": "Paris - Gare de Lyon - Banlieue (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87758607:RapidTransit",
+            "name": "Châtelet les Halles (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 240,
+          "duration": 240,
+          "departure_date_time": "20251030T115800",
+          "arrival_date_time": "20251030T120200"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 180,
+          "duration": 180,
+          "departure_date_time": "20251030T120200",
+          "arrival_date_time": "20251030T120500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87758607:RapidTransit",
+            "name": "Châtelet les Halles (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87758797:RapidTransit",
+            "name": "Massy - Palaiseau (Massy)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1500,
+          "duration": 1500,
+          "departure_date_time": "20251030T120500",
+          "arrival_date_time": "20251030T123000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87758797:RapidTransit",
+            "name": "Massy - Palaiseau (Massy)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87393702:LongDistanceTrain",
+            "name": "Massy TGV (Massy)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 157,
+          "duration": 157,
+          "departure_date_time": "20251030T123000",
+          "arrival_date_time": "20251030T123237"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 563,
+          "duration": 563,
+          "departure_date_time": "20251030T123237",
+          "arrival_date_time": "20251030T124200"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87393702:LongDistanceTrain",
+            "name": "Massy TGV (Massy)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2820,
+          "duration": 2820,
+          "departure_date_time": "20251030T124200",
+          "arrival_date_time": "20251030T132900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 990,
+          "duration": 990,
+          "departure_date_time": "20251030T132900",
+          "arrival_date_time": "20251030T134530"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T134530",
+          "arrival_date_time": "20251030T134600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87396002:LongDistanceTrain",
+            "name": "Le Mans (Le Mans)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7920,
+          "duration": 7920,
+          "departure_date_time": "20251030T134600",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "boarding",
+        "sectionDuration": 30,
+        "duration": 30,
+        "departure_date_time": "20251030T074930",
+        "arrival_date_time": "20251030T075000"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T07:49:30",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 32610,
+      "nb_transfers": 5
+    },
+    {
+      "durations": {
+        "total": 32610,
+        "walking": -4020
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T074930&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T074930&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T074930",
+          "arrival_date_time": "20251030T075000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14580,
+          "duration": 14580,
+          "departure_date_time": "20251030T075000",
+          "arrival_date_time": "20251030T115300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 4020,
+          "duration": 4020,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T115300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5100,
+          "duration": 5100,
+          "departure_date_time": "20251030T130000",
+          "arrival_date_time": "20251030T142500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1170,
+          "duration": 1170,
+          "departure_date_time": "20251030T142500",
+          "arrival_date_time": "20251030T144430"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T144430",
+          "arrival_date_time": "20251030T144500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4380,
+          "duration": 4380,
+          "departure_date_time": "20251030T144500",
+          "arrival_date_time": "20251030T155800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T155800",
+          "arrival_date_time": "20251030T160300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 120,
+          "duration": 120,
+          "departure_date_time": "20251030T160300",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T165300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "boarding",
+        "sectionDuration": 30,
+        "duration": 30,
+        "departure_date_time": "20251030T074930",
+        "arrival_date_time": "20251030T075000"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T07:49:30",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 32610,
+      "nb_transfers": 3
+    },
+    {
+      "durations": {
+        "total": 38100,
+        "walking": -5040
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T075800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T075800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T134700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T134700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T075800",
+          "arrival_date_time": "20251030T085500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T085500",
+          "arrival_date_time": "20251030T090000"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 240,
+          "duration": 240,
+          "departure_date_time": "20251030T090000",
+          "arrival_date_time": "20251030T090400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 11940,
+          "duration": 11940,
+          "departure_date_time": "20251030T090400",
+          "arrival_date_time": "20251030T122300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 5040,
+          "duration": 5040,
+          "departure_date_time": "20251030T134700",
+          "arrival_date_time": "20251030T122300"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 5940,
+          "duration": 5940,
+          "departure_date_time": "20251030T134700",
+          "arrival_date_time": "20251030T152600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:Train",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T152600",
+          "arrival_date_time": "20251030T153100"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1980,
+          "duration": 1980,
+          "departure_date_time": "20251030T153100",
+          "arrival_date_time": "20251030T160400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:Train",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4500,
+          "duration": 4500,
+          "departure_date_time": "20251030T160400",
+          "arrival_date_time": "20251030T171900"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T171900",
+          "arrival_date_time": "20251030T172400"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1260,
+          "duration": 1260,
+          "departure_date_time": "20251030T172400",
+          "arrival_date_time": "20251030T174500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T174500",
+          "arrival_date_time": "20251030T183300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T075800",
+        "arrival_date_time": "20251030T085500"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T07:58:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 38100,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 34980,
+        "walking": 600
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T085000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=3&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T085000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=3&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87471003%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9360,
+          "duration": 9360,
+          "departure_date_time": "20251030T085000",
+          "arrival_date_time": "20251030T112600"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1500,
+          "duration": 1500,
+          "departure_date_time": "20251030T112600",
+          "arrival_date_time": "20251030T115100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 13740,
+          "duration": 13740,
+          "departure_date_time": "20251030T115100",
+          "arrival_date_time": "20251030T154000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:LongDistanceTrain",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87471003:Train",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T154000",
+          "arrival_date_time": "20251030T154500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1140,
+          "duration": 1140,
+          "departure_date_time": "20251030T154500",
+          "arrival_date_time": "20251030T160400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87471003:Train",
+            "name": "Rennes (Rennes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 4500,
+          "duration": 4500,
+          "departure_date_time": "20251030T160400",
+          "arrival_date_time": "20251030T171900"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T171900",
+          "arrival_date_time": "20251030T172400"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1260,
+          "duration": 1260,
+          "departure_date_time": "20251030T172400",
+          "arrival_date_time": "20251030T174500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T174500",
+          "arrival_date_time": "20251030T183300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T190000",
+          "arrival_date_time": "20251030T195000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+          "name": "Lyon Part Dieu (Lyon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 9360,
+        "duration": 9360,
+        "departure_date_time": "20251030T085000",
+        "arrival_date_time": "20251030T112600"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T190000",
+        "arrival_date_time": "20251030T195000"
+      },
+      "firstDeparturDateTime": "2025-10-30T08:50:00",
+      "lastArrivalDateTime": "2025-10-30T19:50:00",
+      "duration": 34980,
+      "nb_transfers": 3
+    },
+    {
+      "durations": {
+        "total": 36780,
+        "walking": -4380
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T085000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T085000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87723197%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T144800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T144800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9360,
+          "duration": 9360,
+          "departure_date_time": "20251030T085000",
+          "arrival_date_time": "20251030T112600"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 720,
+          "duration": 720,
+          "departure_date_time": "20251030T112600",
+          "arrival_date_time": "20251030T113800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+            "name": "Lyon Part Dieu (Lyon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7020,
+          "duration": 7020,
+          "departure_date_time": "20251030T113800",
+          "arrival_date_time": "20251030T133500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 4380,
+          "duration": 4380,
+          "departure_date_time": "20251030T144800",
+          "arrival_date_time": "20251030T133500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9540,
+          "duration": 9540,
+          "departure_date_time": "20251030T144800",
+          "arrival_date_time": "20251030T172700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:Train",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T172700",
+          "arrival_date_time": "20251030T173200"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T173200",
+          "arrival_date_time": "20251030T173700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:Train",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 780,
+          "duration": 780,
+          "departure_date_time": "20251030T173700",
+          "arrival_date_time": "20251030T175000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T175000",
+          "arrival_date_time": "20251030T175500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1200,
+          "duration": 1200,
+          "departure_date_time": "20251030T175500",
+          "arrival_date_time": "20251030T181500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T181500",
+          "arrival_date_time": "20251030T190300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T200000",
+          "arrival_date_time": "20251030T205000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87723197:LongDistanceTrain",
+          "name": "Lyon Part Dieu (Lyon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 9360,
+        "duration": 9360,
+        "departure_date_time": "20251030T085000",
+        "arrival_date_time": "20251030T112600"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T200000",
+        "arrival_date_time": "20251030T205000"
+      },
+      "firstDeparturDateTime": "2025-10-30T08:50:00",
+      "lastArrivalDateTime": "2025-10-30T20:50:00",
+      "duration": 36780,
+      "nb_transfers": 4
+    },
+    {
+      "durations": {
+        "total": 38880,
+        "walking": 608
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T095000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=5&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87686030%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87393215%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87545244%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ARapidTransit&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T095000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=5&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87686030%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87393215%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87545244%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ARapidTransit&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14460,
+          "duration": 14460,
+          "departure_date_time": "20251030T095000",
+          "arrival_date_time": "20251030T135100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686030:RapidTransit",
+            "name": "Paris - Gare de Lyon - Banlieue (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 8,
+          "duration": 8,
+          "departure_date_time": "20251030T135100",
+          "arrival_date_time": "20251030T135108"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 592,
+          "duration": 592,
+          "departure_date_time": "20251030T135108",
+          "arrival_date_time": "20251030T140100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686030:RapidTransit",
+            "name": "Paris - Gare de Lyon - Banlieue (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87545244:RapidTransit",
+            "name": "Juvisy (Juvisy-sur-Orge)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1620,
+          "duration": 1620,
+          "departure_date_time": "20251030T140100",
+          "arrival_date_time": "20251030T142800"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 960,
+          "duration": 960,
+          "departure_date_time": "20251030T142800",
+          "arrival_date_time": "20251030T144400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87545244:RapidTransit",
+            "name": "Juvisy (Juvisy-sur-Orge)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87393215:RapidTransit",
+            "name": "Viroflay Rive Gauche (Viroflay)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3600,
+          "duration": 3600,
+          "departure_date_time": "20251030T144400",
+          "arrival_date_time": "20251030T154400"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1260,
+          "duration": 1260,
+          "departure_date_time": "20251030T154400",
+          "arrival_date_time": "20251030T160500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87393215:RapidTransit",
+            "name": "Viroflay Rive Gauche (Viroflay)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:RapidTransit",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1260,
+          "duration": 1260,
+          "departure_date_time": "20251030T160500",
+          "arrival_date_time": "20251030T162600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:RapidTransit",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T162600",
+          "arrival_date_time": "20251030T163100"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1560,
+          "duration": 1560,
+          "departure_date_time": "20251030T163100",
+          "arrival_date_time": "20251030T165700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9660,
+          "duration": 9660,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T193800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T193800",
+          "arrival_date_time": "20251030T194300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 420,
+          "duration": 420,
+          "departure_date_time": "20251030T194300",
+          "arrival_date_time": "20251030T195000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T195000",
+          "arrival_date_time": "20251030T203800"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+          "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 14460,
+        "duration": 14460,
+        "departure_date_time": "20251030T095000",
+        "arrival_date_time": "20251030T135100"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 2880,
+        "duration": 2880,
+        "departure_date_time": "20251030T195000",
+        "arrival_date_time": "20251030T203800"
+      },
+      "firstDeparturDateTime": "2025-10-30T09:50:00",
+      "lastArrivalDateTime": "2025-10-30T20:38:00",
+      "duration": 38880,
+      "nb_transfers": 5
+    },
+    {
+      "durations": {
+        "total": 33180,
+        "walking": -3420
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T095000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T095000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T144800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T144800&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14460,
+          "duration": 14460,
+          "departure_date_time": "20251030T095000",
+          "arrival_date_time": "20251030T135100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T144800",
+          "arrival_date_time": "20251030T135100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9540,
+          "duration": 9540,
+          "departure_date_time": "20251030T144800",
+          "arrival_date_time": "20251030T172700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:Train",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T172700",
+          "arrival_date_time": "20251030T173200"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T173200",
+          "arrival_date_time": "20251030T173700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:Train",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 780,
+          "duration": 780,
+          "departure_date_time": "20251030T173700",
+          "arrival_date_time": "20251030T175000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Train",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T175000",
+          "arrival_date_time": "20251030T175500"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 1200,
+          "duration": 1200,
+          "departure_date_time": "20251030T175500",
+          "arrival_date_time": "20251030T181500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T181500",
+          "arrival_date_time": "20251030T190300"
+        },
+        {
+          "from": {
+            "id": "I56QUI",
+            "name": "Quiberon",
+            "embedded_type": "harbor"
+          },
+          "to": {
+            "id": "I56BIP",
+            "name": "Belle-Île-en-Mer - Le Palais",
+            "embedded_type": null
+          },
+          "type": "Boat",
+          "sectionDuration": 3000,
+          "duration": 3000,
+          "departure_date_time": "20251030T200000",
+          "arrival_date_time": "20251030T205000"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+          "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 14460,
+        "duration": 14460,
+        "departure_date_time": "20251030T095000",
+        "arrival_date_time": "20251030T135100"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "I56QUI",
+          "name": "Quiberon",
+          "embedded_type": "harbor"
+        },
+        "to": {
+          "id": "I56BIP",
+          "name": "Belle-Île-en-Mer - Le Palais",
+          "embedded_type": null
+        },
+        "type": "Boat",
+        "sectionDuration": 3000,
+        "duration": 3000,
+        "departure_date_time": "20251030T200000",
+        "arrival_date_time": "20251030T205000"
+      },
+      "firstDeparturDateTime": "2025-10-30T09:50:00",
+      "lastArrivalDateTime": "2025-10-30T20:50:00",
+      "duration": 33180,
+      "nb_transfers": 3
+    },
+    {
+      "durations": {
+        "total": 38460,
+        "walking": 1270
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T095700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=6&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87758581%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87393009%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758011%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87382218%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=stop_area%3ASNCF%3A87476457&datetime=20251030T095700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=6&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87758581%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87393009%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87758011%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87382218%3ARapidTransit&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T095700",
+          "arrival_date_time": "20251030T105400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T105400",
+          "arrival_date_time": "20251030T105900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 3270,
+          "duration": 3270,
+          "departure_date_time": "20251030T105900",
+          "arrival_date_time": "20251030T115330"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T115330",
+          "arrival_date_time": "20251030T115400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 12300,
+          "duration": 12300,
+          "departure_date_time": "20251030T115400",
+          "arrival_date_time": "20251030T151900"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87758581:RapidTransit",
+            "name": "Paris Gare de Lyon (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 170,
+          "duration": 170,
+          "departure_date_time": "20251030T151900",
+          "arrival_date_time": "20251030T152150"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 190,
+          "duration": 190,
+          "departure_date_time": "20251030T152150",
+          "arrival_date_time": "20251030T152500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87758581:RapidTransit",
+            "name": "Paris Gare de Lyon (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87758011:RapidTransit",
+            "name": "La Grande Arche de la Défense (Puteaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 720,
+          "duration": 720,
+          "departure_date_time": "20251030T152500",
+          "arrival_date_time": "20251030T153700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87758011:RapidTransit",
+            "name": "La Grande Arche de la Défense (Puteaux)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87382218:RapidTransit",
+            "name": "La Défense (Puteaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 200,
+          "duration": 200,
+          "departure_date_time": "20251030T153700",
+          "arrival_date_time": "20251030T154020"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 280,
+          "duration": 280,
+          "departure_date_time": "20251030T154020",
+          "arrival_date_time": "20251030T154500"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87382218:RapidTransit",
+            "name": "La Défense (Puteaux)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87393009:RapidTransit",
+            "name": "Versailles Chantiers (Versailles)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1260,
+          "duration": 1260,
+          "departure_date_time": "20251030T154500",
+          "arrival_date_time": "20251030T160600"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 600,
+          "duration": 600,
+          "departure_date_time": "20251030T160600",
+          "arrival_date_time": "20251030T161600"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87393009:RapidTransit",
+            "name": "Versailles Chantiers (Versailles)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:RapidTransit",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1500,
+          "duration": 1500,
+          "departure_date_time": "20251030T161600",
+          "arrival_date_time": "20251030T164100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:RapidTransit",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T164100",
+          "arrival_date_time": "20251030T164600"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 660,
+          "duration": 660,
+          "departure_date_time": "20251030T164600",
+          "arrival_date_time": "20251030T165700"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9660,
+          "duration": 9660,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T193800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T193800",
+          "arrival_date_time": "20251030T194300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 420,
+          "duration": 420,
+          "departure_date_time": "20251030T194300",
+          "arrival_date_time": "20251030T195000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T195000",
+          "arrival_date_time": "20251030T203800"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T095700",
+        "arrival_date_time": "20251030T105400"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 2880,
+        "duration": 2880,
+        "departure_date_time": "20251030T195000",
+        "arrival_date_time": "20251030T203800"
+      },
+      "firstDeparturDateTime": "2025-10-30T09:57:00",
+      "lastArrivalDateTime": "2025-10-30T20:38:00",
+      "duration": 38460,
+      "nb_transfers": 6
+    },
+    {
+      "durations": {
+        "total": 38460,
+        "walking": -5880
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T095700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T095700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ATrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87751008%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ATrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T165700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T165700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:Train",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3420,
+          "duration": 3420,
+          "departure_date_time": "20251030T095700",
+          "arrival_date_time": "20251030T105400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:Train",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T105400",
+          "arrival_date_time": "20251030T105900"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 3270,
+          "duration": 3270,
+          "departure_date_time": "20251030T105900",
+          "arrival_date_time": "20251030T115330"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "type": "boarding",
+          "sectionDuration": 30,
+          "duration": 30,
+          "departure_date_time": "20251030T115330",
+          "arrival_date_time": "20251030T115400"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87751008:LongDistanceTrain",
+            "name": "Marseille Saint-Charles (Marseille)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 12300,
+          "duration": 12300,
+          "departure_date_time": "20251030T115400",
+          "arrival_date_time": "20251030T151900"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 5880,
+          "duration": 5880,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T151900"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9660,
+          "duration": 9660,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T193800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T193800",
+          "arrival_date_time": "20251030T194300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 420,
+          "duration": 420,
+          "departure_date_time": "20251030T194300",
+          "arrival_date_time": "20251030T195000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T195000",
+          "arrival_date_time": "20251030T203800"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:Train",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87751008:Train",
+          "name": "Marseille Saint-Charles (Marseille)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3420,
+        "duration": 3420,
+        "departure_date_time": "20251030T095700",
+        "arrival_date_time": "20251030T105400"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 2880,
+        "duration": 2880,
+        "departure_date_time": "20251030T195000",
+        "arrival_date_time": "20251030T203800"
+      },
+      "firstDeparturDateTime": "2025-10-30T09:57:00",
+      "lastArrivalDateTime": "2025-10-30T20:38:00",
+      "duration": 38460,
+      "nb_transfers": 3
+    },
+    {
+      "durations": {
+        "total": 31740,
+        "walking": -3960
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T114900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A83137&to=admin%3Afr%3A75056&datetime=20251030T114900&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=0&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87686006%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87755009%3ALongDistanceTrain&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T165700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=admin%3Afr%3A75056&to=stop_area%3ASNCF%3A87476457&datetime=20251030T165700&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=1&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+            "name": "Toulon (Toulon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 14520,
+          "duration": 14520,
+          "departure_date_time": "20251030T114900",
+          "arrival_date_time": "20251030T155100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+            "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "Walking",
+          "sectionDuration": 3960,
+          "duration": 3960,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T155100"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9660,
+          "duration": 9660,
+          "departure_date_time": "20251030T165700",
+          "arrival_date_time": "20251030T193800"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "duration": 300,
+          "departure_date_time": "20251030T193800",
+          "arrival_date_time": "20251030T194300"
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 420,
+          "duration": 420,
+          "departure_date_time": "20251030T194300",
+          "arrival_date_time": "20251030T195000"
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 2880,
+          "duration": 2880,
+          "departure_date_time": "20251030T195000",
+          "arrival_date_time": "20251030T203800"
+        }
+      ],
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87755009:LongDistanceTrain",
+          "name": "Toulon (Toulon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87686006:LongDistanceTrain",
+          "name": "Paris - Gare de Lyon - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 14520,
+        "duration": 14520,
+        "departure_date_time": "20251030T114900",
+        "arrival_date_time": "20251030T155100"
+      },
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 2880,
+        "duration": 2880,
+        "departure_date_time": "20251030T195000",
+        "arrival_date_time": "20251030T203800"
+      },
+      "firstDeparturDateTime": "2025-10-30T11:49:00",
+      "lastArrivalDateTime": "2025-10-30T20:38:00",
+      "duration": 31740,
+      "nb_transfers": 2
+    }
+  ]
+}
