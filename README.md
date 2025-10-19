@@ -25,10 +25,12 @@ En précisant simplement la date et le lieu de départ, l'application assemble l
 - [x] Planificateur d'itinéraires de trajets en train fonctionnel (jusqu'à Auray seulement, gare TGV principale pour Belle-île)
 - [x] Choix de la date du trajet
 - [x] Création et optimisation des trajets (TGV grandes lignes)
-- [ ] Affichage des détails de chaque trajet
-- [ ] Compléter les itinéraires (Auray -> Belle-île) avec intégration des bateaux
+- [x] Affichage des détails de chaque trajet
+- [x] Compléter les itinéraires (Départ -> Belle-île) avec intégration des bateaux
+- [ ] Mise en production
 - [ ] Ajout de modes de transports alternatifs (voiture, bus)
-- [ ] Enregistrement des trajets
+- [ ] Affichage d'une carte interactive
+- [ ] Enregistrement des trajets et création de comptes utilisateurs
 - [ ] Partage de trajets
 
 ## Précisions 🔍
