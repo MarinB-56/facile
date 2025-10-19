@@ -66,19 +66,19 @@ public class BuildJourneyServiceTest {
     this.gtfSectionProposals = new HashSet<SectionDTO>();
 
     SectionDTO firstBoat = new SectionDTO();
-    firstBoat.setArrivalDateTime("2025-10-30T10:30:00");
+    firstBoat.setArrivalDateTime("20251030T103000");
     this.gtfSectionProposals.add(firstBoat);
 
     SectionDTO secondBoat = new SectionDTO();
-    secondBoat.setArrivalDateTime("2025-10-30T14:30:00");
+    secondBoat.setArrivalDateTime("20251030T143000");
     this.gtfSectionProposals.add(secondBoat);
 
     SectionDTO thirdBoat = new SectionDTO();
-    thirdBoat.setArrivalDateTime("2025-10-30T15:00:00");
+    thirdBoat.setArrivalDateTime("20251030T150000");
     this.gtfSectionProposals.add(thirdBoat);
 
     SectionDTO fourthBoat = new SectionDTO();
-    fourthBoat.setArrivalDateTime("2025-10-30T20:00:00");
+    fourthBoat.setArrivalDateTime("20251030T200000");
     this.gtfSectionProposals.add(fourthBoat);
 
     // Simulation d'un voyage dont le départ est à 15h et l'arrivée à 18h
@@ -114,19 +114,19 @@ public class BuildJourneyServiceTest {
     this.gtfSectionProposals = new HashSet<SectionDTO>();
 
     SectionDTO firstBoat = new SectionDTO();
-    firstBoat.setDepartureDateTime("2025-10-30T10:30:00");
+    firstBoat.setDepartureDateTime("20251030T103000");
     this.gtfSectionProposals.add(firstBoat);
 
     SectionDTO secondBoat = new SectionDTO();
-    secondBoat.setDepartureDateTime("2025-10-30T15:30:00");
+    secondBoat.setDepartureDateTime("20251030T153000");
     this.gtfSectionProposals.add(secondBoat);
 
     SectionDTO thirdBoat = new SectionDTO();
-    thirdBoat.setDepartureDateTime("2025-10-30T18:00:00");
+    thirdBoat.setDepartureDateTime("20251030T180000");
     this.gtfSectionProposals.add(thirdBoat);
 
     SectionDTO fourthBoat = new SectionDTO();
-    fourthBoat.setDepartureDateTime("2025-10-30T20:00:00");
+    fourthBoat.setDepartureDateTime("20251030T200000");
     this.gtfSectionProposals.add(fourthBoat);
 
     // Simulation d'un voyage dont le départ est à 10h et l'arrivée à 15h
@@ -162,14 +162,14 @@ public class BuildJourneyServiceTest {
     Set<SectionDTO> compatibleBoats = new HashSet<>();
 
     SectionDTO firstCompatibleBoat = new SectionDTO();
-    firstCompatibleBoat.setDepartureDateTime("2025-10-30T10:30:00");
-    firstCompatibleBoat.setArrivalDateTime("2025-10-30T11:20:00");
+    firstCompatibleBoat.setDepartureDateTime("20251030T103000");
+    firstCompatibleBoat.setArrivalDateTime("20251030T112000");
 
     compatibleBoats.add(firstCompatibleBoat);
 
     SectionDTO secondCompatibleBoat = new SectionDTO();
-    secondCompatibleBoat.setDepartureDateTime("2025-10-30T15:30:00");
-    secondCompatibleBoat.setArrivalDateTime("2025-10-30T16:20:00");
+    secondCompatibleBoat.setDepartureDateTime("20251030T153000");
+    secondCompatibleBoat.setArrivalDateTime("20251030T162000");
 
     compatibleBoats.add(secondCompatibleBoat);
 
