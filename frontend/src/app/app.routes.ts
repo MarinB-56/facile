@@ -3,6 +3,7 @@ import { TripConfiguratorComponent } from './trip-configurator/trip-configurator
 import { TripSearchButtonComponent } from './trip-configurator/trip-search-button/trip-search-button.component';
 import { TripProposalsListComponent } from './trip-proposals-list/trip-proposals-list.component';
 import { TripProposalDetailsComponent } from './trip-proposal-details/trip-proposal-details.component';
+import { SuggestionsComponentComponent } from './suggestions-component/suggestions-component.component';
 
 export const routes: Routes = [
   {

@@ -54,9 +54,10 @@ export class DestinationPickerComponent {
     const destination = this.defaultDestination();
 
 
-    if(destination.name == "Auray (Auray)"){ // Si on va à belle ile
+    if(destination.name == "Quiberon (Quiberon)"){ // Si on va à belle ile
       // this.myControl.setValue("Belle-Ile-En-Mer");
-      this.myControl.setValue(this.defaultDestination().name);
+      // this.myControl.setValue(this.defaultDestination().name);
+      this.myControl.setValue("Belle-Île-En-Mer");
       this.myControl.disable();
     }else { // Si une destination par défaut a été précisée (autre que Belle ile)
       this.myControl.setValue(this.defaultDestination().name);
