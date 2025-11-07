@@ -1,12 +1,3 @@
-<!-- <ul>
-  <li>
-    {{ journey()?.journeyFirstSection?.from?.name }} -> {{ journey()?.journeyLastSection?.to?.name }}
-    <br>
-    Correspondance : {{ journey()?.nb_transfers }} - Durée : {{ journey()?.duration }}
-    <br>
-    Départ : {{ journey()?.journeyFirstSection?.departure_date_time }} -> {{ journey()?.journeyLastSection?.arrival_date_time}}
-  </li>
-</ul> -->
 
 @if(journey(); as j){
   <div class="trip-proposal-item" (click)="getJourneyDetails()">
@@ -20,10 +11,19 @@
       <p class="trip-proposal-item__departure">{{ j.journeyFirstSection.departure_date_time | timePipe  }} : {{ j.journeyFirstSection.from.name }}</p>
       <p class="trip-proposal-item__arrival">{{ j.journeyLastSection.arrival_date_time | timePipe  }}: {{ j.journeyLastSection.to.name }}</p>
     </div>
+
     <div class="trip-proposal-item__symbol">
       @for (section of j.sections; track $index) {
         @if (section.type == "public_transport"){
-          <span class="material-symbols-outlined">directions_railway_2</span>
+
+          @if (section.display_informations.physical_mode.includes("Train") || section.display_informations.physical_mode.includes("TER")) {
+            <span class="material-symbols-outlined">directions_railway_2</span>
+          }@else if(section.display_informations.physical_mode.includes("Bateau")){
+            <span class="material-symbols-outlined section-icon">directions_boat</span>
+          }@else if(section.display_informations.physical_mode.includes("Autocar")){
+            <span class="material-symbols-outlined section-icon">directions_bus</span>
+          }
+
           @if( (j.sections.length > 1) && ($index < j.sections.length - 1)){
             <span class="material-symbols-outlined arrow">arrow_right</span>
           }
