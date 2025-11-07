@@ -78,7 +78,9 @@
 #   accessed directly. (example: "foo.example.com,bar.example.com")
 #
 ###
-FROM registry.access.redhat.com/ubi9/openjdk-17:1.21
+## NOTE: updated to a Java 21 base image. Please verify this base image/tag in your environment.
+## Common choices: eclipse-temurin:21-jdk, amazoncorretto:21, or a RedHat UBI OpenJDK 21 image if available.
+FROM eclipse-temurin:21-jdk
 
 ENV LANGUAGE='en_US:en'
 
