@@ -31,7 +31,7 @@ public class BuildJourneyService {
 
   public JourneyProposalsDTO buildJourney(TripDTO trip){
     // Création de trajets via Navitia
-    JourneyProposalsDTO navitiaJourneyProposals = navitiaService.getItineraries(trip);
+    JourneyProposalsDTO navitiaJourneyProposals = navitiaService.getJourneyProposals(trip);
 
     // Récupération des sections créés par GTFS
     Set<SectionDTO> gtfsSectionProposals = gtfsService.getSectionsFromGtfsData(trip);

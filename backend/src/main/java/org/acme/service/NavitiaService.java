@@ -66,10 +66,10 @@ public class NavitiaService {
     * @return une liste de propositions d'itinéraires possibles
     */
   // Itinary research
-  public JourneyProposalsDTO getItineraries(TripDTO trip){
+  public JourneyProposalsDTO getJourneyProposals(TripDTO trip){
     System.out.println("Date du voyage recherché : " + trip.getDate());
     // Récupération des propositions brut (trip pour la journée)
-    JourneyProposalsDTO journeyProposals = getItinerariesProposals(trip);
+    JourneyProposalsDTO journeyProposals = getExternalJourneyProposals(trip);
 
     System.out.println("Nombre de journey trouvés: " + journeyProposals.getJourneyProposals().size() );
 
@@ -77,22 +77,12 @@ public class NavitiaService {
     if(containsStopAtParis(journeyProposals)){
       System.out.println("Par Paris");
       // Construction des trips en passant par Paris
-      JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
+      JourneyProposalsDTO journeyProposalsThroughParis = getExternalJourneyProposalsThroughParis(trip);
       // Fusion de toutes les propositions de voyage
       if(journeyProposalsThroughParis != null){
         journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
       }
     }
-
-    // Construction de trajets en passant par Paris (arbitraire)
-    /*
-     * TODO:
-     * - Vérifier automatiquement si le trajet a besoin de passer par Paris ou non
-     */
-    // JourneyProposalsDTO journeyProposalsThroughParis = getItinerariesThroughParis(trip);
-    // if(journeyProposalsThroughParis != null){
-    //   journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-    // }
 
     System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
 
@@ -111,7 +101,7 @@ public class NavitiaService {
   }
 
   // Journey builder
-  private JourneyProposalsDTO getItinerariesProposals(TripDTO trip){
+  private JourneyProposalsDTO getExternalJourneyProposals(TripDTO trip){
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
     String tripDate = trip.getDate().toString();
@@ -122,7 +112,7 @@ public class NavitiaService {
     // Récupération des propositions brut (itinéraires de toute la journée)
     // Appel à l'API Navitia
     try {
-      journeyProposals = navitiaClient.getItinerariesProposals(idDeparture, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+      journeyProposals = navitiaClient.getExternalJourneyProposals(idDeparture, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
       journeyProposals = cleanJourneyProposals(journeyProposals); // Suppression des crow_fly
 
     } catch (Exception e) {
@@ -168,7 +158,7 @@ public class NavitiaService {
   }
 
   // journey builder
-  private JourneyProposalsDTO getItinerariesThroughParis(TripDTO trip){
+  private JourneyProposalsDTO getExternalJourneyProposalsThroughParis(TripDTO trip){
     // On trouve les informations du Trip
     String idDeparture = trip.getDeparture().getId();
     String idArrival = trip.getArrival().getId();
@@ -185,8 +175,8 @@ public class NavitiaService {
     // Itinéraires: du départ -> à PARIS
     try {
 
-      JourneyProposalsDTO journeyProposalsToParis = navitiaClient.getItinerariesProposals(idDeparture, PARIS_REGION_ID, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
-      JourneyProposalsDTO journeyProposalsFromParis = navitiaClient.getItinerariesProposals(PARIS_REGION_ID, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+      JourneyProposalsDTO journeyProposalsToParis = navitiaClient.getExternalJourneyProposals(idDeparture, PARIS_REGION_ID, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
+      JourneyProposalsDTO journeyProposalsFromParis = navitiaClient.getExternalJourneyProposals(PARIS_REGION_ID, idArrival, tripDate, datetimeRepresents, TIMEFRAME_DURATION);
 
       // Nettoyage des propositions (suppression des crow_fly)
       journeyProposalsToParis = cleanJourneyProposals(journeyProposalsToParis);
