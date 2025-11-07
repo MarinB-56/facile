@@ -230,6 +230,10 @@ public class GtfsService {
           informations.setNetwork("Vindilis");
         }else if(tripBlockId.contains("BNGR")){
           informations.setNetwork("Bangor");
+        }else if(tripBlockId.contains("IDGX")){
+          informations.setNetwork("Île de Groix");
+        }else{
+          informations.setNetwork("Bateau inconnu");
         }
 
         LocalTime departureTime = LocalTime.ofSecondOfDay(departure.getDepartureTime());
