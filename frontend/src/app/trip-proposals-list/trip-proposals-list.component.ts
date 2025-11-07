@@ -32,7 +32,6 @@ export class TripProposalsListComponent {
     } else if(trip){ // Appel au serveur pour lancer la recherche d'itinéraires
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-
       this.http .post<any>('http://localhost:8080/api/navitia/search', trip, {headers})
         .subscribe(response => {
           // this.tripResearchService.setResults(response);
