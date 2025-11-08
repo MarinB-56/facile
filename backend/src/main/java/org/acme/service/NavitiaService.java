@@ -6,6 +6,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.acme.client.NavitiaClient;
 import org.acme.dto.DurationDTO;
@@ -31,6 +35,8 @@ public class NavitiaService {
   @Inject
   @RestClient
   NavitiaClient navitiaClient;
+
+  record TimeKey(LocalDateTime departure, LocalDateTime arrival) {}
 
   /**
    * Récupère les lieux possibles suite à l'input utilisateur.
@@ -87,14 +93,8 @@ public class NavitiaService {
       }
     }
 
-    // Tri des voyages dans l'ordre de départ
-    journeyProposals.getJourneyProposals().sort(Comparator.comparing(
-      JourneyDTO::getFirstDeparturDateTime,
-      Comparator.nullsLast(Comparator.naturalOrder())
-    ));
-
     // Filtrage des voyages
-    // journeyProposals = filterNonRelevantJourneys(journeyProposals);
+    journeyProposals = filterNonRelevantJourneys(journeyProposals);
 
     return journeyProposals;
   }
@@ -384,9 +384,69 @@ public class NavitiaService {
   }
 
   protected JourneyProposalsDTO filterNonRelevantJourneys(JourneyProposalsDTO journeyProposals){
+    List<JourneyDTO> journeyDTOs = journeyProposals.getJourneyProposals();
 
+    System.out.println("Avant filtrage : " + journeyDTOs.size());
 
+    // Supprimer doublons exacts (mêmes départs et mêmes arrivées)
+    journeyDTOs = journeyDTOs.stream()
+            .collect(Collectors.groupingBy(j -> new TimeKey(
+                j.getFirstDeparturDateTime(),
+                j.getLastArrivalDateTime()
+            )))
+            .values().stream()
+            .map(list -> list.stream()
+                .min(Comparator.comparingInt(JourneyDTO::getNbTransfers))
+                .orElse(null))
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
 
+    // Optimiser trajets aux mêmes départs
+    journeyDTOs = journeyDTOs.stream()
+        .collect(Collectors.groupingBy(JourneyDTO::getFirstDeparturDateTime)) // on regroupe
+        .values().stream() // puis on passe sur la collection de groupes
+        .map(list -> list.size() > 1
+                ? list.stream()
+                    .min(Comparator.comparingInt(JourneyDTO::getTotalDuration))
+                    .orElse(null)
+                : list.get(0))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+
+    // Optimiser trajet aux mêmes arrivées
+    journeyDTOs = journeyDTOs.stream()
+        .collect(Collectors.groupingBy(JourneyDTO::getLastArrivalDateTime)) // on regroupe
+        .values().stream() // puis on passe sur la collection de groupes
+        .map(list -> list.size() > 1
+                ? list.stream()
+                    .min(Comparator.comparingInt(JourneyDTO::getTotalDuration))
+                    .orElse(list.get(0))
+                : list.get(0))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+
+    System.out.println("Après filtrage des doublons : " + journeyDTOs.size());
+
+    // Filtrer les voyages avec départ avant mais arrivée après
+    List<JourneyDTO> journeys = journeyDTOs; // effectively final
+
+    journeyDTOs = journeys.stream()
+        .filter(journeyA -> journeys.stream()
+            .noneMatch(journeyB ->
+                !journeyA.equals(journeyB) &&
+                journeyA.getFirstDeparturDateTime().isBefore(journeyB.getFirstDeparturDateTime()) &&
+                journeyA.getLastArrivalDateTime().isAfter(journeyB.getLastArrivalDateTime())
+            )
+        )
+        .collect(Collectors.toList());
+
+    journeyProposals.setJourneyProposals(journeyDTOs);
+
+    // Tri des voyages dans l'ordre de départ
+    journeyProposals.getJourneyProposals().sort(Comparator.comparing(
+      JourneyDTO::getFirstDeparturDateTime,
+      Comparator.nullsLast(Comparator.naturalOrder())
+    ));
     return journeyProposals;
   }
 
