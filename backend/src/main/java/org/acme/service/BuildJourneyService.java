@@ -34,13 +34,13 @@ public class BuildJourneyService {
     JourneyProposalsDTO navitiaJourneyProposals = navitiaService.getJourneyProposals(trip);
 
     // Récupération des sections créés par GTFS
-    Set<SectionDTO> gtfsSectionProposals = gtfsService.getSectionsFromGtfsData(trip);
+    // Set<SectionDTO> gtfsSectionProposals = gtfsService.getSectionsFromGtfsData(trip);
 
     // Ajout des sections gtfs aux trajets de Navitia
-    JourneyProposalsDTO completeJourneyProposals = assembleNavitiaAndGtfsSections(trip, navitiaJourneyProposals, gtfsSectionProposals);
+    // JourneyProposalsDTO completeJourneyProposals = assembleNavitiaAndGtfsSections(trip, navitiaJourneyProposals, gtfsSectionProposals);
 
     // On renvoie l'objet entier formaté
-    return completeJourneyProposals;
+    return navitiaJourneyProposals;
   }
 
   private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){

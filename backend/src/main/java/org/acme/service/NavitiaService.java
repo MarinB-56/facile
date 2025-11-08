@@ -68,6 +68,7 @@ public class NavitiaService {
   // Itinary research
   public JourneyProposalsDTO getJourneyProposals(TripDTO trip){
     System.out.println("Date du voyage recherché : " + trip.getDate());
+
     // Récupération des propositions brut (trip pour la journée)
     JourneyProposalsDTO journeyProposals = getExternalJourneyProposals(trip);
 
@@ -78,13 +79,13 @@ public class NavitiaService {
       System.out.println("Par Paris");
       // Construction des trips en passant par Paris
       JourneyProposalsDTO journeyProposalsThroughParis = getExternalJourneyProposalsThroughParis(trip);
+
       // Fusion de toutes les propositions de voyage
       if(journeyProposalsThroughParis != null){
         journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+        System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
       }
     }
-
-    System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
 
     // Tri des voyages dans l'ordre de départ
     journeyProposals.getJourneyProposals().sort(Comparator.comparing(
@@ -92,10 +93,8 @@ public class NavitiaService {
       Comparator.nullsLast(Comparator.naturalOrder())
     ));
 
-    // Affichage des voyages
-    // for(JourneyDTO journey : journeyProposals.getJourneyProposals()){
-    //   System.out.println(journey.getFirstDeparturDateTime());
-    // }
+    // Filtrage des voyages
+    // journeyProposals = filterNonRelevantJourneys(journeyProposals);
 
     return journeyProposals;
   }
@@ -190,8 +189,6 @@ public class NavitiaService {
       System.err.println(e);
       return new JourneyProposalsDTO();
     }
-
-
   }
 
   // Journey builder
@@ -384,6 +381,13 @@ public class NavitiaService {
     links.addAll(secondJourney.getLinks());
 
     return links;
+  }
+
+  protected JourneyProposalsDTO filterNonRelevantJourneys(JourneyProposalsDTO journeyProposals){
+
+
+
+    return journeyProposals;
   }
 
 }
