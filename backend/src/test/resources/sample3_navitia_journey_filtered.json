@@ -1,0 +1,884 @@
+{
+  "journeys": [
+    {
+      "durations": {
+        "total": 22740,
+        "walking": 300
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T065500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T065500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3600,
+          "displayInformationsDTO": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          },
+          "duration": 3600,
+          "departure_date_time": "20251125T065500",
+          "arrival_date_time": "20251125T075500",
+          "display_informations": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          }
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "displayInformationsDTO": null,
+          "duration": 300,
+          "departure_date_time": "20251125T075500",
+          "arrival_date_time": "20251125T080000",
+          "display_informations": null
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 840,
+          "displayInformationsDTO": null,
+          "duration": 840,
+          "departure_date_time": "20251125T080000",
+          "arrival_date_time": "20251125T081400",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 10380,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 10380,
+          "departure_date_time": "20251125T081400",
+          "arrival_date_time": "20251125T110700",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 240,
+          "displayInformationsDTO": null,
+          "duration": 240,
+          "departure_date_time": "20251125T110700",
+          "arrival_date_time": "20251125T111100",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+            "name": "Bordeaux Saint-Jean (Bordeaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7380,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 7380,
+          "departure_date_time": "20251125T111100",
+          "arrival_date_time": "20251125T131400",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        }
+      ],
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+          "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+          "name": "Bordeaux Saint-Jean (Bordeaux)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 7380,
+        "displayInformationsDTO": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        },
+        "duration": 7380,
+        "departure_date_time": "20251125T111100",
+        "arrival_date_time": "20251125T131400",
+        "display_informations": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        }
+      },
+      "firstDeparturDateTime": "2025-11-25T06:55:00",
+      "lastArrivalDateTime": "2025-11-25T13:14:00",
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3600,
+        "displayInformationsDTO": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        },
+        "duration": 3600,
+        "departure_date_time": "20251125T065500",
+        "arrival_date_time": "20251125T075500",
+        "display_informations": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        }
+      },
+      "duration": 22740,
+      "nb_transfers": 2
+    },
+    {
+      "durations": {
+        "total": 27360,
+        "walking": 300
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T093500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=3&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T093500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=3&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476606%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3000,
+          "displayInformationsDTO": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          },
+          "duration": 3000,
+          "departure_date_time": "20251125T093500",
+          "arrival_date_time": "20251125T102500",
+          "display_informations": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          }
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 900,
+          "displayInformationsDTO": null,
+          "duration": 900,
+          "departure_date_time": "20251125T102500",
+          "arrival_date_time": "20251125T104000",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:Coach",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 1500,
+          "displayInformationsDTO": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          },
+          "duration": 1500,
+          "departure_date_time": "20251125T104000",
+          "arrival_date_time": "20251125T110500",
+          "display_informations": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          }
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:Coach",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "displayInformationsDTO": null,
+          "duration": 300,
+          "departure_date_time": "20251125T110500",
+          "arrival_date_time": "20251125T111000",
+          "display_informations": null
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 4680,
+          "displayInformationsDTO": null,
+          "duration": 4680,
+          "departure_date_time": "20251125T111000",
+          "arrival_date_time": "20251125T122800",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476606:LongDistanceTrain",
+            "name": "Vannes (Vannes)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 9240,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 9240,
+          "departure_date_time": "20251125T122800",
+          "arrival_date_time": "20251125T150200",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 300,
+          "displayInformationsDTO": null,
+          "duration": 300,
+          "departure_date_time": "20251125T150200",
+          "arrival_date_time": "20251125T150700",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+            "name": "Bordeaux Saint-Jean (Bordeaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7440,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 7440,
+          "departure_date_time": "20251125T150700",
+          "arrival_date_time": "20251125T171100",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        }
+      ],
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+          "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+          "name": "Bordeaux Saint-Jean (Bordeaux)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 7440,
+        "displayInformationsDTO": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        },
+        "duration": 7440,
+        "departure_date_time": "20251125T150700",
+        "arrival_date_time": "20251125T171100",
+        "display_informations": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        }
+      },
+      "firstDeparturDateTime": "2025-11-25T09:35:00",
+      "lastArrivalDateTime": "2025-11-25T17:11:00",
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3000,
+        "displayInformationsDTO": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        },
+        "duration": 3000,
+        "departure_date_time": "20251125T093500",
+        "arrival_date_time": "20251125T102500",
+        "display_informations": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        }
+      },
+      "duration": 27360,
+      "nb_transfers": 3
+    },
+    {
+      "durations": {
+        "total": 22440,
+        "walking": 300
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T130000&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3000,
+          "displayInformationsDTO": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          },
+          "duration": 3000,
+          "departure_date_time": "20251125T130000",
+          "arrival_date_time": "20251125T135000",
+          "display_informations": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          }
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "displayInformationsDTO": null,
+          "duration": 300,
+          "departure_date_time": "20251125T135000",
+          "arrival_date_time": "20251125T135500",
+          "display_informations": null
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 960,
+          "displayInformationsDTO": null,
+          "duration": 960,
+          "departure_date_time": "20251125T135500",
+          "arrival_date_time": "20251125T141100",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 10260,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 10260,
+          "departure_date_time": "20251125T141100",
+          "arrival_date_time": "20251125T170200",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 540,
+          "displayInformationsDTO": null,
+          "duration": 540,
+          "departure_date_time": "20251125T170200",
+          "arrival_date_time": "20251125T171100",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+            "name": "Bordeaux Saint-Jean (Bordeaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7380,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 7380,
+          "departure_date_time": "20251125T171100",
+          "arrival_date_time": "20251125T191400",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        }
+      ],
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+          "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+          "name": "Bordeaux Saint-Jean (Bordeaux)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 7380,
+        "displayInformationsDTO": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        },
+        "duration": 7380,
+        "departure_date_time": "20251125T171100",
+        "arrival_date_time": "20251125T191400",
+        "display_informations": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        }
+      },
+      "firstDeparturDateTime": "2025-11-25T13:00:00",
+      "lastArrivalDateTime": "2025-11-25T19:14:00",
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3000,
+        "displayInformationsDTO": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        },
+        "duration": 3000,
+        "departure_date_time": "20251125T130000",
+        "arrival_date_time": "20251125T135000",
+        "display_informations": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        }
+      },
+      "duration": 22440,
+      "nb_transfers": 2
+    },
+    {
+      "durations": {
+        "total": 21540,
+        "walking": 300
+      },
+      "links": [
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T151500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=5&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&_pt_planner=kraken",
+          "type": "journeys",
+          "rel": "same_journey_schedules"
+        },
+        {
+          "href": "https://api.navitia.io/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A87476457&to=admin%3Afr%3A33063&datetime=20251125T151500&datetime_represents=departure&timeframe_duration=86400&first_section_mode%5B%5D=walking&last_section_mode%5B%5D=walking&min_nb_transfers=2&direct_path=none&min_nb_journeys=1&is_journey_schedules=True&allowed_id%5B%5D=stop_point%3ASNCF%3A87391003%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87581009%3ALongDistanceTrain&allowed_id%5B%5D=stop_point%3ASNCF%3A87476457%3ACoach&allowed_id%5B%5D=stop_point%3ASNCF%3A87476200%3ACoach&count=1",
+          "type": "journeys",
+          "rel": "this_journey"
+        }
+      ],
+      "sections": [
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476457:Coach",
+            "name": "Quiberon (Quiberon)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 3000,
+          "displayInformationsDTO": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          },
+          "duration": 3000,
+          "departure_date_time": "20251125T151500",
+          "arrival_date_time": "20251125T160500",
+          "display_informations": {
+            "network": "BreizhGo",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "BreizhGo",
+            "physical_mode": "Autocar"
+          }
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:Coach",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "type": "transfer",
+          "sectionDuration": 300,
+          "displayInformationsDTO": null,
+          "duration": 300,
+          "departure_date_time": "20251125T160500",
+          "arrival_date_time": "20251125T161000",
+          "display_informations": null
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 240,
+          "displayInformationsDTO": null,
+          "duration": 240,
+          "departure_date_time": "20251125T161000",
+          "arrival_date_time": "20251125T161400",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87476200:LongDistanceTrain",
+            "name": "Auray (Auray)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 10260,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 10260,
+          "departure_date_time": "20251125T161400",
+          "arrival_date_time": "20251125T190500",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        },
+        {
+          "from": null,
+          "to": null,
+          "type": "waiting",
+          "sectionDuration": 360,
+          "displayInformationsDTO": null,
+          "duration": 360,
+          "departure_date_time": "20251125T190500",
+          "arrival_date_time": "20251125T191100",
+          "display_informations": null
+        },
+        {
+          "from": {
+            "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+            "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+            "embedded_type": "stop_point"
+          },
+          "to": {
+            "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+            "name": "Bordeaux Saint-Jean (Bordeaux)",
+            "embedded_type": "stop_point"
+          },
+          "type": "public_transport",
+          "sectionDuration": 7380,
+          "displayInformationsDTO": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          },
+          "duration": 7380,
+          "departure_date_time": "20251125T191100",
+          "arrival_date_time": "20251125T211400",
+          "display_informations": {
+            "network": "TGV INOUI",
+            "company": "SNCF Voyageurs",
+            "commercial_mode": "TGV INOUI",
+            "physical_mode": "Train grande vitesse"
+          }
+        }
+      ],
+      "journeyLastSection": {
+        "from": {
+          "id": "stop_point:SNCF:87391003:LongDistanceTrain",
+          "name": "Paris - Montparnasse - Hall 1 & 2 (Paris)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87581009:LongDistanceTrain",
+          "name": "Bordeaux Saint-Jean (Bordeaux)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 7380,
+        "displayInformationsDTO": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        },
+        "duration": 7380,
+        "departure_date_time": "20251125T191100",
+        "arrival_date_time": "20251125T211400",
+        "display_informations": {
+          "network": "TGV INOUI",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "TGV INOUI",
+          "physical_mode": "Train grande vitesse"
+        }
+      },
+      "firstDeparturDateTime": "2025-11-25T15:15:00",
+      "lastArrivalDateTime": "2025-11-25T21:14:00",
+      "journeyFirstSection": {
+        "from": {
+          "id": "stop_point:SNCF:87476457:Coach",
+          "name": "Quiberon (Quiberon)",
+          "embedded_type": "stop_point"
+        },
+        "to": {
+          "id": "stop_point:SNCF:87476200:Coach",
+          "name": "Auray (Auray)",
+          "embedded_type": "stop_point"
+        },
+        "type": "public_transport",
+        "sectionDuration": 3000,
+        "displayInformationsDTO": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        },
+        "duration": 3000,
+        "departure_date_time": "20251125T151500",
+        "arrival_date_time": "20251125T160500",
+        "display_informations": {
+          "network": "BreizhGo",
+          "company": "SNCF Voyageurs",
+          "commercial_mode": "BreizhGo",
+          "physical_mode": "Autocar"
+        }
+      },
+      "duration": 21540,
+      "nb_transfers": 2
+    }
+  ]
+}
