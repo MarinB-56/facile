@@ -11,10 +11,10 @@ public class MockLoaderService {
 
   private ObjectMapper objectMapper = new ObjectMapper();
 
-  public JourneyProposalsDTO getJourneyProposalsDTOFromNavitiaMock(){
+  public JourneyProposalsDTO getJourneyProposalsDTOFromNavitiaMock(String fileName){
     try {
       JourneyProposalsDTO journeyProposalsDTO = objectMapper.readValue(
-          getClass().getResourceAsStream("/sample1_navitia_journey.json"),
+          getClass().getResourceAsStream("/" + fileName + ".json"),
           JourneyProposalsDTO.class
       );
 
