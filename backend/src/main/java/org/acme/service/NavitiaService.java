@@ -81,20 +81,30 @@ public class NavitiaService {
     System.out.println("Nombre de journey trouvés: " + journeyProposals.getJourneyProposals().size() );
 
     //Vérification si passe par Paris
-    if(containsStopAtParis(journeyProposals)){
-      System.out.println("Par Paris");
-      // Construction des trips en passant par Paris
-      JourneyProposalsDTO journeyProposalsThroughParis = getExternalJourneyProposalsThroughParis(trip);
+    // if(containsStopAtParis(journeyProposals)){
+    //   System.out.println("Par Paris");
+    //   // Construction des trips en passant par Paris
+    //   JourneyProposalsDTO journeyProposalsThroughParis = getExternalJourneyProposalsThroughParis(trip);
 
-      // Fusion de toutes les propositions de voyage
-      if(journeyProposalsThroughParis != null){
-        journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
-        System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
-      }
+    //   // Fusion de toutes les propositions de voyage
+    //   if(journeyProposalsThroughParis != null){
+    //     journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+    //     System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
+    //   }
+    // }
+
+    System.out.println("Essai par Paris");
+    // Construction des trips en passant par Paris
+    JourneyProposalsDTO journeyProposalsThroughParis = getExternalJourneyProposalsThroughParis(trip);
+
+    // Fusion de toutes les propositions de voyage
+    if(journeyProposalsThroughParis != null){
+      journeyProposals.getJourneyProposals().addAll(journeyProposalsThroughParis.getJourneyProposals());
+      System.out.println("Nombre de journey par Paris trouvés: " + journeyProposals.getJourneyProposals().size() );
     }
 
     // Filtrage des voyages
-    journeyProposals = filterNonRelevantJourneys(journeyProposals);
+    // journeyProposals = filterNonRelevantJourneys(journeyProposals);
 
     return journeyProposals;
   }

@@ -1,6 +1,9 @@
 package org.acme.service;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -8,6 +11,7 @@ import org.acme.dto.DurationDTO;
 import org.acme.dto.JourneyDTO;
 import org.acme.dto.JourneyProposalsDTO;
 import org.acme.dto.TripDTO;
+import org.acme.service.NavitiaService.TimeKey;
 import org.acme.dto.SectionDTO;
 
 import java.time.LocalDateTime;
@@ -34,13 +38,15 @@ public class BuildJourneyService {
     JourneyProposalsDTO navitiaJourneyProposals = navitiaService.getJourneyProposals(trip);
 
     // Récupération des sections créés par GTFS
-    // Set<SectionDTO> gtfsSectionProposals = gtfsService.getSectionsFromGtfsData(trip);
+    Set<SectionDTO> gtfsSectionProposals = gtfsService.getSectionsFromGtfsData(trip);
 
     // Ajout des sections gtfs aux trajets de Navitia
-    // JourneyProposalsDTO completeJourneyProposals = assembleNavitiaAndGtfsSections(trip, navitiaJourneyProposals, gtfsSectionProposals);
+    JourneyProposalsDTO completeJourneyProposals = assembleNavitiaAndGtfsSections(trip, navitiaJourneyProposals, gtfsSectionProposals);
+
+    completeJourneyProposals = filterNonRelevantJourneys(completeJourneyProposals);
 
     // On renvoie l'objet entier formaté
-    return navitiaJourneyProposals;
+    return completeJourneyProposals;
   }
 
   private JourneyProposalsDTO assembleNavitiaAndGtfsSections(TripDTO trip, JourneyProposalsDTO navitiaJourneyProposals, Set<SectionDTO> gtfsSectionProposals){
@@ -210,6 +216,73 @@ public class BuildJourneyService {
     }
 
     return navitiaJourneyProposal;
+  }
+
+  protected JourneyProposalsDTO filterNonRelevantJourneys(JourneyProposalsDTO journeyProposals){
+    List<JourneyDTO> journeyDTOs = journeyProposals.getJourneyProposals();
+
+    System.out.println("Avant filtrage : " + journeyDTOs.size());
+
+    // Supprimer doublons exacts (mêmes départs et mêmes arrivées)
+    journeyDTOs = journeyDTOs.stream()
+            .collect(Collectors.groupingBy(j -> new TimeKey(
+                j.getFirstDeparturDateTime(),
+                j.getLastArrivalDateTime()
+            )))
+            .values().stream()
+            .map(list -> list.stream()
+                .min(Comparator.comparingInt(JourneyDTO::getNbTransfers))
+                .orElse(null))
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+
+    // Optimiser trajets aux mêmes départs
+    journeyDTOs = journeyDTOs.stream()
+        .collect(Collectors.groupingBy(JourneyDTO::getFirstDeparturDateTime)) // on regroupe
+        .values().stream() // puis on passe sur la collection de groupes
+        .map(list -> list.size() > 1
+                ? list.stream()
+                    .min(Comparator.comparingInt(JourneyDTO::getTotalDuration))
+                    .orElse(null)
+                : list.get(0))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+
+    // Optimiser trajet aux mêmes arrivées
+    journeyDTOs = journeyDTOs.stream()
+        .collect(Collectors.groupingBy(JourneyDTO::getLastArrivalDateTime)) // on regroupe
+        .values().stream() // puis on passe sur la collection de groupes
+        .map(list -> list.size() > 1
+                ? list.stream()
+                    .min(Comparator.comparingInt(JourneyDTO::getTotalDuration))
+                    .orElse(list.get(0))
+                : list.get(0))
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+
+    System.out.println("Après filtrage des doublons : " + journeyDTOs.size());
+
+    // Filtrer les voyages avec départ avant mais arrivée après
+    List<JourneyDTO> journeys = journeyDTOs; // effectively final
+
+    journeyDTOs = journeys.stream()
+        .filter(journeyA -> journeys.stream()
+            .noneMatch(journeyB ->
+                !journeyA.equals(journeyB) &&
+                journeyA.getFirstDeparturDateTime().isBefore(journeyB.getFirstDeparturDateTime()) &&
+                journeyA.getLastArrivalDateTime().isAfter(journeyB.getLastArrivalDateTime())
+            )
+        )
+        .collect(Collectors.toList());
+
+    journeyProposals.setJourneyProposals(journeyDTOs);
+
+    // Tri des voyages dans l'ordre de départ
+    journeyProposals.getJourneyProposals().sort(Comparator.comparing(
+      JourneyDTO::getFirstDeparturDateTime,
+      Comparator.nullsLast(Comparator.naturalOrder())
+    ));
+    return journeyProposals;
   }
 
 }

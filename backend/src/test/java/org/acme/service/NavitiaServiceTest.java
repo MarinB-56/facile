@@ -15,14 +15,15 @@ public class NavitiaServiceTest {
   MockLoaderService mockLoaderService;
 
   @Inject
-  NavitiaService navitiaService;
+  BuildJourneyService buildJourneyService;
+  // NavitiaService navitiaService
 
   @Test
   void shouldFilterNonRelevantJourneysFirst(){
     JourneyProposalsDTO journeyProposals = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample1_navitia_journey");
     JourneyProposalsDTO journeyProposalsFiltered = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample1_navitia_journey_filtered");
 
-    journeyProposals = navitiaService.filterNonRelevantJourneys(journeyProposals);
+    journeyProposals = buildJourneyService.filterNonRelevantJourneys(journeyProposals);
 
     assertThat(journeyProposals).usingRecursiveComparison().isEqualTo(journeyProposalsFiltered);
   }
@@ -32,7 +33,7 @@ public class NavitiaServiceTest {
     JourneyProposalsDTO journeyProposalsSecond = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample2_navitia_journey");
     JourneyProposalsDTO journeyProposalsFilteredSecond = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample2_navitia_journey_filtered");
 
-    journeyProposalsSecond = navitiaService.filterNonRelevantJourneys(journeyProposalsSecond);
+    journeyProposalsSecond = buildJourneyService.filterNonRelevantJourneys(journeyProposalsSecond);
 
     assertThat(journeyProposalsSecond).usingRecursiveComparison().isEqualTo(journeyProposalsFilteredSecond);
   }
@@ -42,7 +43,7 @@ public class NavitiaServiceTest {
     JourneyProposalsDTO journeyProposalsThird = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample3_navitia_journey");
     JourneyProposalsDTO journeyProposalsFilteredThird = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample3_navitia_journey_filtered");
 
-    journeyProposalsThird = navitiaService.filterNonRelevantJourneys(journeyProposalsThird);
+    journeyProposalsThird = buildJourneyService.filterNonRelevantJourneys(journeyProposalsThird);
 
     assertThat(journeyProposalsThird).usingRecursiveComparison().isEqualTo(journeyProposalsFilteredThird);
   }
@@ -52,7 +53,7 @@ public class NavitiaServiceTest {
     JourneyProposalsDTO journeyProposalsFourth = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample4_navitia_journey");
     JourneyProposalsDTO journeyProposalsFilteredFourth = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample4_navitia_journey_filtered");
 
-    journeyProposalsFourth = navitiaService.filterNonRelevantJourneys(journeyProposalsFourth);
+    journeyProposalsFourth = buildJourneyService.filterNonRelevantJourneys(journeyProposalsFourth);
 
     assertThat(journeyProposalsFourth).usingRecursiveComparison().isEqualTo(journeyProposalsFilteredFourth);
   }
@@ -62,7 +63,7 @@ public class NavitiaServiceTest {
     JourneyProposalsDTO journeyProposalsFifth = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample5_navitia_journey");
     JourneyProposalsDTO journeyProposalsFilteredFifth = mockLoaderService.getJourneyProposalsDTOFromNavitiaMock("sample5_navitia_journey_filtered");
 
-    journeyProposalsFifth = navitiaService.filterNonRelevantJourneys(journeyProposalsFifth);
+    journeyProposalsFifth = buildJourneyService.filterNonRelevantJourneys(journeyProposalsFifth);
 
     assertThat(journeyProposalsFifth).usingRecursiveComparison().isEqualTo(journeyProposalsFilteredFifth);
   }
