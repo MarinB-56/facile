@@ -6,18 +6,18 @@ import { TripResearchService } from '../services/trip-research.service';
 import { Journey } from '../models/journey.model';
 import { TripProposalItemComponent } from './trip-proposal-item/trip-proposal-item.component';
 import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
-
+import { DestinationPipePipe } from '../pipes/destination-pipe/destination-pipe.pipe';
 
 @Component({
   selector: 'app-trip-proposals-list',
-  imports: [TripProposalItemComponent, TripHeaderComponentComponent],
+  imports: [TripProposalItemComponent, TripHeaderComponentComponent, DestinationPipePipe],
   templateUrl: './trip-proposals-list.component.html',
   styleUrl: './trip-proposals-list.component.scss'
 })
 export class TripProposalsListComponent {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private tripResearchService = inject(TripResearchService);
+  protected tripResearchService = inject(TripResearchService);
 
   results : Journey[] = [];
 

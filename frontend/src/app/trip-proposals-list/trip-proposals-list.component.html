@@ -2,9 +2,9 @@
 
 <div class="proposals-list__configuration">
   <div class="proposals-list__configuration-destinations">
-    <h2>Toulon (Toulon)</h2>
+    <h2>{{ tripResearchService.getSearch().departure.name | destinationPipe }}</h2>
     <span class="material-symbols-outlined">arrow_forward</span>
-    <h2>Belle-Île-en-Mer</h2>
+    <h2>{{ tripResearchService.getSearch().arrival.name | destinationPipe }}</h2>
   </div>
   <h3  class="proposals-list__configuration-date">le Mardi 14 février 2025</h3>
 </div>
