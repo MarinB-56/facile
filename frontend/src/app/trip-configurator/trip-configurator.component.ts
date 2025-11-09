@@ -85,6 +85,9 @@ export class TripConfiguratorComponent {
     // On supprime les anciennes recherches
     this.tripResearchService.clearResults();
 
+    // On met à jour la recherche
+    this.tripResearchService.setSearch(this.trip());
+
     // Navigation vers la page des résultats
     this.router.navigate(['/trips'], {
       state: { trip: this.trip() }
