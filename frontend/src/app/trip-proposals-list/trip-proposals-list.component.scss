@@ -37,3 +37,18 @@
 .proposals-list__configuration-date{
   margin-top: 0;
 }
+
+.proposals-list__loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // min-height: 60vh;
+  // max-width: 30vh;
+  gap: 1rem;
+  color: $primary-color;
+}
+
+.proposals-list__loading-spinner ::ng-deep .mat-mdc-progress-spinner circle {
+  stroke: $primary-color !important;
+}
