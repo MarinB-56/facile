@@ -1,20 +1,30 @@
 @import '../../../styles/variables';
 
 .trip-proposal-item {
-  background-color: #D0E9F1;
+  background-color: $secondary-color;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-left: 10px;
   border-radius: 20px;
   margin: 10px 0px;
-  border: 1px solid #013A63 ;
+  border: 1px solid $primary-color ;
   position: relative;
   // box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
+.trip-proposal-item:hover{
+  cursor: pointer;
+  background-color: darken($secondary-color, 5%);
+
+  .trip-proposal-item__symbol{
+    background-color: darken($secondary-color, 5%);
+  }
+
+}
+
 .trip-proposal-item__departure, .trip-proposal-item__arrival {
-  color: #013A63;
+  color: $primary-color;
   font-weight: bolder;
   font-style: normal;
   font-size: larger;
@@ -33,17 +43,17 @@
   width: 20px;          /* Largeur du rond */
   height: 40px;         /* Hauteur du rond */
   border-radius: 0px 100px 100px 0px;    /* Transforme l'élément en cercle */
-  background-color: #F0F8FA; /* Couleur de fond */
+  background-color: $background-color; /* Couleur de fond */
   position:absolute;
   left: -1px;
   margin-top: 30px;
-  border: 1px solid #013A63 ;
+  border: 1px solid $primary-color ;
 }
 
 .square__left {
   width: 3px;
   height: 40px;
-  background-color: #F0F8FA;
+  background-color: $background-color;
   position:absolute;
   left: -2px;
   margin-top: 30px;
@@ -53,24 +63,24 @@
   width: 20px;          /* Largeur du rond */
   height: 40px;         /* Hauteur du rond */
   border-radius: 100px 0px 0px 100px;    /* Transforme l'élément en cercle */
-  background-color: #F0F8FA; /* Couleur de fond */
+  background-color: $background-color; /* Couleur de fond */
   position:absolute;
   right: -1px;
   margin-top: 30px;
-  border: 1px solid #013A63 ;
+  border: 1px solid $primary-color ;
 }
 
 .square__right {
   width: 3px;
   height: 40px;
-  background-color: #F0F8FA;
+  background-color: $background-color;
   position:absolute;
   right: -2px;
   margin-top: 30px;
 }
 
 .transport-line {
-  border: 1px dashed #013A63;
+  border: 1px dashed $primary-color;
   position: absolute;
   width: 80%;
   margin: 30px 0px 0px 0px;
