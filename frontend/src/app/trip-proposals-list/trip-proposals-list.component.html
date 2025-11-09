@@ -6,7 +6,7 @@
     <span class="material-symbols-outlined">arrow_forward</span>
     <h2>{{ tripResearchService.getSearch().arrival.name | destinationPipe }}</h2>
   </div>
-  <h3  class="proposals-list__configuration-date">le Mardi 14 février 2025</h3>
+  <h3  class="proposals-list__configuration-date">le {{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</h3>
 </div>
 
 <p> {{ this.results.length }} résultats :</p>

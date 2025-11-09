@@ -7,10 +7,11 @@ import { Journey } from '../models/journey.model';
 import { TripProposalItemComponent } from './trip-proposal-item/trip-proposal-item.component';
 import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
 import { DestinationPipePipe } from '../pipes/destination-pipe/destination-pipe.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-trip-proposals-list',
-  imports: [TripProposalItemComponent, TripHeaderComponentComponent, DestinationPipePipe],
+  imports: [TripProposalItemComponent, TripHeaderComponentComponent, DestinationPipePipe, DatePipe],
   templateUrl: './trip-proposals-list.component.html',
   styleUrl: './trip-proposals-list.component.scss'
 })

@@ -3,6 +3,9 @@
 <p>{{ this.journey?.duration | durationPipe }}, {{ (this.journey?.nb_transfers ?? 0) | connectionPipe}}</p>
 
 <h1>Trajet</h1>
-@for (section of this.journey?.sections; track $index) {
-  <app-trip-proposal-section [section]="section" ></app-trip-proposal-section>
+
+@if(this.journey){
+  @for (section of this.journey.sections; track $index) {
+    <app-trip-proposal-section [section]="section" ></app-trip-proposal-section>
+  }
 }

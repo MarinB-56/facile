@@ -1,6 +1,18 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { LOCALE_ID, ApplicationConfig } from '@angular/core';
 
-bootstrapApplication(AppComponent, appConfig)
+registerLocaleData(localeFr);
+
+const localeConfig: ApplicationConfig = {
+  providers: [
+    ...appConfig.providers,
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+  ]
+};
+
+bootstrapApplication(AppComponent, localeConfig)
   .catch((err) => console.error(err));
