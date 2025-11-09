@@ -30,7 +30,11 @@
         }
       }
     </div>
-    <p class="trip-proposal-item__duration">{{ j.duration | durationPipe  }}, {{ j.nb_transfers | connectionPipe }}</p>
+
+    <div class="trip-proposal-item__duration">
+      <span class="material-symbols-outlined">schedule</span>
+      <p>{{ j.duration | durationPipe  }}, {{ j.nb_transfers | connectionPipe }}</p>
+    </div>
   </div>
 }
 
@@ -61,5 +65,9 @@
 
   </div>
 
-  <p class="trip-proposal-item__duration">6h31, 3 correspondances</p>
+  <div class="trip-proposal-item__duration">
+    <span class="material-symbols-outlined">schedule</span>
+    <p>6h31, 3 correspondances</p>
+  </div>
+
 </div> -->

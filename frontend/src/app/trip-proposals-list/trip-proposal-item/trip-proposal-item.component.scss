@@ -103,4 +103,12 @@
 
 .trip-proposal-item__duration {
   margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: medium;
+}
+
+.trip-proposal-item__duration .material-symbols-outlined {
+  font-size: medium;
 }
