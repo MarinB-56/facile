@@ -18,3 +18,22 @@
   font-family: "Lilita One";
   font-size: 18px;
 }
+
+.proposals-list__configuration {
+  color: $primary-color ;
+}
+
+.proposals-list__configuration-destinations{
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+
+  &h2 {
+    font-family: "Lilita one";
+  }
+}
+
+.proposals-list__configuration-date{
+  margin-top: 0;
+}
