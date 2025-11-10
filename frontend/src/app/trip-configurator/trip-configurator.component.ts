@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { TripDestinationsFormComponent } from "./trip-destinations-form/trip-destinations-form.component";
 import { TripSearchButtonComponent } from "./trip-search-button/trip-search-button.component";
 import { Destination } from '../models/destination.model';
@@ -32,6 +32,17 @@ export class TripConfiguratorComponent {
   arrival = signal<Destination>(BELLE_ILE); // Par défaut, la destination est Belle-ile
 
   tripDate = signal<Date | null>(null);
+
+  constructor(){
+    effect(() => {
+      const search = this.tripResearchService.getSearch();
+
+      if(search){
+        this.departure.set(search.departure);
+        this.arrival.set(search.arrival);
+      }
+    })
+  }
 
   // Voyage complet. Mis à jour si ses champs sont mis à jour (grâce à computed)
   trip = computed(() => ({
@@ -70,12 +81,10 @@ export class TripConfiguratorComponent {
   }
 
   // Inversion des destinations (inversion aller et retour)
-  onDestinationsSwapped(){
-    // Inversion de l'arrivée et du départ niveau trip
-    const tampon: Destination = this.arrival();
+  onDestinationsSwapped(event: any){
+    this.departure.set(event.departure);
+    this.arrival.set(event.arrival);
 
-    this.arrival.set(this.departure());
-    this.departure.set(tampon);
     console.log("Destinations have been swapped");
     console.log(this.trip());
   }

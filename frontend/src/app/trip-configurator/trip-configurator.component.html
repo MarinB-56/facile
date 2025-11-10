@@ -9,7 +9,7 @@
         [departure]="departure()"
         (departureSelectedEvent)="onDepartureSelected($event)"
         (arrivalSelectedEvent)="onArrivalSelected($event)"
-        (swappDestinationEvent)="onDestinationsSwapped()">
+        (swappDestinationEvent)="onDestinationsSwapped($event)">
       </app-trip-destinations-form>
 
       <app-trip-date-picker (dateChangeEvent)="onDateSelected($event)"></app-trip-date-picker>

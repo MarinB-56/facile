@@ -33,7 +33,7 @@ export class DestinationPickerComponent {
   private searchTerms = new Subject<string>();
   private searchSub: Subscription;
 
-  // Form ulaire d'autocomplétion (Angular material)
+  // Formulaire d'autocomplétion (Angular material)
   myControl = new FormControl('');
   autoCompleteResults = signal<Array<Destination>>([]); // Signifie que les objets dans le tableau auront, entre autres, un champ name
 
