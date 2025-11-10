@@ -1,0 +1,14 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color;
+}
+
+.app-content {
+  flex: 1; /* prend tout l’espace sous le header */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1em;
+}

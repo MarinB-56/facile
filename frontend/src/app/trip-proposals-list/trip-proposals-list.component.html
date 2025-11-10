@@ -1,27 +1,31 @@
-<app-trip-header-component></app-trip-header-component>
+<div class="app-container">
+  <app-trip-header-component></app-trip-header-component>
 
-@if(isLoading){
-  <div class="proposals-list__loading-spinner">
-    <p>Chargement des voyages...</p>
-    <mat-spinner diameter="40"></mat-spinner>
+  <div class="app-content">
+    @if(isLoading){
+      <div class="proposals-list__loading-spinner">
+        <p>Chargement des voyages...</p>
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    }
+
+    @if(!isLoading){
+      <div class="proposals-list__configuration">
+        <div class="proposals-list__configuration-destinations">
+          <h2>{{ tripResearchService.getSearch().departure.name | destinationPipe }}</h2>
+          <span class="material-symbols-outlined">arrow_forward</span>
+          <h2>{{ tripResearchService.getSearch().arrival.name | destinationPipe }}</h2>
+        </div>
+        <h3  class="proposals-list__configuration-date">le {{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</h3>
+      </div>
+
+      <p> {{ this.results.length }} résultats :</p>
+
+      @for (journey of results; track $index) {
+        <app-trip-proposal-item [journey]="journey" ></app-trip-proposal-item>
+      }
+
+      <app-trip-proposal-item></app-trip-proposal-item>
+    }
   </div>
-}
-
-@if(!isLoading){
-  <div class="proposals-list__configuration">
-    <div class="proposals-list__configuration-destinations">
-      <h2>{{ tripResearchService.getSearch().departure.name | destinationPipe }}</h2>
-      <span class="material-symbols-outlined">arrow_forward</span>
-      <h2>{{ tripResearchService.getSearch().arrival.name | destinationPipe }}</h2>
-    </div>
-    <h3  class="proposals-list__configuration-date">le {{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</h3>
-  </div>
-
-  <p> {{ this.results.length }} résultats :</p>
-
-  @for (journey of results; track $index) {
-    <app-trip-proposal-item [journey]="journey" ></app-trip-proposal-item>
-  }
-
-  <app-trip-proposal-item></app-trip-proposal-item>
-}
+</div>

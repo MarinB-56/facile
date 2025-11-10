@@ -1,4 +1,5 @@
 @import '../../styles/variables' ;
+@import '../../styles/layout';
 
 .trip-configurator__modal-button {
   border: none !important;
@@ -29,13 +30,14 @@
   align-items: center;
   gap: 0.5em;
 
-  &h2 {
-    font-family: "Lilita one";
+  h2 {
+    margin: 0;
+    // font-family: "Lilita one";
   }
 }
 
 .proposals-list__configuration-date{
-  margin-top: 0;
+  margin: 0;
 }
 
 .proposals-list__loading-spinner {

@@ -1,9 +1,10 @@
-<div class="trip-configurator">
-    <app-trip-header-component></app-trip-header-component>
+<div class="app-container">
+  <app-trip-header-component></app-trip-header-component>
 
+  <div class="app-content trip-configurator__wrapper">
     <p class="trip-configurator__greetings">Hey Marin ! <br>  On va à Belle-Île ?</p>
 
-    <div class="trip-configurator__wrapper">
+    <div class="trip-configurator__forms">
       <app-trip-destinations-form
         [arrival]="arrival()"
         [departure]="departure()"
@@ -16,4 +17,5 @@
     </div>
 
     <app-trip-search-button [isDisabled]="!isTripValid()" (click)="onSearch()"></app-trip-search-button>
+  </div>
 </div>
