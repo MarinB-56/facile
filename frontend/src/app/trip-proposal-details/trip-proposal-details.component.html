@@ -1,13 +1,15 @@
-<app-trip-header-component></app-trip-header-component>
+<div class="app-container">
+  <app-trip-header-component></app-trip-header-component>
 
-<h1>Détails du voyage</h1>
+  <div class="app-content trip-details">
+    <h1>Détails du voyage</h1>
 
-<p>{{ this.journey?.duration | durationPipe }}, {{ (this.journey?.nb_transfers ?? 0) | connectionPipe}}</p>
+    <p>{{ this.journey?.duration | durationPipe }}, {{ (this.journey?.nb_transfers ?? 0) | connectionPipe}}</p>
 
-<h1>Trajet</h1>
-
-@if(this.journey){
-  @for (section of this.journey.sections; track $index) {
-    <app-trip-proposal-section [section]="section" ></app-trip-proposal-section>
-  }
-}
+    @if(this.journey){
+      @for (section of this.journey.sections; track $index) {
+        <app-trip-proposal-section [section]="section" ></app-trip-proposal-section>
+      }
+    }
+  </div>
+</div>
