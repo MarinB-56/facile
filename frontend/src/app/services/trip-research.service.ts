@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Trip } from '../models/trip.model';
+import { HttpClient } from '@angular/common/http';
+import { Section } from '../models/section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +9,18 @@ import { Trip } from '../models/trip.model';
 export class TripResearchService {
   private results: any;
   private search: any;
+  private boatSchedule : any;
 
   constructor() {
 
+  }
+
+  getBoatSchedule(){
+    return this.boatSchedule;
+  }
+
+  setBoatSchedule(data: Section[]){
+    this.boatSchedule = data;
   }
 
   setSearch(data: Trip){
