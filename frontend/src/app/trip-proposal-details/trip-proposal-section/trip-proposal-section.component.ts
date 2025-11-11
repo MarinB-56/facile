@@ -15,9 +15,4 @@ import { CommonModule } from '@angular/common';
 })
 export class TripProposalSectionComponent {
   section = input.required<Section>();
-
-  ngOnInit(){
-    console.log("Coucou mon vieux");
-    console.log(this.section());
-  }
 }

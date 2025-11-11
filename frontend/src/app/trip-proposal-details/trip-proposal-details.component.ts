@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Journey } from '../models/journey.model';
 import { DurationPipePipe } from '../pipes/duration-pipe/duration-pipe.pipe';
 import { ConnectionPipePipe } from '../pipes/connection-pipe/connection-pipe.pipe';
@@ -6,6 +6,7 @@ import { TripProposalSectionComponent } from "./trip-proposal-section/trip-propo
 import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
 import { Section } from '../models/section.model';
 import { CommonModule } from '@angular/common';
+import { TripResearchService } from '../services/trip-research.service';
 
 @Component({
   selector: 'app-trip-proposal-details',
@@ -21,6 +22,9 @@ import { CommonModule } from '@angular/common';
 })
 export class TripProposalDetailsComponent {
   journey: Journey | undefined;
+  boatSchedule : Section[] | undefined ;
+
+  tripResearchService = inject(TripResearchService);
 
   ngOnInit(){
     this.journey = history.state.journey;
