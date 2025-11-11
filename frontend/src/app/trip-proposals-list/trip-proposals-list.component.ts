@@ -7,10 +7,12 @@ import { Journey } from '../models/journey.model';
 import { TripProposalItemComponent } from './trip-proposal-item/trip-proposal-item.component';
 import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
 import { DestinationPipePipe } from '../pipes/destination-pipe/destination-pipe.pipe';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { BoatScheduleDialogComponent } from '../boat-schedule-dialog/boat-schedule-dialog.component';
+import { Section } from '../models/section.model';
+import { TripProposalSectionComponent } from "../trip-proposal-details/trip-proposal-section/trip-proposal-section.component";
 
 @Component({
   selector: 'app-trip-proposals-list',
@@ -20,8 +22,8 @@ import { BoatScheduleDialogComponent } from '../boat-schedule-dialog/boat-schedu
     DestinationPipePipe,
     DatePipe,
     MatProgressSpinnerModule,
-
-  ],
+    CommonModule
+],
   templateUrl: './trip-proposals-list.component.html',
   styleUrl: './trip-proposals-list.component.scss'
 })

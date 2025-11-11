@@ -4,6 +4,8 @@ import { DurationPipePipe } from '../pipes/duration-pipe/duration-pipe.pipe';
 import { ConnectionPipePipe } from '../pipes/connection-pipe/connection-pipe.pipe';
 import { TripProposalSectionComponent } from "./trip-proposal-section/trip-proposal-section.component";
 import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
+import { Section } from '../models/section.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-trip-proposal-details',
@@ -11,7 +13,8 @@ import { TripHeaderComponentComponent } from '../trip-header-component/trip-head
     DurationPipePipe,
     ConnectionPipePipe,
     TripProposalSectionComponent,
-    TripHeaderComponentComponent
+    TripHeaderComponentComponent,
+    CommonModule
   ],
   templateUrl: './trip-proposal-details.component.html',
   styleUrl: './trip-proposal-details.component.scss'
@@ -23,22 +26,6 @@ export class TripProposalDetailsComponent {
     this.journey = history.state.journey;
 
     console.log(this.journey);
-
-
-    // Arbitrairement, on met toutes les sections à train
-    // if (this.journey?.sections) {
-    //   for (const section of this.journey.sections) {
-    //     if(section.type === "Boat"){
-    //       // Do something with section
-    //       console.log("OUI MINS");
-    //       section.type = "public_transport"
-    //       section.transport_type = "boat";
-    //     }else{
-    //       section.transport_type = "train";
-    //     }
-    //     console.log(section);
-    //   }
-    // }
   }
 }
 

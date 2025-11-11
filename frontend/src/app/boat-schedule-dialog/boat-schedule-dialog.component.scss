@@ -2,7 +2,7 @@
 
 .schedule-dialog{
   background-color: $background-color;
-  padding: 2em;
+  padding: 2em 2em 0 2em;
   scrollbar-width: none;
 }
 
@@ -28,9 +28,13 @@
   width: 100%;
   scrollbar-width: none;
   // background-color: aqua;
-  padding: 0;
+  padding: 0 0 2em 0;
+  // background-color: aqua;
   // margin: 1em 0;
-  min-width: 80vh;
+  // min-width: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 
@@ -45,4 +49,10 @@
   // background-color: $primary-color;
   background-color: adjust-color($color: $primary-color, $lightness: 10%);
   // background-color: adjust($primary-color, $lightness: -10%);
+}
+
+.schedule-dialog__schedule-items{
+  border: 1px solid $primary-color;
+  border-radius: 1em;
+  // max-width: 80vh;
 }

@@ -8,7 +8,7 @@ export interface Section{
   section_duration: number,
   to: Destination,
   type: String,
-  transport_type: String
+  transport_type: String,
   display_informations: {
     commercial_mode: String,
     company: String,
