@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { TripResearchService } from '../services/trip-research.service';
 import { Journey } from '../models/journey.model';
 import { TripProposalItemComponent } from './trip-proposal-item/trip-proposal-item.component';
-import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
+import { TripHeaderComponentComponent } from '../trip-header/trip-header.component';
 import { DestinationPipePipe } from '../pipes/destination-pipe/destination-pipe.pipe';
 import { DatePipe } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';

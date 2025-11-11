@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TripHeaderComponentComponent } from './trip-header-component.component';
+import { TripHeaderComponent } from './trip-header.component';
 
 describe('TripHeaderComponentComponent', () => {
-  let component: TripHeaderComponentComponent;
-  let fixture: ComponentFixture<TripHeaderComponentComponent>;
+  let component: TripHeaderComponent;
+  let fixture: ComponentFixture<TripHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TripHeaderComponentComponent]
+      imports: [TripHeaderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TripHeaderComponentComponent);
+    fixture = TestBed.createComponent(TripHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

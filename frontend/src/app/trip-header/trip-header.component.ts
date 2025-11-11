@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-trip-header-component',
+  selector: 'app-trip-header',
   imports: [],
-  templateUrl: './trip-header-component.component.html',
-  styleUrl: './trip-header-component.component.scss'
+  templateUrl: './trip-header.component.html',
+  styleUrl: './trip-header.component.scss'
 })
-export class TripHeaderComponentComponent {
+export class TripHeaderComponent {
   private router = inject(Router);
 
   handleTitleClick(){

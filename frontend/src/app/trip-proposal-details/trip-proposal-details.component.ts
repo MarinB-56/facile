@@ -3,7 +3,7 @@ import { Journey } from '../models/journey.model';
 import { DurationPipePipe } from '../pipes/duration-pipe/duration-pipe.pipe';
 import { ConnectionPipePipe } from '../pipes/connection-pipe/connection-pipe.pipe';
 import { TripProposalSectionComponent } from "./trip-proposal-section/trip-proposal-section.component";
-import { TripHeaderComponentComponent } from '../trip-header-component/trip-header-component.component';
+import { TripHeaderComponentComponent } from '../trip-header/trip-header.component';
 
 @Component({
   selector: 'app-trip-proposal-details',

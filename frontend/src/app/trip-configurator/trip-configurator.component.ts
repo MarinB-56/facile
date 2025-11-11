@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
 
 import { DatePickerComponent } from "./trip-dates-picker/date-picker.component";
 import { TripResearchService } from '../services/trip-research.service';
-import { TripHeaderComponentComponent } from "../trip-header-component/trip-header-component.component";
+import { TripHeaderComponent } from "../trip-header/trip-header.component";
 
 
 @Component({
   selector: 'app-trip-configurator',
-  imports: [TripDestinationsFormComponent, TripSearchButtonComponent, DatePickerComponent, TripHeaderComponentComponent],
+  imports: [TripDestinationsFormComponent, TripSearchButtonComponent, DatePickerComponent, TripHeaderComponent],
   templateUrl: './trip-configurator.component.html',
   styleUrl: './trip-configurator.component.scss'
 })
