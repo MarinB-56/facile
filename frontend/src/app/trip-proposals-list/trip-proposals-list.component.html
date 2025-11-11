@@ -1,6 +1,6 @@
 <div class="app-container">
   <app-trip-header-component></app-trip-header-component>
-  <p class="proposals-list__details-schedule" (click)="openBoatSchedule()">Bateaux du jour</p>
+  <!-- <p class="proposals-list__details-schedule" (click)="openBoatSchedule()">Bateaux du jour</p> -->
 
   <div class="app-content">
     <!-- @if(isLoading){
@@ -9,6 +9,27 @@
         <mat-spinner diameter="40"></mat-spinner>
       </div>
     } -->
+    @if(true){
+    <div class="proposals-list__configuration">
+      <div class="proposals-list__configuration-destinations">
+        <h2>{{ tripResearchService.getSearch().departure.name | destinationPipe }}</h2>
+        <span class="material-symbols-outlined">arrow_forward</span>
+        <h2>{{ tripResearchService.getSearch().arrival.name | destinationPipe }}</h2>
+      </div>
+      <h3  class="proposals-list__configuration-date">le {{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</h3>
+    </div>
 
+    <div class="proposals-list__details">
+      <!-- <p>0 résultats : </p> -->
+      <p> {{ this.results.length }} résultats :</p>
+      <p class="proposals-list__details-schedule" (click)="openBoatSchedule()">Bateaux du jour</p>
+    </div>
+
+    @for (journey of results; track $index) {
+      <app-trip-proposal-item [journey]="journey" ></app-trip-proposal-item>
+    }
+
+    <app-trip-proposal-item></app-trip-proposal-item>
+  }
   </div>
 </div>

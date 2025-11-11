@@ -3,42 +3,19 @@
   <div class="schedule-dialog__header">
     <div>
       <h1 class="schedule-dialog__title">Horaires des bateaux</h1>
-      <p  class="schedule-dialog__title-date">Mardi 23 avril</p>
+      <p  class="schedule-dialog__title-date">{{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</p>
     </div>
     <span mat-dialog-close class="schedule-dialog__header-close material-symbols-outlined">close</span>
   </div>
 
   <mat-dialog-content class="mat-typography schedule-dialog__content">
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
-
-    <div class="schedule-dialog__schedule-items">
-      <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
-    </div>
+    @for(section of sections; track section){
+      <div class="schedule-dialog__schedule-items">
+        <app-trip-proposal-section [section]="section"></app-trip-proposal-section>
+      </div>
+    }
   </mat-dialog-content>
 </div>
-
 
 <!-- Copyright 2025 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that

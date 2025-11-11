@@ -51,7 +51,8 @@ export class TripProposalsListComponent {
     } else if(trip){ // Appel au serveur pour lancer la recherche d'itinéraires
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-      this.http .post<any>('http://localhost:8080/api/navitia/search', trip, {headers}).subscribe({
+      // Récupération des données des voyages
+      this.http.post<any>('http://localhost:8080/api/navitia/search', trip, {headers}).subscribe({
         next: (response) => {
           // this.tripResearchService.setResults(response);
           console.log(response);
@@ -62,9 +63,20 @@ export class TripProposalsListComponent {
         error: (error) => {
           console.log(error);
           this.isLoading = false;
+      }});
+
+      // Appel api pour récupérer les données des bateaux
+      this.http.post<any>('http://localhost:8080/gtfs/schedule', trip, {headers}).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.tripResearchService.setBoatSchedule(response);
+        },
+        error: (error) => {
+          console.log(error);
         }});
+      }
+
     }
-  }
 
   openBoatSchedule(){
     console.log("Affichage des horaires");
