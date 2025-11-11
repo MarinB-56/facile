@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.schedule-dialog{
+  background-color: $background-color;
+  padding: 2em;
+  scrollbar-width: none;
+}
+
+.schedule-dialog__header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  // padding: 1em;
+  padding-bottom: 1em;
+  color: white;
+}
+
+.schedule-dialog__title,
+.schedule-dialog__title-date{
+  margin:0;
+  color: $primary-color;
+  font-weight: lighter;
+  font-family: "Lilita one";
+}
+
+.schedule-dialog__content{
+  width: 100%;
+  scrollbar-width: none;
+  // background-color: aqua;
+  padding: 0;
+  // margin: 1em 0;
+  min-width: 80vh;
+}
+
+
+.schedule-dialog__header-close{
+  background-color: $primary-color;
+  border-radius: 50%;
+  padding: 0.2em;
+}
+
+.schedule-dialog__header-close:hover{
+  cursor: pointer;
+  // background-color: $primary-color;
+  background-color: adjust-color($color: $primary-color, $lightness: 10%);
+  // background-color: adjust($primary-color, $lightness: -10%);
+}

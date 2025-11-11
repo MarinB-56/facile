@@ -2,14 +2,14 @@
   <app-trip-header-component></app-trip-header-component>
 
   <div class="app-content">
-    @if(isLoading){
+    <!-- @if(isLoading){
       <div class="proposals-list__loading-spinner">
         <p>Chargement des voyages...</p>
         <mat-spinner diameter="40"></mat-spinner>
       </div>
-    }
+    } -->
 
-    @if(!isLoading){
+    @if(true){
       <div class="proposals-list__configuration">
         <div class="proposals-list__configuration-destinations">
           <h2>{{ tripResearchService.getSearch().departure.name | destinationPipe }}</h2>
@@ -22,7 +22,7 @@
       <div class="proposals-list__details">
         <p>0 résultats : </p>
         <!-- <p> {{ this.results.length }} résultats :</p> -->
-        <p class="proposals-list__details-schedule">Horaires bateaux</p>
+        <p class="proposals-list__details-schedule" (click)="openBoatSchedule()">Bateaux du jour</p>
       </div>
 
       @for (journey of results; track $index) {

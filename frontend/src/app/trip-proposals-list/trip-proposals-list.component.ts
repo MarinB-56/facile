@@ -9,6 +9,8 @@ import { TripHeaderComponentComponent } from '../trip-header-component/trip-head
 import { DestinationPipePipe } from '../pipes/destination-pipe/destination-pipe.pipe';
 import { DatePipe } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialog } from '@angular/material/dialog';
+import { BoatScheduleDialogComponent } from '../boat-schedule-dialog/boat-schedule-dialog.component';
 
 @Component({
   selector: 'app-trip-proposals-list',
@@ -17,7 +19,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     TripHeaderComponentComponent,
     DestinationPipePipe,
     DatePipe,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
   ],
   templateUrl: './trip-proposals-list.component.html',
   styleUrl: './trip-proposals-list.component.scss'
@@ -26,6 +29,8 @@ export class TripProposalsListComponent {
   private http = inject(HttpClient);
   private router = inject(Router);
   protected tripResearchService = inject(TripResearchService);
+
+  readonly dialog = inject(MatDialog);
 
   results : Journey[] = [];
 
@@ -57,5 +62,17 @@ export class TripProposalsListComponent {
           this.isLoading = false;
         }});
     }
+  }
+
+  openBoatSchedule(){
+    console.log("Affichage des horaires");
+
+    // Ouverture de la pop up avec les horaires
+    const dialogRef = this.dialog.open(BoatScheduleDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 }

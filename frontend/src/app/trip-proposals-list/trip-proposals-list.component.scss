@@ -57,7 +57,8 @@
 }
 
 .proposals-list__details-schedule:hover{
-  background-color: darken($secondary-color, 5%);
+  // background-color: darken($secondary-color, 5%);
+  background-color: adjust-color($color: $secondary-color, $lightness: -5%);
 }
 
 .proposals-list__loading-spinner {
