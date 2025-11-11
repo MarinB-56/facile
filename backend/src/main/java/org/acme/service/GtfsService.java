@@ -7,14 +7,18 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.acme.dto.DisplayInformationsDTO;
+import org.acme.dto.JourneyDTO;
 import org.acme.dto.SectionDTO;
 import org.acme.dto.StopPointDTO;
 import org.acme.dto.TripDTO;
@@ -44,6 +48,8 @@ public class GtfsService {
 
     private String BELLE_ILE_ID = "I56BIP";
     private String QUIBERON_ID = "I56QUI";
+
+    private Set<SectionDTO> gtfsSections;
 
     @PostConstruct
     public void init() {
@@ -260,6 +266,18 @@ public class GtfsService {
 
         gtfsSections.add(section);
       }
+
+
+      // Tri des sections par heure de départ
+      List<SectionDTO> sortedSections = new ArrayList<>(gtfsSections);
+
+      sortedSections.sort(Comparator.comparing(
+          SectionDTO::getDepartureDateTime,
+          Comparator.nullsLast(Comparator.naturalOrder())
+      ));
+
+      // ✅ On reconvertit la liste triée en Set en gardant l'ordre
+      gtfsSections = new LinkedHashSet<>(sortedSections);
 
       return gtfsSections;
     }
