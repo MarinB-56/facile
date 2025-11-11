@@ -19,7 +19,11 @@
         <h3  class="proposals-list__configuration-date">le {{ tripResearchService.getSearch().date | date:'EEEE d MMMM y' }}</h3>
       </div>
 
-      <p> {{ this.results.length }} résultats :</p>
+      <div class="proposals-list__details">
+        <p>0 résultats : </p>
+        <!-- <p> {{ this.results.length }} résultats :</p> -->
+        <p class="proposals-list__details-schedule">Horaires bateaux</p>
+      </div>
 
       @for (journey of results; track $index) {
         <app-trip-proposal-item [journey]="journey" ></app-trip-proposal-item>

@@ -40,6 +40,26 @@
   margin: 0;
 }
 
+.proposals-list__details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proposals-list__details-schedule{
+  background-color: $secondary-color;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.proposals-list__details-schedule:hover{
+  background-color: darken($secondary-color, 5%);
+}
+
 .proposals-list__loading-spinner {
   display: flex;
   flex-direction: column;
