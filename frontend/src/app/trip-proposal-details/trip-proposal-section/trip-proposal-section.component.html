@@ -1,9 +1,12 @@
   @if(section().type == "public_transport"){
 
+
     <div class="trip-section__transport">
       <div class="trip-section__transport-schedule">
-        <p>{{ section().departure_date_time | timePipe }}</p>
-        <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
+        <div>
+          <p>{{ section().departure_date_time | timePipe }}</p>
+          <p class="section-duration"><i>{{ section().duration | durationPipe}}</i></p>
+        </div>
         <p>{{ section().arrival_date_time | timePipe }}</p>
       </div>
 
@@ -18,26 +21,75 @@
         @if(section().display_informations.physical_mode.includes("Train") || section().display_informations.physical_mode.includes("TER") ){
 
           <div class="trip-section__transport-details">
-            <span class="material-symbols-outlined section-icon">directions_railway_2</span>
-            @if(section().display_informations.physical_mode.includes("Train")){
-              <p><i>{{ section().display_informations.network }}</i></p>
-            }@else if(section().display_informations.physical_mode.includes("TER")){
-              <p><i>{{ section().display_informations.physical_mode }}</i></p>
-            }
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header>
+                  <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+                  <mat-panel-description>
+                    <span class="material-symbols-outlined section-icon">directions_railway_2</span>
+                    @if(section().display_informations.physical_mode.includes("Train")){
+                      <p><i>{{ section().display_informations.network }}</i></p>
+                    }@else if(section().display_informations.physical_mode.includes("TER")){
+                      <p><i>{{ section().display_informations.physical_mode }}</i></p>
+                    }
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <!-- <p>I'm visible because I am open</p> -->
+                @for (stop of section().stop_date_times ; track $index) {
+                  <div class="essai">
+                    <p class="essai-title">{{ stop.arrival_date_time | timePipe}}</p>
+                    <div class="point"></div>
+                    <p>{{ stop.stop_point.name }}</p>
+                  </div>
+                }
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
 
         }@else if(section().display_informations.physical_mode.includes("Bateau")) {
 
           <div class="trip-section__transport-details">
-            <span class="material-symbols-outlined section-icon">directions_boat</span>
-            <p><i>{{ section().display_informations.physical_mode }} - {{ section().display_informations.network }}</i></p>
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header>
+                  <!-- <mat-panel-title> Self aware panel </mat-panel-title> -->
+                  <mat-panel-description>
+                    <span class="material-symbols-outlined section-icon">directions_boat</span>
+                    <p><i>{{ section().display_informations.physical_mode }} - {{ section().display_informations.network }}</i></p>
+                    <!-- Currently I am {{panelOpenState() ? 'open' : 'closed'}} -->
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <!-- <p>I'm visible because I am open</p> -->
+                <div class="essai">
+                  <p class="essai-title">14h23</p>
+                  <div class="point"></div>
+                  <p>Aix en provence</p>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
+          <!-- <div class="essai">
+            <p>14h23</p>
+            <div class="point"></div>
+            <p>Aix en provence</p>
+          </div> -->
 
         }@else if(section().display_informations.physical_mode.includes("Autocar")){
 
           <div class="trip-section__transport-details">
             <span class="material-symbols-outlined section-icon">directions_bus</span>
             <p><i> {{ section().display_informations.physical_mode }}</i></p>
+            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title> Self aware panel </mat-panel-title>
+                  <mat-panel-description>
+                    Currently I am {{panelOpenState() ? 'open' : 'closed'}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+              </mat-expansion-panel>
           </div>
         }
 

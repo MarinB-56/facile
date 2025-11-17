@@ -6,7 +6,7 @@
   color: $primary-color;
   font-weight: bolder;
   font-style: normal;
-  font-size: larger;
+  // font-size: larger;
 }
 
 .trip-section__transport-schedule {
@@ -66,4 +66,73 @@ p {
   align-items: center;
   color: $neutral-color;
   font-weight: lighter;
+}
+
+
+.mat-expansion-panel{
+  --mat-expansionheader-hover-state-layer-color: red;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}
+
+.mat-expansion-panel{
+  /* border radius */
+  --mat-expansion-container-shape: 4px;
+
+  /* color */
+  --mat-expansion-container-background-color: $background-color;
+  --mat-expansion-container-text-color: rgba(25, 22, 22, 0.534);
+  --mat-expansion-actions-divider-color: rgba(255, 255, 255, .12);
+  // --mat-expansion-header-hover-state-layer-color: rgba(71, 211, 39, 0.942);
+  --mat-expansion-header-hover-state-layer-color: $background-color;
+  --mat-expansion-header-focus-state-layer-color: rgba(18, 232, 207, 0.788);
+  --mat-expansion-header-disabled-state-text-color: rgba(255, 255, 255, .3);
+  --mat-expansion-header-text-color: rgb(242, 10, 10);
+  --mat-expansion-header-description-color: $primary-color;
+  // --mat-expansion-header-indicator-color: rgba(128, 97, 97, 0.7);
+
+  /* height */
+  // --mat-expansion-header-collapsed-state-height: 48px;
+  // --mat-expansion-header-expanded-state-height: 3em;
+
+  /* typography */
+  --mat-expansion-header-text-font: Roboto, sans-serif;
+  --mat-expansion-header-text-size: inherit ;
+  --mat-expansion-header-text-weight: 500;
+  --mat-expansion-header-text-line-height: inherit;
+  --mat-expansion-header-text-tracking: inherit;
+  --mat-expansion-container-text-font: Roboto, sans-serif;
+  --mat-expansion-container-text-line-height: 20px;
+  --mat-expansion-container-text-size: 14px;
+  --mat-expansion-container-text-tracking: .0178571429em;
+  --mat-expansion-container-text-weight: 400;
+  overflow: visible;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 3em;
+}
+
+.essai{
+  display: flex;
+  align-items: center;
+  // background-color: aqua;
+  // position: absolute;
+  // left: 0;
+}
+
+.essai-title{
+  position: absolute;
+  left: -6em;
+}
+
+.point{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  left: -1.95em;
 }
