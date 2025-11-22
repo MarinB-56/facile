@@ -1,5 +1,8 @@
 package org.acme.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SectionDTO {
@@ -19,6 +22,9 @@ public class SectionDTO {
 
   @JsonProperty("display_informations")
   private DisplayInformationsDTO displayInformations;
+
+  @JsonProperty("stop_date_times")
+  private List<StopDateTimeDTO> stopDateTimeDTOs = new ArrayList<>();;
 
   public SectionDTO(){}
 
