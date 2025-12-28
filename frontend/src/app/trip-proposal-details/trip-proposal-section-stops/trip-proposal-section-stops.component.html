@@ -1,15 +1,24 @@
+<!-- Section extensible pour afficher les détails d'un trajet (stops, horaires) -->
 <div class="trip-section__transport-details">
     <mat-accordion>
-      <mat-expansion-panel [class.overflow-visible]="panelOpenState()" (opened)="panelOpenChange.emit(true)" (closed)="panelOpenChange.emit(false)">
-        <mat-expansion-panel-header>
+      <mat-expansion-panel
+        [class.overflow-visible]="panelOpenState()"
+        (opened)="panelOpenChange.emit(true)"
+        (closed)="panelOpenChange.emit(false)"
+        [hideToggle]="!hasStops()"
+        [disabled]="!hasStops()">
 
+        <!-- Moyen de transport du trajet (Ex: TGV Inoui, Autocar, Bateau) -->
+        <mat-expansion-panel-header>
           <mat-panel-description>
             <span class="material-symbols-outlined section-icon">{{icon()}}</span>
             <p><i> {{ title() }}</i></p>
           </mat-panel-description>
         </mat-expansion-panel-header>
 
+        <!-- Stops et horaires du trajet -->
         @for (stop of section().stop_date_times ; track $index) {
+          <!-- Evite l'affichage en double des arrêts arrivée et départ -->
           @if(stop.stop_point.id !== section().to.id && stop.stop_point.id !== section().from.id){
             <div class="trip-section__stop">
               <p class="trip-section__stop-time">{{ stop.arrival_date_time | timePipe}}</p>

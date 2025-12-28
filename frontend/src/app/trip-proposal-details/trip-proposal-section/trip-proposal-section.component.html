@@ -18,6 +18,7 @@
           {{ section().from.name }}
         </div>
 
+        <!-- Section extensible pour affichage des arrêts et des stops -->
         <app-trip-proposal-section-stops
           [section] = "section()"
           [panelOpenState]="panelOpenState()"
@@ -25,7 +26,7 @@
           [icon]="getIcon()"
           [title]="getTransportTitle()">
         </app-trip-proposal-section-stops>
-
+        
         <div>
           {{ section().to.name }}
         </div>
